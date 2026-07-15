@@ -5,6 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Rhizome Space — Grow your first roots in AI. Chiang Mai.</title>
 <meta name="description" content="Online AI courses and consultancy from Chiang Mai. For students and business people taking their first professional steps into AI.">
+<meta name="theme-color" content="#0d0c12">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Rhizome Space">
+<meta property="og:description" content="Grow your first roots in AI with practical courses and consultancy from Chiang Mai.">
+<meta property="og:url" content="https://pxeodev.github.io/rhizome/">
+<meta property="og:image" content="https://pxeodev.github.io/rhizome/assets/rhizome-mark.png">
+<meta property="og:image:width" content="640">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="The Rhizome Space mushroom mark">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/png" href="assets/rhizome-mark.png">
+<link rel="apple-touch-icon" href="assets/rhizome-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -48,10 +60,12 @@ nav{
 }
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:'Bricolage Grotesque';font-weight:700;font-size:19px;color:var(--leaf)}
-.logo svg{flex:none}
+.logo-mark{width:36px;height:36px;object-fit:cover;border-radius:8px;flex:none}
 .nav-links{display:flex;gap:28px;align-items:center;list-style:none}
 .nav-links a{text-decoration:none;font-size:15px;color:var(--ink);opacity:.85}
 .nav-links a:hover,.nav-links a:focus-visible{opacity:1;color:var(--leaf)}
+.nav-links a.btn{color:var(--paper);opacity:1}
+.nav-links a.btn:hover,.nav-links a.btn:focus-visible{color:var(--paper)}
 a:focus-visible,button:focus-visible{outline:2px solid var(--turmeric);outline-offset:3px;border-radius:2px}
 .btn{
   display:inline-block;padding:12px 26px;border-radius:100px;
@@ -66,6 +80,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--turmeric);outline-o
 .btn.ghost:hover{background:rgba(30,58,43,.07)}
 .nav-cta{padding:9px 20px;font-size:14px}
 @media(max-width:760px){.nav-links li:not(:last-child){display:none}}
+@media(max-width:460px){nav .logo-text{display:none}}
 
 /* ---------- hero ---------- */
 .hero{position:relative;overflow:hidden;padding:88px 0 0}
@@ -221,6 +236,7 @@ section{padding:88px 0}
 footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:14.5px}
 .foot{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap}
 .foot .logo{color:var(--paper)}
+.foot .logo-mark{width:32px;height:32px;border:1px solid rgba(250,246,238,.18)}
 .foot ul{list-style:none;display:flex;gap:22px;flex-wrap:wrap}
 .foot a{text-decoration:none;opacity:.85}
 .foot a:hover{opacity:1;color:var(--turmeric)}
@@ -232,8 +248,8 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
 <nav>
   <div class="wrap nav-inner">
     <a class="logo" href="#top" aria-label="The Rhizome Space home">
-      <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path d="M14 25 V14 M14 14 C10 12 6 13 3 9 M14 14 C18 12 22 13 25 9 M14 14 C12 9 15 7 14 3" stroke="#1e3a2b" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="3" cy="9" r="2.4" fill="#e2a72e"/><circle cx="25" cy="9" r="2.4" fill="#e2a72e"/><circle cx="14" cy="3" r="2.4" fill="#e2a72e"/></svg>
-      The Rhizome Space
+      <img class="logo-mark" src="assets/rhizome-mark.png" alt="" width="36" height="36">
+      <span class="logo-text">The Rhizome Space</span>
     </a>
     <ul class="nav-links">
       <li><a href="#paths">What we do</a></li>
@@ -458,8 +474,8 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
   <div class="wrap">
     <div class="foot">
       <a class="logo" href="#top">
-        <svg width="24" height="24" viewBox="0 0 28 28" aria-hidden="true"><path d="M14 25 V14 M14 14 C10 12 6 13 3 9 M14 14 C18 12 22 13 25 9 M14 14 C12 9 15 7 14 3" stroke="#faf6ee" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="3" cy="9" r="2.4" fill="#e2a72e"/><circle cx="25" cy="9" r="2.4" fill="#e2a72e"/><circle cx="14" cy="3" r="2.4" fill="#e2a72e"/></svg>
-        The Rhizome Space
+        <img class="logo-mark" src="assets/rhizome-mark.png" alt="" width="32" height="32">
+        <span class="logo-text">The Rhizome Space</span>
       </a>
       <ul>
         <li><a href="#courses">Courses</a></li>
