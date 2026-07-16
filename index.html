@@ -119,10 +119,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--turmeric);outline-o
 .field-paths path:nth-of-type(2){animation-delay:80ms}.field-paths path:nth-of-type(3){animation-delay:160ms}
 .field-paths circle{fill:var(--turmeric);stroke:var(--paper);stroke-width:5}
 @keyframes field-draw{to{stroke-dashoffset:0}}
-.field-mark{position:absolute;left:50%;top:55%;width:236px;height:236px;display:grid;place-items:center;transform:translate(-50%,-50%);border-radius:50%;background:rgba(226,167,46,.16)}
-.field-mark::before,.field-mark::after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(30,58,43,.15)}
-.field-mark::before{inset:-22px}.field-mark::after{inset:20px;border-style:dashed;opacity:.65}
-.field-mark img{position:relative;z-index:1;width:162px;height:auto;filter:drop-shadow(0 18px 22px rgba(30,58,43,.10))}
+.field-mark{position:absolute;left:50%;top:55%;width:232px;min-height:270px;padding:24px 22px;transform:translate(-50%,-50%) rotate(-1.5deg);border:1px solid rgba(30,58,43,.18);border-radius:8px;background:#fffdf8;box-shadow:0 24px 44px rgba(30,58,43,.10)}
+.field-mark::before{content:"";position:absolute;inset:9px -10px -10px 10px;z-index:-1;border:1px solid rgba(30,58,43,.12);border-radius:8px;background:#efe6d3;transform:rotate(3deg)}
+.sheet-kicker{display:block;color:var(--ginger);font-size:9px;margin-bottom:15px}
+.field-mark h3{font-size:20px;color:var(--leaf);margin-bottom:18px;padding-bottom:15px;border-bottom:1px solid rgba(30,58,43,.16)}
+.field-mark dl{display:grid;grid-template-columns:58px 1fr;gap:11px 12px;align-items:start}
+.field-mark dt{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--ginger);padding-top:3px}
+.field-mark dd{font-size:11px;line-height:1.35;color:#526050}
 .field-note{position:absolute;width:190px;color:var(--leaf)}
 .field-note-a{left:0;top:36px}.field-note-b{right:0;top:36px}.field-note-c{left:18px;bottom:22px}
 .field-note span{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--ginger);margin-bottom:5px}
@@ -131,7 +134,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--turmeric);outline-o
 .hero-field figcaption{position:absolute;right:0;bottom:0;width:228px;padding-top:12px;border-top:1px solid rgba(30,58,43,.22);color:#667164;font-size:12px;line-height:1.45}
 .hero-field figcaption strong{display:block;color:var(--leaf);font-family:'Bricolage Grotesque',sans-serif;font-size:17px;margin-bottom:2px}
 @media(max-width:980px){.hero-layout{grid-template-columns:1fr;gap:58px}.hero-copy{max-width:720px}.hero-field{width:min(100%,650px);margin-inline:auto}}
-@media(max-width:600px){.hero{padding:58px 0 72px;background:radial-gradient(circle at 50% 64%,rgba(226,167,46,.12),transparent 32%)}.hero .hero-ctas{align-items:flex-start;gap:18px}.hero-field{min-height:0;padding-top:28px;border-top:1px solid rgba(30,58,43,.14)}.hero-field::before{font-size:150px;top:-20px}.field-index{position:static;display:block;margin-bottom:22px}.field-stage{height:auto;margin:0;display:grid;grid-template-columns:112px 1fr;gap:0 22px;align-items:center}.field-paths{display:none}.field-mark{position:relative;left:auto;top:auto;transform:none;width:108px;height:108px;grid-row:1/4}.field-mark::before{inset:-10px}.field-mark::after{inset:10px}.field-mark img{width:76px}.field-note,.field-note-a,.field-note-b,.field-note-c{position:static;width:auto;padding:12px 0;border-bottom:1px solid rgba(30,58,43,.14)}.field-note:first-of-type{border-top:1px solid rgba(30,58,43,.14)}.field-note strong{font-size:16px}.field-note small{font-size:11px;max-width:none}.hero-field figcaption{position:static;width:auto;margin-top:28px}.hero-field figcaption strong{font-size:16px}}
+@media(max-width:600px){.hero{padding:58px 0 72px;background:radial-gradient(circle at 50% 64%,rgba(226,167,46,.12),transparent 32%)}.hero .hero-ctas{align-items:flex-start;gap:18px}.hero-field{min-height:0;padding-top:28px;border-top:1px solid rgba(30,58,43,.14)}.hero-field::before{font-size:150px;top:-20px}.field-index{position:static;display:block;margin-bottom:22px}.field-stage{height:auto;margin:0;display:grid;grid-template-columns:124px 1fr;gap:0 22px;align-items:center}.field-paths{display:none}.field-mark{position:relative;left:auto;top:auto;transform:rotate(-1.5deg);width:118px;min-height:154px;padding:14px 12px;grid-row:1/4}.field-mark::before{inset:5px -6px -6px 6px}.sheet-kicker{font-size:7px;margin-bottom:9px}.field-mark h3{font-size:14px;margin-bottom:10px;padding-bottom:9px}.field-mark dl{display:none}.field-note,.field-note-a,.field-note-b,.field-note-c{position:static;width:auto;padding:12px 0;border-bottom:1px solid rgba(30,58,43,.14)}.field-note:first-of-type{border-top:1px solid rgba(30,58,43,.14)}.field-note strong{font-size:16px}.field-note small{font-size:11px;max-width:none}.hero-field figcaption{position:static;width:auto;margin-top:28px}.hero-field figcaption strong{font-size:16px}}
 
 /* ---------- principle strip ---------- */
 .strip{background:var(--leaf);color:var(--paper);padding:20px 0}
@@ -391,7 +394,11 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
           <path d="M266 286 C238 324 220 350 205 374"/>
           <circle cx="220" cy="94" r="6"/><circle cx="395" cy="94" r="6"/><circle cx="205" cy="374" r="6"/>
         </svg>
-        <div class="field-mark"><img src="assets/rhizome-thai-logo.png" alt="The Rhizome Space mushroom mark" width="162" height="147"></div>
+        <article class="field-mark" aria-label="Example documented AI-assisted workflow">
+          <span class="mono sheet-kicker">Workflow worksheet · 01</span>
+          <h3>One recurring task</h3>
+          <dl><dt>Input</dt><dd>Approved example</dd><dt>Assist</dt><dd>Draft or organize</dd><dt>Review</dt><dd>Named human owner</dd><dt>Output</dt><dd>Reusable method</dd></dl>
+        </article>
         <div class="field-note field-note-a"><span>01 · Start</span><strong>Bring one real task</strong><small>Use work you already repeat.</small></div>
         <div class="field-note field-note-b"><span>02 · Bound</span><strong>Set the limits</strong><small>Mark data rules and human checks.</small></div>
         <div class="field-note field-note-c"><span>03 · Keep</span><strong>Document the method</strong><small>Leave with something you can reuse.</small></div>
