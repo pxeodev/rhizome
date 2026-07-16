@@ -35,6 +35,7 @@
   --ink:#22271f;         /* body ink */
   --mist:#8ba08f;        /* muted green-grey */
   --maxw:1120px;
+  --ease-out:cubic-bezier(.23,1,.32,1);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -71,23 +72,19 @@ nav{
   width:52px;height:47px;object-fit:contain;flex:none;
 }
 .nav-links{display:flex;gap:28px;align-items:center;list-style:none}
-.nav-links a{text-decoration:none;font-size:15px;color:var(--ink);opacity:.85}
-.nav-links a:hover,.nav-links a:focus-visible{opacity:1;color:var(--leaf)}
+.nav-links a{text-decoration:none;font-size:15px;color:var(--ink);opacity:.85;transition:color 160ms var(--ease-out),opacity 160ms var(--ease-out)}
 .nav-links a.btn{color:var(--paper);opacity:1}
-.nav-links a.btn:hover,.nav-links a.btn:focus-visible{color:var(--paper)}
+.nav-links a.btn:focus-visible{color:var(--paper)}
 a:focus-visible,button:focus-visible{outline:2px solid var(--turmeric);outline-offset:3px;border-radius:2px}
 .btn{
   display:inline-block;padding:12px 26px;border-radius:100px;
   background:var(--leaf);color:var(--paper);text-decoration:none;
   font-weight:600;font-size:15px;border:none;cursor:pointer;white-space:nowrap;
-  transition:background .2s;
+  transition:background-color 180ms var(--ease-out),transform 140ms var(--ease-out);
 }
-.btn:hover{background:var(--leaf-dark)}
-.btn:active{transform:translateY(1px)}
+.btn:active{transform:scale(.97)}
 .btn.gold{background:var(--turmeric);color:var(--leaf-dark)}
-.btn.gold:hover{background:#f0b944}
 .btn.ghost{background:transparent;color:var(--leaf);box-shadow:inset 0 0 0 1.5px var(--leaf)}
-.btn.ghost:hover{background:rgba(30,58,43,.07)}
 .nav-cta{padding:9px 20px;font-size:14px}
 @media(max-width:760px){.nav-links li:not(:last-child){display:none}}
 @media(max-width:460px){nav .logo-text{display:none}}
@@ -166,10 +163,9 @@ section{padding:88px 0}
 .course{
   border:1px solid rgba(30,58,43,.16);border-radius:18px;padding:30px;
   display:grid;grid-template-columns:1fr auto;gap:10px 24px;background:var(--paper);
-  transition:border-color .2s, transform .2s;
+  transition:border-color 180ms var(--ease-out);
 }
 .course:first-child{grid-row:1/-1;background:var(--leaf-dark);color:var(--paper);padding:38px}
-.course:hover{border-color:var(--turmeric);transform:translateY(-3px)}
 .course-copy{display:flex;flex-direction:column;gap:10px}.course .mono{color:var(--ginger)}
 .course:first-child .mono{color:var(--turmeric)}
 .course h3{font-size:23px;color:var(--leaf)}.course:first-child h3{font-size:31px;color:var(--paper)}
@@ -218,9 +214,9 @@ section{padding:88px 0}
 .idea-chip{
   text-align:left;background:#fff;border:1.5px solid rgba(30,58,43,.18);
   border-radius:14px;padding:16px 18px;cursor:pointer;font:inherit;font-size:15.5px;
-  transition:border-color .15s, background .15s;
+  transition:border-color 160ms var(--ease-out),background-color 160ms var(--ease-out),transform 140ms var(--ease-out);
 }
-.idea-chip:hover{border-color:var(--ginger)}
+.idea-chip:active{transform:scale(.985)}
 .idea-chip.active{border-color:var(--turmeric);background:#fff8e8}
 .idea-chip .mono{display:block;color:var(--ginger);margin-bottom:4px}
 .idea-custom{display:flex;gap:10px;margin-top:4px}
@@ -286,11 +282,8 @@ section{padding:88px 0}
 .post{
   background:#fff;border:1px solid rgba(30,58,43,.14);border-radius:18px;
   padding:32px 30px;text-decoration:none;display:flex;flex-direction:column;gap:12px;
-  transition:transform .2s, box-shadow .2s;
 }
 .post[aria-disabled="true"]{cursor:default}
-.post[aria-disabled="true"]:hover{transform:none;box-shadow:none}
-.post:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(30,58,43,.10)}
 .post .mono{color:var(--ginger)}
 .post h3{font-size:24px;color:var(--leaf)}
 .post p{color:#3d4438;font-size:15.5px}
@@ -320,7 +313,6 @@ section{padding:88px 0}
 .cta .btn{margin-top:32px;background:var(--leaf-dark);color:var(--paper)}
 .cta .hero-ctas{justify-content:center}
 .cta .hero-ctas .btn{margin-top:0}
-.cta .btn:hover{background:var(--leaf)}
 .cta .mono{color:#7a5c17}
 
 /* footer */
@@ -330,9 +322,21 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
 .foot .logo-mark{width:36px;height:32px}
 .foot ul{list-style:none;display:flex;gap:22px;flex-wrap:wrap}
 .foot a{text-decoration:none;opacity:.85}
-.foot a:hover{opacity:1;color:var(--turmeric)}
+.foot a{transition:color 160ms var(--ease-out),opacity 160ms var(--ease-out)}
 .foot-bottom{margin-top:36px;padding-top:20px;border-top:1px solid rgba(250,246,238,.12);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:#7d9080}
 .foot-domain{font-size:11px}
+
+@media (hover:hover) and (pointer:fine){
+  .nav-links a:hover,.nav-links a:focus-visible{opacity:1;color:var(--leaf)}
+  .nav-links a.btn:hover,.nav-links a.btn:focus-visible{color:var(--paper)}
+  .btn:hover{background:var(--leaf-dark)}
+  .btn.gold:hover{background:#f0b944}
+  .btn.ghost:hover{background:rgba(30,58,43,.07)}
+  .course:hover{border-color:var(--turmeric)}
+  .idea-chip:hover{border-color:var(--ginger)}
+  .cta .btn:hover{background:var(--leaf)}
+  .foot a:hover{opacity:1;color:var(--turmeric)}
+}
 </style>
 </head>
 <body>
