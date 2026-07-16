@@ -90,8 +90,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--turmeric);outline-o
 @media(max-width:460px){nav .logo-text{display:none}}
 
 /* ---------- hero ---------- */
-.hero{position:relative;overflow:hidden;padding:92px 0 96px;background:radial-gradient(circle at 75% 42%,rgba(226,167,46,.12),transparent 31%)}
-.hero-layout{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(420px,.92fr);gap:52px;align-items:center}
+.hero{position:relative;overflow:hidden;padding:92px 0 156px;background:radial-gradient(circle at 75% 42%,rgba(226,167,46,.12),transparent 31%)}
+.hero-layout{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(420px,.92fr);gap:52px;align-items:center}
 .hero h1{
   font-size:clamp(42px,6vw,76px);
   color:var(--leaf);
@@ -138,8 +138,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--turmeric);outline-o
 .field-status{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--mist)}
 .hero-field figcaption{margin:24px 22px 0;padding-top:12px;border-top:1px solid rgba(30,58,43,.18);color:#667164;font-size:12px;line-height:1.45}
 .hero-field figcaption strong{color:var(--leaf)}
+.hero-rhizome{position:absolute;left:0;right:0;bottom:0;width:100%;height:142px;pointer-events:none}
+.hero-rhizome path{fill:none;stroke:var(--leaf);stroke-width:1.4;vector-effect:non-scaling-stroke;opacity:.38;stroke-dasharray:700;stroke-dashoffset:700;animation:rhizome-grow 1.7s var(--ease-out) forwards}
+.hero-rhizome path:nth-of-type(2){animation-delay:70ms}.hero-rhizome path:nth-of-type(3){animation-delay:110ms}.hero-rhizome path:nth-of-type(4){animation-delay:150ms}.hero-rhizome path:nth-of-type(5){animation-delay:190ms}.hero-rhizome path:nth-of-type(6){animation-delay:230ms}
+.hero-rhizome .tuber{fill:none;stroke:var(--turmeric);stroke-width:12;stroke-linecap:round;opacity:1;stroke-dasharray:none;stroke-dashoffset:0;animation:none}
+@keyframes rhizome-grow{to{stroke-dashoffset:0}}
+@media(prefers-reduced-motion:reduce){.hero-rhizome path{stroke-dashoffset:0}}
 @media(max-width:980px){.hero-layout{grid-template-columns:1fr;gap:58px}.hero-copy{max-width:720px}.hero-field{width:min(100%,650px);margin-inline:auto}}
-@media(max-width:600px){.hero{padding:58px 0 72px;background:radial-gradient(circle at 50% 64%,rgba(226,167,46,.12),transparent 32%)}.hero .hero-ctas{align-items:flex-start;gap:18px}.hero-field{min-height:0;padding-top:28px;border-top:1px solid rgba(30,58,43,.14)}.hero-field::before{font-size:150px;top:-6px}.field-index{padding:0 4px}.field-rail{gap:14px;padding:24px 4px 24px}.swipe-note{flex-basis:88%;min-height:342px;padding:26px 22px}.swipe-note h3{font-size:23px}.note-flow{grid-template-columns:1fr;gap:5px}.note-flow b{transform:rotate(90deg);justify-self:center}.field-controls{--control-pad:4px}.hero-field figcaption{margin:22px 4px 0}}
+@media(max-width:600px){.hero{padding:58px 0 112px;background:radial-gradient(circle at 50% 64%,rgba(226,167,46,.12),transparent 32%)}.hero .hero-ctas{align-items:flex-start;gap:18px}.hero-field{min-height:0;padding-top:28px;border-top:1px solid rgba(30,58,43,.14)}.hero-field::before{font-size:150px;top:-6px}.field-index{padding:0 4px}.field-rail{gap:14px;padding:24px 4px 24px}.swipe-note{flex-basis:88%;min-height:342px;padding:26px 22px}.swipe-note h3{font-size:23px}.note-flow{grid-template-columns:1fr;gap:5px}.note-flow b{transform:rotate(90deg);justify-self:center}.field-controls{--control-pad:4px}.hero-field figcaption{margin:22px 4px 0}.hero-rhizome{height:96px}}
 
 /* ---------- principle strip ---------- */
 .strip{background:var(--leaf);color:var(--paper);padding:20px 0}
@@ -427,6 +433,15 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
       <figcaption><strong>Swipe to compare.</strong> Open a note to move to its full path below.</figcaption>
     </figure>
   </div>
+  <svg class="hero-rhizome" viewBox="0 0 1200 150" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M-20 118 C120 108 180 133 300 118 C420 103 500 128 600 118 C720 108 800 133 920 118 C1040 106 1120 126 1220 116"/>
+    <path d="M180 120 C190 88 170 63 200 38"/><path d="M420 116 C430 83 415 68 445 40"/>
+    <path d="M600 118 C605 86 590 68 615 34"/><path d="M840 119 C850 88 830 66 860 42"/>
+    <path d="M1050 117 C1058 90 1040 70 1068 46"/><path d="M300 118 C310 138 340 146 380 143"/>
+    <path d="M720 116 C730 138 760 148 800 144"/>
+    <path class="tuber" d="M200 36h.01"/><path class="tuber" d="M445 38h.01"/><path class="tuber" d="M615 32h.01"/>
+    <path class="tuber" d="M860 40h.01"/><path class="tuber" d="M1068 44h.01"/>
+  </svg>
 </header>
 
 <div class="strip">
