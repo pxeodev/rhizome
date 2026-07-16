@@ -118,23 +118,28 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--turmeric);outline-o
 .field-rail::-webkit-scrollbar{display:none}
 .field-rail:focus-visible{outline:2px solid var(--turmeric);outline-offset:-4px;border-radius:10px}
 .swipe-note{position:relative;flex:0 0 calc(100% - 34px);min-height:360px;padding:30px 28px 26px;scroll-snap-align:center;scroll-snap-stop:always;border:1px solid rgba(30,58,43,.18);border-radius:10px;background:#fffdf8;box-shadow:10px 12px 0 rgba(30,58,43,.07)}
-.swipe-note::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;border-radius:10px 0 0 10px;background:var(--turmeric)}
-.note-kicker{display:block;color:var(--ginger);font-size:9px;margin-bottom:17px}
+.note-kicker{position:relative;display:block;color:var(--ginger);font-size:9px;margin-bottom:31px}
+.note-kicker::after{content:"";position:absolute;left:0;bottom:-14px;width:0;height:1px;background:var(--ginger);transition:width 420ms var(--ease-out)}
+.note-kicker::before{content:"";position:absolute;left:0;bottom:-16px;width:5px;height:5px;border-radius:50%;background:var(--ginger);opacity:0;transform:translateX(0) scale(.7);transition:transform 420ms var(--ease-out),opacity 160ms var(--ease-out)}
+.swipe-note.is-active .note-kicker::after{width:62px}
+.swipe-note.is-active .note-kicker::before{opacity:1;transform:translateX(59px) scale(1)}
 .swipe-note h3{font-size:25px;color:var(--leaf);max-width:13ch;margin-bottom:12px}
 .swipe-note>p{font-size:14px;line-height:1.5;color:#596657;max-width:34ch}
 .note-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:6px;margin:28px 0 24px;padding-top:22px;border-top:1px solid rgba(30,58,43,.14)}
 .note-flow span{font-family:'IBM Plex Mono',monospace;font-size:9px;line-height:1.3;text-align:center;color:var(--leaf);padding:9px 5px;background:var(--paper-dim);border-radius:6px}
 .note-flow b{color:var(--ginger);font-size:14px}
 .note-link{display:inline-flex;align-items:center;gap:8px;font-weight:650;color:var(--leaf);text-decoration:none;border-bottom:1px solid rgba(30,58,43,.35);padding-bottom:4px}
-.field-controls{display:flex;align-items:center;gap:9px;padding:0 22px}
-.field-dot{width:30px;height:4px;padding:0;border:0;border-radius:4px;background:rgba(30,58,43,.18);cursor:pointer;transition:background-color 160ms var(--ease-out),transform 140ms var(--ease-out)}
-.field-dot[aria-current="true"]{background:var(--ginger)}
-.field-dot:active{transform:scaleX(.86)}
+.field-controls{--control-pad:22px;position:relative;display:flex;align-items:center;gap:4px;padding:0 var(--control-pad)}
+.field-controls::before{content:"";position:absolute;left:calc(var(--control-pad) + 16px);top:50%;width:72px;height:1px;background:rgba(30,58,43,.22);transform:translateY(-50%)}
+.field-dot{position:relative;z-index:1;width:32px;height:32px;padding:0;border:0;background:transparent;cursor:pointer}
+.field-dot::before{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;border-radius:50%;background:var(--paper);box-shadow:0 0 0 1px rgba(30,58,43,.38);transform:translate(-50%,-50%);transition:background-color 180ms var(--ease-out),box-shadow 180ms var(--ease-out),transform 180ms var(--ease-out)}
+.field-dot[aria-current="true"]::before{background:var(--ginger);box-shadow:0 0 0 4px rgba(201,127,61,.14);transform:translate(-50%,-50%) scale(1.18)}
+.field-dot:active::before{transform:translate(-50%,-50%) scale(.86)}
 .field-status{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--mist)}
 .hero-field figcaption{margin:24px 22px 0;padding-top:12px;border-top:1px solid rgba(30,58,43,.18);color:#667164;font-size:12px;line-height:1.45}
 .hero-field figcaption strong{color:var(--leaf)}
 @media(max-width:980px){.hero-layout{grid-template-columns:1fr;gap:58px}.hero-copy{max-width:720px}.hero-field{width:min(100%,650px);margin-inline:auto}}
-@media(max-width:600px){.hero{padding:58px 0 72px;background:radial-gradient(circle at 50% 64%,rgba(226,167,46,.12),transparent 32%)}.hero .hero-ctas{align-items:flex-start;gap:18px}.hero-field{min-height:0;padding-top:28px;border-top:1px solid rgba(30,58,43,.14)}.hero-field::before{font-size:150px;top:-6px}.field-index{padding:0 4px}.field-rail{gap:14px;padding:24px 4px 24px}.swipe-note{flex-basis:88%;min-height:342px;padding:26px 22px}.swipe-note h3{font-size:23px}.note-flow{grid-template-columns:1fr;gap:5px}.note-flow b{transform:rotate(90deg);justify-self:center}.field-controls{padding:0 4px}.hero-field figcaption{margin:22px 4px 0}}
+@media(max-width:600px){.hero{padding:58px 0 72px;background:radial-gradient(circle at 50% 64%,rgba(226,167,46,.12),transparent 32%)}.hero .hero-ctas{align-items:flex-start;gap:18px}.hero-field{min-height:0;padding-top:28px;border-top:1px solid rgba(30,58,43,.14)}.hero-field::before{font-size:150px;top:-6px}.field-index{padding:0 4px}.field-rail{gap:14px;padding:24px 4px 24px}.swipe-note{flex-basis:88%;min-height:342px;padding:26px 22px}.swipe-note h3{font-size:23px}.note-flow{grid-template-columns:1fr;gap:5px}.note-flow b{transform:rotate(90deg);justify-self:center}.field-controls{--control-pad:4px}.hero-field figcaption{margin:22px 4px 0}}
 
 /* ---------- principle strip ---------- */
 .strip{background:var(--leaf);color:var(--paper);padding:20px 0}
@@ -348,7 +353,8 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
   .hero-text-link:hover{border-color:var(--leaf);transform:translateX(2px)}
   .hero-text-link:hover span{transform:translateY(2px)}
   .note-link:hover{border-color:var(--leaf)}
-  .field-dot:hover{background:rgba(30,58,43,.36)}
+  .field-dot:hover::before{background:var(--paper-dim);box-shadow:0 0 0 3px rgba(30,58,43,.10)}
+  .field-dot[aria-current="true"]:hover::before{background:var(--ginger);box-shadow:0 0 0 4px rgba(201,127,61,.14)}
   .course:hover{border-color:var(--turmeric)}
   .idea-chip:hover{border-color:var(--ginger)}
   .cta .btn:hover{background:var(--leaf)}
@@ -728,6 +734,7 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
 
   function setActiveNote(index){
     activeNote = Math.max(0, Math.min(notes.length - 1, index));
+    notes.forEach(function(note, i){ note.classList.toggle('is-active', i === activeNote); });
     dots.forEach(function(dot, i){ dot.setAttribute('aria-current', i === activeNote ? 'true' : 'false'); });
     if(status) status.textContent = String(activeNote + 1).padStart(2, '0') + ' / 03';
     if(field) field.dataset.active = String(activeNote + 1).padStart(2, '0');
@@ -765,6 +772,7 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
       showNote(activeNote + (e.key === 'ArrowRight' ? 1 : -1));
     });
   }
+  setActiveNote(0);
 
   render('project');
 })();
