@@ -109,32 +109,32 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--turmeric);outline-o
 .hero-text-link{display:inline-flex;align-items:center;gap:9px;color:var(--leaf);font-weight:650;text-decoration:none;border-bottom:1px solid rgba(30,58,43,.35);padding:7px 0 5px;transition:border-color 160ms var(--ease-out),transform 160ms var(--ease-out)}
 .hero-text-link span{color:var(--ginger);font-size:18px;transition:transform 160ms var(--ease-out)}
 
-/* workflow field plate */
-.hero-field{position:relative;min-height:510px;isolation:isolate}
-.hero-field::before{content:"01";position:absolute;right:-8px;top:-72px;z-index:-1;font-family:'Bricolage Grotesque',sans-serif;font-size:230px;font-weight:700;line-height:1;color:var(--leaf);opacity:.035;letter-spacing:-.08em}
-.field-index{position:absolute;top:0;right:0;color:var(--ginger)}
-.field-stage{position:relative;height:450px;margin-top:28px}
-.field-paths{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.field-paths path{fill:none;stroke:var(--leaf);stroke-width:1.4;opacity:.34;stroke-dasharray:520;stroke-dashoffset:520;animation:field-draw 900ms var(--ease-out) forwards}
-.field-paths path:nth-of-type(2){animation-delay:80ms}.field-paths path:nth-of-type(3){animation-delay:160ms}
-.field-paths circle{fill:var(--turmeric);stroke:var(--paper);stroke-width:5}
-@keyframes field-draw{to{stroke-dashoffset:0}}
-.field-mark{position:absolute;left:50%;top:55%;width:232px;min-height:270px;padding:24px 22px;transform:translate(-50%,-50%) rotate(-1.5deg);border:1px solid rgba(30,58,43,.18);border-radius:8px;background:#fffdf8;box-shadow:0 24px 44px rgba(30,58,43,.10)}
-.field-mark::before{content:"";position:absolute;inset:9px -10px -10px 10px;z-index:-1;border:1px solid rgba(30,58,43,.12);border-radius:8px;background:#efe6d3;transform:rotate(3deg)}
-.sheet-kicker{display:block;color:var(--ginger);font-size:9px;margin-bottom:15px}
-.field-mark h3{font-size:20px;color:var(--leaf);margin-bottom:18px;padding-bottom:15px;border-bottom:1px solid rgba(30,58,43,.16)}
-.field-mark dl{display:grid;grid-template-columns:58px 1fr;gap:11px 12px;align-items:start}
-.field-mark dt{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--ginger);padding-top:3px}
-.field-mark dd{font-size:11px;line-height:1.35;color:#526050}
-.field-note{position:absolute;width:190px;color:var(--leaf)}
-.field-note-a{left:0;top:36px}.field-note-b{right:0;top:36px}.field-note-c{left:18px;bottom:22px}
-.field-note span{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--ginger);margin-bottom:5px}
-.field-note strong{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:19px;line-height:1.18;margin-bottom:5px}
-.field-note small{display:block;color:#667164;font-size:12px;line-height:1.4;max-width:20ch}
-.hero-field figcaption{position:absolute;right:0;bottom:0;width:228px;padding-top:12px;border-top:1px solid rgba(30,58,43,.22);color:#667164;font-size:12px;line-height:1.45}
-.hero-field figcaption strong{display:block;color:var(--leaf);font-family:'Bricolage Grotesque',sans-serif;font-size:17px;margin-bottom:2px}
+/* swipeable field notes */
+.hero-field{position:relative;min-height:510px;isolation:isolate;overflow:hidden}
+.hero-field::before{content:attr(data-active);position:absolute;right:-8px;top:-68px;z-index:-1;font-family:'Bricolage Grotesque',sans-serif;font-size:230px;font-weight:700;line-height:1;color:var(--leaf);opacity:.035;letter-spacing:-.08em}
+.field-index{display:flex;align-items:center;justify-content:space-between;color:var(--ginger);padding:0 22px}
+.field-index::after{content:"swipe →";font-size:9px;color:var(--mist)}
+.field-rail{position:relative;display:flex;gap:22px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scrollbar-width:none;padding:34px 22px 30px;margin-top:6px;-webkit-overflow-scrolling:touch}
+.field-rail::-webkit-scrollbar{display:none}
+.field-rail:focus-visible{outline:2px solid var(--turmeric);outline-offset:-4px;border-radius:10px}
+.swipe-note{position:relative;flex:0 0 calc(100% - 34px);min-height:360px;padding:30px 28px 26px;scroll-snap-align:center;scroll-snap-stop:always;border:1px solid rgba(30,58,43,.18);border-radius:10px;background:#fffdf8;box-shadow:10px 12px 0 rgba(30,58,43,.07)}
+.swipe-note::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;border-radius:10px 0 0 10px;background:var(--turmeric)}
+.note-kicker{display:block;color:var(--ginger);font-size:9px;margin-bottom:17px}
+.swipe-note h3{font-size:25px;color:var(--leaf);max-width:13ch;margin-bottom:12px}
+.swipe-note>p{font-size:14px;line-height:1.5;color:#596657;max-width:34ch}
+.note-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:6px;margin:28px 0 24px;padding-top:22px;border-top:1px solid rgba(30,58,43,.14)}
+.note-flow span{font-family:'IBM Plex Mono',monospace;font-size:9px;line-height:1.3;text-align:center;color:var(--leaf);padding:9px 5px;background:var(--paper-dim);border-radius:6px}
+.note-flow b{color:var(--ginger);font-size:14px}
+.note-link{display:inline-flex;align-items:center;gap:8px;font-weight:650;color:var(--leaf);text-decoration:none;border-bottom:1px solid rgba(30,58,43,.35);padding-bottom:4px}
+.field-controls{display:flex;align-items:center;gap:9px;padding:0 22px}
+.field-dot{width:30px;height:4px;padding:0;border:0;border-radius:4px;background:rgba(30,58,43,.18);cursor:pointer;transition:background-color 160ms var(--ease-out),transform 140ms var(--ease-out)}
+.field-dot[aria-current="true"]{background:var(--ginger)}
+.field-dot:active{transform:scaleX(.86)}
+.field-status{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--mist)}
+.hero-field figcaption{margin:24px 22px 0;padding-top:12px;border-top:1px solid rgba(30,58,43,.18);color:#667164;font-size:12px;line-height:1.45}
+.hero-field figcaption strong{color:var(--leaf)}
 @media(max-width:980px){.hero-layout{grid-template-columns:1fr;gap:58px}.hero-copy{max-width:720px}.hero-field{width:min(100%,650px);margin-inline:auto}}
-@media(max-width:600px){.hero{padding:58px 0 72px;background:radial-gradient(circle at 50% 64%,rgba(226,167,46,.12),transparent 32%)}.hero .hero-ctas{align-items:flex-start;gap:18px}.hero-field{min-height:0;padding-top:28px;border-top:1px solid rgba(30,58,43,.14)}.hero-field::before{font-size:150px;top:-20px}.field-index{position:static;display:block;margin-bottom:22px}.field-stage{height:auto;margin:0;display:grid;grid-template-columns:124px 1fr;gap:0 22px;align-items:center}.field-paths{display:none}.field-mark{position:relative;left:auto;top:auto;transform:rotate(-1.5deg);width:118px;min-height:154px;padding:14px 12px;grid-row:1/4}.field-mark::before{inset:5px -6px -6px 6px}.sheet-kicker{font-size:7px;margin-bottom:9px}.field-mark h3{font-size:14px;margin-bottom:10px;padding-bottom:9px}.field-mark dl{display:none}.field-note,.field-note-a,.field-note-b,.field-note-c{position:static;width:auto;padding:12px 0;border-bottom:1px solid rgba(30,58,43,.14)}.field-note:first-of-type{border-top:1px solid rgba(30,58,43,.14)}.field-note strong{font-size:16px}.field-note small{font-size:11px;max-width:none}.hero-field figcaption{position:static;width:auto;margin-top:28px}.hero-field figcaption strong{font-size:16px}}
+@media(max-width:600px){.hero{padding:58px 0 72px;background:radial-gradient(circle at 50% 64%,rgba(226,167,46,.12),transparent 32%)}.hero .hero-ctas{align-items:flex-start;gap:18px}.hero-field{min-height:0;padding-top:28px;border-top:1px solid rgba(30,58,43,.14)}.hero-field::before{font-size:150px;top:-6px}.field-index{padding:0 4px}.field-rail{gap:14px;padding:24px 4px 24px}.swipe-note{flex-basis:88%;min-height:342px;padding:26px 22px}.swipe-note h3{font-size:23px}.note-flow{grid-template-columns:1fr;gap:5px}.note-flow b{transform:rotate(90deg);justify-self:center}.field-controls{padding:0 4px}.hero-field figcaption{margin:22px 4px 0}}
 
 /* ---------- principle strip ---------- */
 .strip{background:var(--leaf);color:var(--paper);padding:20px 0}
@@ -347,6 +347,8 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
   .btn.ghost:hover{background:rgba(30,58,43,.07)}
   .hero-text-link:hover{border-color:var(--leaf);transform:translateX(2px)}
   .hero-text-link:hover span{transform:translateY(2px)}
+  .note-link:hover{border-color:var(--leaf)}
+  .field-dot:hover{background:rgba(30,58,43,.36)}
   .course:hover{border-color:var(--turmeric)}
   .idea-chip:hover{border-color:var(--ginger)}
   .cta .btn:hover{background:var(--leaf)}
@@ -385,25 +387,38 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
         <a class="hero-text-link" href="#paths">See who it is for <span aria-hidden="true">↓</span></a>
       </div>
     </div>
-    <figure class="hero-field" aria-labelledby="field-title">
-      <span class="mono field-index" id="field-title">Workflow field note · 01</span>
-      <div class="field-stage">
-        <svg class="field-paths" viewBox="0 0 600 450" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M274 214 C250 162 235 124 220 94"/>
-          <path d="M330 214 C354 162 374 124 395 94"/>
-          <path d="M266 286 C238 324 220 350 205 374"/>
-          <circle cx="220" cy="94" r="6"/><circle cx="395" cy="94" r="6"/><circle cx="205" cy="374" r="6"/>
-        </svg>
-        <article class="field-mark" aria-label="Example documented AI-assisted workflow">
-          <span class="mono sheet-kicker">Workflow worksheet · 01</span>
-          <h3>One recurring task</h3>
-          <dl><dt>Input</dt><dd>Approved example</dd><dt>Assist</dt><dd>Draft or organize</dd><dt>Review</dt><dd>Named human owner</dd><dt>Output</dt><dd>Reusable method</dd></dl>
+    <figure class="hero-field" data-active="01" aria-labelledby="field-title">
+      <span class="mono field-index" id="field-title">Three field notes</span>
+      <div class="field-rail" id="fieldRail" tabindex="0" aria-label="Swipe through audience field notes">
+        <article class="swipe-note" data-index="0">
+          <span class="mono note-kicker">Field note · 01 · Professional</span>
+          <h3>Build a method you can reuse.</h3>
+          <p>Start with one report, research task or recurring admin job from your actual work.</p>
+          <div class="note-flow" aria-label="Task to assisted method to review checklist"><span>Real task</span><b aria-hidden="true">→</b><span>Assisted method</span><b aria-hidden="true">→</b><span>Review checklist</span></div>
+          <a class="note-link" href="#professionals">View the professional path <span aria-hidden="true">↓</span></a>
         </article>
-        <div class="field-note field-note-a"><span>01 · Start</span><strong>Bring one real task</strong><small>Use work you already repeat.</small></div>
-        <div class="field-note field-note-b"><span>02 · Bound</span><strong>Set the limits</strong><small>Mark data rules and human checks.</small></div>
-        <div class="field-note field-note-c"><span>03 · Keep</span><strong>Document the method</strong><small>Leave with something you can reuse.</small></div>
+        <article class="swipe-note" data-index="1">
+          <span class="mono note-kicker">Field note · 02 · Team</span>
+          <h3>Run one controlled pilot.</h3>
+          <p>Choose a useful workflow, set sensible rules and prepare staff before wider adoption.</p>
+          <div class="note-flow" aria-label="Candidate workflow to risk review to controlled pilot"><span>Candidate</span><b aria-hidden="true">→</b><span>Risk review</span><b aria-hidden="true">→</b><span>Team pilot</span></div>
+          <a class="note-link" href="#teams">View the team path <span aria-hidden="true">↓</span></a>
+        </article>
+        <article class="swipe-note" data-index="2">
+          <span class="mono note-kicker">Field note · 03 · Small business</span>
+          <h3>Find the work worth changing.</h3>
+          <p>Rank repetitive work by value, risk and effort before buying another platform.</p>
+          <div class="note-flow" aria-label="Weekly time drain to opportunity ranking to build plan"><span>Time drain</span><b aria-hidden="true">→</b><span>Rank it</span><b aria-hidden="true">→</b><span>Build plan</span></div>
+          <a class="note-link" href="#small-business">View the small-business path <span aria-hidden="true">↓</span></a>
+        </article>
       </div>
-      <figcaption><strong>One useful workflow</strong>A working method, not a collection of prompts.</figcaption>
+      <div class="field-controls" aria-label="Choose a field note">
+        <button class="field-dot" type="button" data-slide="0" aria-label="Show professional field note" aria-current="true"></button>
+        <button class="field-dot" type="button" data-slide="1" aria-label="Show team field note" aria-current="false"></button>
+        <button class="field-dot" type="button" data-slide="2" aria-label="Show small-business field note" aria-current="false"></button>
+        <span class="field-status" aria-live="polite">01 / 03</span>
+      </div>
+      <figcaption><strong>Swipe to compare.</strong> Open a note to move to its full path below.</figcaption>
     </figure>
   </div>
 </header>
@@ -702,6 +717,54 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
     render('custom', input.value.trim());
   });
   input.addEventListener('keydown', function(e){ if(e.key === 'Enter') go.click(); });
+
+  // Native scroll-snap carousel: no gesture library or new network payload.
+  const field = document.querySelector('.hero-field');
+  const rail = document.getElementById('fieldRail');
+  const notes = rail ? Array.from(rail.querySelectorAll('.swipe-note')) : [];
+  const dots = Array.from(document.querySelectorAll('.field-dot'));
+  const status = document.querySelector('.field-status');
+  let activeNote = 0, scrollFrame = null;
+
+  function setActiveNote(index){
+    activeNote = Math.max(0, Math.min(notes.length - 1, index));
+    dots.forEach(function(dot, i){ dot.setAttribute('aria-current', i === activeNote ? 'true' : 'false'); });
+    if(status) status.textContent = String(activeNote + 1).padStart(2, '0') + ' / 03';
+    if(field) field.dataset.active = String(activeNote + 1).padStart(2, '0');
+  }
+
+  function showNote(index){
+    var note = notes[index];
+    if(!note || !rail) return;
+    var left = note.offsetLeft - (rail.clientWidth - note.clientWidth) / 2;
+    rail.scrollTo({ left: left, behavior: reduced ? 'auto' : 'smooth' });
+    setActiveNote(index);
+  }
+
+  dots.forEach(function(dot){
+    dot.addEventListener('click', function(){ showNote(Number(dot.dataset.slide)); });
+  });
+
+  if(rail){
+    rail.addEventListener('scroll', function(){
+      if(scrollFrame) return;
+      scrollFrame = requestAnimationFrame(function(){
+        var center = rail.scrollLeft + rail.clientWidth / 2;
+        var closest = 0, distance = Infinity;
+        notes.forEach(function(note, i){
+          var d = Math.abs((note.offsetLeft + note.clientWidth / 2) - center);
+          if(d < distance){ distance = d; closest = i; }
+        });
+        setActiveNote(closest);
+        scrollFrame = null;
+      });
+    }, { passive:true });
+    rail.addEventListener('keydown', function(e){
+      if(e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      e.preventDefault();
+      showNote(activeNote + (e.key === 'ArrowRight' ? 1 : -1));
+    });
+  }
 
   render('project');
 })();
