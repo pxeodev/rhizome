@@ -90,7 +90,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--turmeric);outline-o
 @media(max-width:460px){nav .logo-text{display:none}}
 
 /* ---------- hero ---------- */
-.hero{position:relative;overflow:hidden;padding:92px 0 156px;background:radial-gradient(circle at 75% 42%,rgba(226,167,46,.12),transparent 31%)}
+.hero{position:relative;overflow:hidden;padding:92px 0 104px;background:radial-gradient(circle at 75% 42%,rgba(226,167,46,.12),transparent 31%)}
 .hero-layout{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(420px,.92fr);gap:52px;align-items:center}
 .hero h1{
   font-size:clamp(42px,6vw,76px);
@@ -109,43 +109,38 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--turmeric);outline-o
 .hero-text-link{display:inline-flex;align-items:center;gap:9px;color:var(--leaf);font-weight:650;text-decoration:none;border-bottom:1px solid rgba(30,58,43,.35);padding:7px 0 5px;transition:border-color 160ms var(--ease-out),transform 160ms var(--ease-out)}
 .hero-text-link span{color:var(--ginger);font-size:18px;transition:transform 160ms var(--ease-out)}
 
-/* swipeable field notes */
-.hero-field{position:relative;min-height:510px;isolation:isolate;overflow:hidden}
-.hero-field::before{content:attr(data-active);position:absolute;right:-8px;top:-68px;z-index:-1;font-family:'Bricolage Grotesque',sans-serif;font-size:230px;font-weight:700;line-height:1;color:var(--leaf);opacity:.035;letter-spacing:-.08em}
+/* one root method, three audience shoots */
+.hero-field{position:relative;min-height:530px;isolation:isolate;overflow:hidden}
 .field-index{display:flex;align-items:center;justify-content:space-between;color:var(--ginger);padding:0 22px}
-.field-index::after{content:"swipe →";font-size:9px;color:var(--mist)}
-.field-rail{position:relative;display:flex;gap:22px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scrollbar-width:none;padding:34px 22px 30px;margin-top:6px;-webkit-overflow-scrolling:touch}
+.field-index::after{content:"swipe to choose →";font-size:9px;color:var(--mist)}
+.field-rail{position:relative;display:flex;gap:22px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scrollbar-width:none;padding:28px 22px 20px;margin-top:6px;-webkit-overflow-scrolling:touch}
 .field-rail::-webkit-scrollbar{display:none}
 .field-rail:focus-visible{outline:2px solid var(--turmeric);outline-offset:-4px;border-radius:10px}
-.swipe-note{position:relative;flex:0 0 calc(100% - 34px);min-height:360px;padding:30px 28px 26px;scroll-snap-align:center;scroll-snap-stop:always;border:1px solid rgba(30,58,43,.18);border-radius:10px;background:#fffdf8;box-shadow:10px 12px 0 rgba(30,58,43,.07)}
-.note-kicker{position:relative;display:block;color:var(--ginger);font-size:9px;margin-bottom:31px}
-.note-kicker::after{content:"";position:absolute;left:0;bottom:-14px;width:0;height:1px;background:var(--ginger);transition:width 420ms var(--ease-out)}
-.note-kicker::before{content:"";position:absolute;left:0;bottom:-16px;width:5px;height:5px;border-radius:50%;background:var(--ginger);opacity:0;transform:translateX(0) scale(.7);transition:transform 420ms var(--ease-out),opacity 160ms var(--ease-out)}
-.swipe-note.is-active .note-kicker::after{width:62px}
-.swipe-note.is-active .note-kicker::before{opacity:1;transform:translateX(59px) scale(1)}
+.swipe-note{position:relative;flex:0 0 calc(100% - 44px);min-height:348px;padding:30px 28px 26px;scroll-snap-align:center;scroll-snap-stop:always;border:1px solid rgba(30,58,43,.18);border-radius:12px;background:#fffdf8;box-shadow:0 18px 38px rgba(30,58,43,.09)}
+.note-kicker{display:block;color:var(--ginger);font-size:9px;margin-bottom:20px}
 .swipe-note h3{font-size:25px;color:var(--leaf);max-width:13ch;margin-bottom:12px}
 .swipe-note>p{font-size:14px;line-height:1.5;color:#596657;max-width:34ch}
 .note-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:6px;margin:28px 0 24px;padding-top:22px;border-top:1px solid rgba(30,58,43,.14)}
 .note-flow span{font-family:'IBM Plex Mono',monospace;font-size:9px;line-height:1.3;text-align:center;color:var(--leaf);padding:9px 5px;background:var(--paper-dim);border-radius:6px}
 .note-flow b{color:var(--ginger);font-size:14px}
 .note-link{display:inline-flex;align-items:center;gap:8px;font-weight:650;color:var(--leaf);text-decoration:none;border-bottom:1px solid rgba(30,58,43,.35);padding-bottom:4px}
-.field-controls{--control-pad:22px;position:relative;display:flex;align-items:center;gap:4px;padding:0 var(--control-pad)}
-.field-controls::before{content:"";position:absolute;left:calc(var(--control-pad) + 16px);top:50%;width:72px;height:1px;background:rgba(30,58,43,.22);transform:translateY(-50%)}
+.field-growth{height:62px;margin-top:-6px;display:grid;place-items:center;pointer-events:none}
+.field-growth svg{display:block;width:220px;height:62px;overflow:visible}
+.field-growth path{display:none;fill:none;stroke:var(--leaf);stroke-width:1.35;vector-effect:non-scaling-stroke;opacity:.42;stroke-dasharray:1;stroke-dashoffset:1}
+.hero-field[data-active="01"] .shoot-1,.hero-field[data-active="02"] .shoot-2,.hero-field[data-active="03"] .shoot-3{display:block;animation:shoot-grow 420ms var(--ease-out) forwards}
+@keyframes shoot-grow{to{stroke-dashoffset:0}}
+.field-controls{position:relative;display:flex;justify-content:center;align-items:center;gap:4px;padding:0 22px}
+.field-controls::before{content:"";position:absolute;left:50%;top:50%;width:72px;height:1px;background:rgba(30,58,43,.28);transform:translate(-50%,-50%)}
 .field-dot{position:relative;z-index:1;width:32px;height:32px;padding:0;border:0;background:transparent;cursor:pointer}
 .field-dot::before{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;border-radius:50%;background:var(--paper);box-shadow:0 0 0 1px rgba(30,58,43,.38);transform:translate(-50%,-50%);transition:background-color 180ms var(--ease-out),box-shadow 180ms var(--ease-out),transform 180ms var(--ease-out)}
 .field-dot[aria-current="true"]::before{background:var(--ginger);box-shadow:0 0 0 4px rgba(201,127,61,.14);transform:translate(-50%,-50%) scale(1.18)}
 .field-dot:active::before{transform:translate(-50%,-50%) scale(.86)}
-.field-status{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--mist)}
+.field-status{position:absolute;right:22px;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--mist)}
 .hero-field figcaption{margin:24px 22px 0;padding-top:12px;border-top:1px solid rgba(30,58,43,.18);color:#667164;font-size:12px;line-height:1.45}
 .hero-field figcaption strong{color:var(--leaf)}
-.hero-rhizome{position:absolute;left:0;right:0;bottom:0;width:100%;height:142px;pointer-events:none}
-.hero-rhizome path{fill:none;stroke:var(--leaf);stroke-width:1.4;vector-effect:non-scaling-stroke;opacity:.38;stroke-dasharray:700;stroke-dashoffset:700;animation:rhizome-grow 1.7s var(--ease-out) forwards}
-.hero-rhizome path:nth-of-type(2){animation-delay:70ms}.hero-rhizome path:nth-of-type(3){animation-delay:110ms}.hero-rhizome path:nth-of-type(4){animation-delay:150ms}.hero-rhizome path:nth-of-type(5){animation-delay:190ms}.hero-rhizome path:nth-of-type(6){animation-delay:230ms}
-.hero-rhizome .tuber{fill:none;stroke:var(--turmeric);stroke-width:12;stroke-linecap:round;opacity:1;stroke-dasharray:none;stroke-dashoffset:0;animation:none}
-@keyframes rhizome-grow{to{stroke-dashoffset:0}}
-@media(prefers-reduced-motion:reduce){.hero-rhizome path{stroke-dashoffset:0}}
+@media(prefers-reduced-motion:reduce){.field-growth path{stroke-dashoffset:0}}
 @media(max-width:980px){.hero-layout{grid-template-columns:1fr;gap:58px}.hero-copy{max-width:720px}.hero-field{width:min(100%,650px);margin-inline:auto}}
-@media(max-width:600px){.hero{padding:58px 0 112px;background:radial-gradient(circle at 50% 64%,rgba(226,167,46,.12),transparent 32%)}.hero .hero-ctas{align-items:flex-start;gap:18px}.hero-field{min-height:0;padding-top:28px;border-top:1px solid rgba(30,58,43,.14)}.hero-field::before{font-size:150px;top:-6px}.field-index{padding:0 4px}.field-rail{gap:14px;padding:24px 4px 24px}.swipe-note{flex-basis:88%;min-height:342px;padding:26px 22px}.swipe-note h3{font-size:23px}.note-flow{grid-template-columns:1fr;gap:5px}.note-flow b{transform:rotate(90deg);justify-self:center}.field-controls{--control-pad:4px}.hero-field figcaption{margin:22px 4px 0}.hero-rhizome{height:96px}}
+@media(max-width:600px){.hero{padding:58px 0 76px;background:radial-gradient(circle at 50% 64%,rgba(226,167,46,.12),transparent 32%)}.hero .hero-ctas{align-items:flex-start;gap:18px}.hero-field{min-height:0;padding-top:28px;border-top:1px solid rgba(30,58,43,.14)}.field-index{padding:0 4px}.field-rail{gap:14px;padding:24px 4px 18px}.swipe-note{flex-basis:calc(100% - 8px);min-height:342px;padding:26px 22px}.swipe-note h3{font-size:23px}.note-flow{grid-template-columns:1fr;gap:5px}.note-flow b{transform:rotate(90deg);justify-self:center}.field-growth{height:54px}.field-growth svg{height:54px}.field-status{right:4px}.hero-field figcaption{margin:22px 4px 0}}
 
 /* ---------- principle strip ---------- */
 .strip{background:var(--leaf);color:var(--paper);padding:20px 0}
@@ -400,48 +395,46 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
       </div>
     </div>
     <figure class="hero-field" data-active="01" aria-labelledby="field-title">
-      <span class="mono field-index" id="field-title">Three field notes</span>
-      <div class="field-rail" id="fieldRail" tabindex="0" aria-label="Swipe through audience field notes">
+      <span class="mono field-index" id="field-title">One root method · three shoots</span>
+      <div class="field-rail" id="fieldRail" tabindex="0" aria-label="Swipe through audience starting points">
         <article class="swipe-note" data-index="0">
-          <span class="mono note-kicker">Field note · 01 · Professional</span>
+          <span class="mono note-kicker">01 · Professional</span>
           <h3>Build a method you can reuse.</h3>
           <p>Start with one report, research task or recurring admin job from your actual work.</p>
           <div class="note-flow" aria-label="Task to assisted method to review checklist"><span>Real task</span><b aria-hidden="true">→</b><span>Assisted method</span><b aria-hidden="true">→</b><span>Review checklist</span></div>
           <a class="note-link" href="#professionals">View the professional path <span aria-hidden="true">↓</span></a>
         </article>
         <article class="swipe-note" data-index="1">
-          <span class="mono note-kicker">Field note · 02 · Team</span>
+          <span class="mono note-kicker">02 · Team</span>
           <h3>Run one controlled pilot.</h3>
           <p>Choose a useful workflow, set sensible rules and prepare staff before wider adoption.</p>
           <div class="note-flow" aria-label="Candidate workflow to risk review to controlled pilot"><span>Candidate</span><b aria-hidden="true">→</b><span>Risk review</span><b aria-hidden="true">→</b><span>Team pilot</span></div>
           <a class="note-link" href="#teams">View the team path <span aria-hidden="true">↓</span></a>
         </article>
         <article class="swipe-note" data-index="2">
-          <span class="mono note-kicker">Field note · 03 · Small business</span>
+          <span class="mono note-kicker">03 · Small business</span>
           <h3>Find the work worth changing.</h3>
           <p>Rank repetitive work by value, risk and effort before buying another platform.</p>
           <div class="note-flow" aria-label="Weekly time drain to opportunity ranking to build plan"><span>Time drain</span><b aria-hidden="true">→</b><span>Rank it</span><b aria-hidden="true">→</b><span>Build plan</span></div>
           <a class="note-link" href="#small-business">View the small-business path <span aria-hidden="true">↓</span></a>
         </article>
       </div>
-      <div class="field-controls" aria-label="Choose a field note">
-        <button class="field-dot" type="button" data-slide="0" aria-label="Show professional field note" aria-current="true"></button>
-        <button class="field-dot" type="button" data-slide="1" aria-label="Show team field note" aria-current="false"></button>
-        <button class="field-dot" type="button" data-slide="2" aria-label="Show small-business field note" aria-current="false"></button>
+      <div class="field-growth" aria-hidden="true">
+        <svg viewBox="0 0 220 62" preserveAspectRatio="none">
+          <path class="shoot-1" pathLength="1" d="M110 0 C110 28 82 32 74 62"/>
+          <path class="shoot-2" pathLength="1" d="M110 0 C110 27 110 36 110 62"/>
+          <path class="shoot-3" pathLength="1" d="M110 0 C110 28 138 32 146 62"/>
+        </svg>
+      </div>
+      <div class="field-controls" aria-label="Choose a starting point">
+        <button class="field-dot" type="button" data-slide="0" aria-label="Show professional starting point" aria-current="true"></button>
+        <button class="field-dot" type="button" data-slide="1" aria-label="Show team starting point" aria-current="false"></button>
+        <button class="field-dot" type="button" data-slide="2" aria-label="Show small-business starting point" aria-current="false"></button>
         <span class="field-status" aria-live="polite">01 / 03</span>
       </div>
-      <figcaption><strong>Swipe to compare.</strong> Open a note to move to its full path below.</figcaption>
+      <figcaption><strong>One root method.</strong> Swipe between three ways into the work, then open the path that fits.</figcaption>
     </figure>
   </div>
-  <svg class="hero-rhizome" viewBox="0 0 1200 150" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M-20 118 C120 108 180 133 300 118 C420 103 500 128 600 118 C720 108 800 133 920 118 C1040 106 1120 126 1220 116"/>
-    <path d="M180 120 C190 88 170 63 200 38"/><path d="M420 116 C430 83 415 68 445 40"/>
-    <path d="M600 118 C605 86 590 68 615 34"/><path d="M840 119 C850 88 830 66 860 42"/>
-    <path d="M1050 117 C1058 90 1040 70 1068 46"/><path d="M300 118 C310 138 340 146 380 143"/>
-    <path d="M720 116 C730 138 760 148 800 144"/>
-    <path class="tuber" d="M200 36h.01"/><path class="tuber" d="M445 38h.01"/><path class="tuber" d="M615 32h.01"/>
-    <path class="tuber" d="M860 40h.01"/><path class="tuber" d="M1068 44h.01"/>
-  </svg>
 </header>
 
 <div class="strip">
