@@ -4,12 +4,12 @@ _Last session: 2026-07-17. Tracked in git, but excluded from every deploy — th
 
 ## Live state — SHIPPED
 
-Deployed to production via `wrangler pages deploy` (deployment `2c4a3220`, 2026-07-17).
-Verified on therhizomespace.com + www: new markers present, Function `/api/subscribe` POST -> 200 (not 404), HANDOFF.md serves homepage fallback (not leaked).
+Deployed to production via `wrangler pages deploy` (deployment `a77eee36`, 2026-07-17).
+Verified on therhizomespace.com + www: Function `/api/subscribe` POST -> `{"ok":true,"emailed":true}` (Resend accepted the verified-domain send), HANDOFF.md serves homepage fallback (not leaked).
 
 - Branch `content-revision`, git == live.
-- Latest commit: `3a41b53` — AI-smell reduction + rhizome alignment/spore-stem fixes.
-- Earlier session commits: `c1312d1` baseline snapshot, `f6f2abd` scannable-flow trim + new pages, `f0a8679` meta-text sweep, `abbdac0` track HANDOFF.md.
+- Latest commit: `c55e8ff` — send guidebook from verified `mail.therhizomespace.com` subdomain.
+- Earlier session commits: `3a41b53` AI-smell reduction + rhizome alignment/spore-stem fixes, `c1312d1` baseline snapshot, `f6f2abd` scannable-flow trim + new pages, `f0a8679` meta-text sweep, `abbdac0` track HANDOFF.md.
 - Deploy method: **staging-dir** (`rsync` html/assets/functions/wrangler.toml to a temp dir, deploy that). HANDOFF.md must stay excluded — verified it serves the homepage fallback, not the file.
 
 ## Pages
@@ -18,11 +18,12 @@ Verified on therhizomespace.com + www: new markers present, Function `/api/subsc
 - `/about` — practice depth + proof lines + contact card
 - `/guidebook` — full written guide (3-zone data-safety taxonomy, thirty-second test, five-step method, workflow-brief template, review checklist). `noindex`.
 
-## Guidebook opt-in — email wired (Resend), pending secret + domain verify
+## Guidebook opt-in — email LIVE (Resend), fully activated 2026-07-17
 - Form → `functions/api/subscribe.js` → KV namespace `SUBSCRIBERS` (id `443c191d6f8b46ab80c8c70ca6b3413e`), bound via `wrangler.toml`.
 - Honeypot + client/server email validation. Live-tested on prod: valid stores, bad rejects, bot no-ops.
-- **Send wired via Resend** (`3a...`/latest): first-time subscribers get the guidebook link emailed; best-effort + non-fatal (no key or failed send still stores + returns `ok`, on-page link is fallback). Repeat submits don't re-send. Homepage copy shows "Sent to your inbox" when `emailed:true`.
-- **TO ACTIVATE (user does this):** 1) verify `therhizomespace.com` sending domain in Resend (add DKIM/SPF DNS in Cloudflare — MERGE the SPF include, don't add a 2nd SPF record alongside Email Routing's). 2) `wrangler pages secret put RESEND_API_KEY --project-name=rhizome`. Optional `RESEND_FROM` (default `hello@therhizomespace.com`, must be on the verified domain). Secrets take effect without redeploy. Tracked in pxeodev/rhizome#1.
+- **Send LIVE via Resend** (`c55e8ff`): first-time subscribers get the guidebook link emailed; best-effort + non-fatal (no key or failed send still stores + returns `ok`, on-page link is fallback). Repeat submits don't re-send. Homepage copy shows "Sent to your inbox" when `emailed:true`.
+- **ACTIVATED:** domain `mail.therhizomespace.com` verified in Resend (DKIM/SPF live); `RESEND_API_KEY` set on the **production** env (`wrangler pages secret list --project-name=rhizome` shows it). `from` = `The Rhizome Space <hello@mail.therhizomespace.com>` (verified sending subdomain); `reply_to` = `hello@therhizomespace.com` (root inbox Email Routing forwards). Override via optional `RESEND_FROM` — must stay on the verified domain. Secrets take effect without redeploy. Tracked in pxeodev/rhizome#1.
+- **Gotcha (cost a session):** custom domains serve the **production** branch (`main`) only. Preview deploys (branch `content-revision`, `*.rhizome-5qf.pages.dev`) never reach `therhizomespace.com`. Deploy prod with `--branch=main`. Verify `emailed:true` on the apex, not a preview host.
 - Read captured emails: `wrangler kv key list --namespace-id 443c191d6f8b46ab80c8c70ca6b3413e --remote`.
 
 ## Contact
