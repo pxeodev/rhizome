@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Rhizome Guidebook — Safe, Supervised AI at Work | The Rhizome Space</title>
+<title>The Rhizome Guidebook: Safe, Supervised AI at Work | The Rhizome Space</title>
 <meta name="description" content="A plain-language guide to what is safe to put into AI at work, what to sanitize first, and what should never go in by default. Plus the full five-step Rhizome method with templates and review checklists.">
 <meta name="theme-color" content="#f4f0e6">
 <meta name="robots" content="noindex">
@@ -93,6 +93,8 @@ article li::marker{color:var(--ginger)}
 .gb-cta .btn{margin-top:26px;background:var(--leaf-dark);color:var(--paper)}
 .cta-alt{margin-top:22px;font-size:14.5px;color:#4a3a14}
 .cta-alt a{font-weight:650;color:var(--leaf-dark)}
+.mid-cta{margin:26px 0;padding:14px 20px;border-left:3px solid var(--turmeric);background:var(--paper-dim);border-radius:0 10px 10px 0;font-size:15.5px;color:#3d4438}
+.mid-cta a{font-weight:650;color:var(--ginger)}
 footer{background:var(--leaf-dark);color:#b9c6b5;padding:40px 0;font-size:14.5px}
 .foot-bottom{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:#7d9080}
 .foot-bottom a{color:#b9c6b5;opacity:.85;text-decoration:none}
@@ -134,7 +136,7 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:40px 0;font-size:14.5px
 
     <div class="zone-cards">
       <div class="zone">
-        <strong>Zone 1 — Safe to map</strong>
+        <strong>Zone 1: Safe to map</strong>
         <p>Material that exposes nothing if it appears on someone else's screen.</p>
         <ul>
           <li>Invented examples that mirror the shape of your real work</li>
@@ -144,7 +146,7 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:40px 0;font-size:14.5px
         <span class="mono">Use for the first draft</span>
       </div>
       <div class="zone z2">
-        <strong>Zone 2 — Sanitize first</strong>
+        <strong>Zone 2: Sanitize first</strong>
         <p>Real internal material that becomes safe once identifying detail is removed.</p>
         <ul>
           <li>Internal examples containing names, identifiers or account numbers</li>
@@ -154,7 +156,7 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:40px 0;font-size:14.5px
         <span class="mono">Remove identifiers before testing</span>
       </div>
       <div class="zone z3">
-        <strong>Zone 3 — Approval required</strong>
+        <strong>Zone 3: Approval required</strong>
         <p>Information that should never enter a tool by default, whatever the tool promises.</p>
         <ul>
           <li>Employer or customer confidential information</li>
@@ -175,17 +177,19 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:40px 0;font-size:14.5px
 
     <div class="rule-box"><strong>The one rule that covers everything:</strong> bring the shape of the work, not the confidential content. Almost every workflow can be designed, tested and documented entirely with Zone 1 and Zone 2 material. The confidential data only meets the finished method inside your own approved environment.</div>
 
+    <p class="mid-cta">Not sure which zone your task lands in? That is the first thing we settle on <a href="#talk">the call</a>.</p>
+
     <h3>Sanitizing in practice</h3>
     <p>Sanitizing is faster than it sounds. Take one real example of the task and:</p>
     <ul>
       <li>Replace every personal and company name with a role: "the client", "the project manager", "Supplier A".</li>
       <li>Replace real figures with plausible ones. The method does not care whether the invoice is ฿48,200 or ฿50,000.</li>
-      <li>Delete anything the task does not need. If the workflow processes meeting actions, the salary discussion in the same notes is not input, it is contamination.</li>
+      <li>Delete anything the task does not need. If the workflow processes meeting actions, the salary discussion in the same notes is contamination, not input.</li>
       <li>Read it once more as a stranger. If you can still tell who it is about, keep going.</li>
     </ul>
 
     <h2>Part two: the five-step method</h2>
-    <p>The same method we use in paid engagements. It exists because the usual failure is not a weak tool, it is a workflow nobody bounded, tested or wrote down.</p>
+    <p>The same method we use in paid engagements. It exists because the usual failure is a workflow nobody bounded or tested.</p>
 
     <div class="step-block">
       <span class="mono">Step 01</span>
@@ -222,12 +226,14 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:40px 0;font-size:14.5px
       <p class="write-down"><strong>Write down:</strong> the final workflow brief, the template, the review checklist, and the next decision: what you would improve or extend, and what you decided to leave alone.</p>
     </div>
 
+    <p class="mid-cta">Most people stall at Bound and Build: the right scope, and a prompt that survives real inputs. Bring one task to <a href="#talk">a free call</a> and we work through both live.</p>
+
     <h2>Part three: the templates</h2>
 
     <h3>The workflow brief</h3>
     <p>One page. If it does not fit on one page, the scope is too big for a first workflow.</p>
     <div class="tpl">
-      <div class="tpl-head">Workflow brief — template</div>
+      <div class="tpl-head">Workflow brief template</div>
       <dl>
         <dt>Task</dt><dd>One sentence: the recurring task this workflow assists.</dd>
         <dt>Approved input</dt><dd>Exactly which material may enter the tool, and which zone it is in.</dd>
@@ -249,18 +255,24 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:40px 0;font-size:14.5px
       <li>The prompt or template used is saved where the team can find it.</li>
     </ul>
 
-    <h2>Where this guide stops</h2>
-    <p>This guide gives you the boundaries and the method. What it cannot give you is the two hours of focused work on your specific task: choosing the right first workflow, writing the prompt that fits your material, and stress-testing the result with someone who builds these systems for a living. That is what the paid engagements are for, and every one of them uses exactly the method you have just read.</p>
+    <h2>The three places this breaks on your own</h2>
+    <p>Do it alone and three things still go wrong. They are the three we get called in to fix.</p>
+    <ul>
+      <li>You pick the wrong task to start with, and you do not find out until you have built the workflow around it.</li>
+      <li>Your prompt is close but under-specified, so it works on the tidy example and drifts on the real ones.</li>
+      <li>You never think to test the awkward input, so the method looks finished until the day it meets a bad one.</li>
+    </ul>
+    <p>A free 20-minute call settles the first one on the spot: which task to start with, and why. The paid engagements handle all three, using the method you just read.</p>
 
   </div>
 </article>
 
-<div class="gb-cta">
+<div class="gb-cta" id="talk">
   <div class="wrap">
     <h2>Ready to apply this to one real task?</h2>
     <p>Bring one piece of work. Free 20-minute call, no confidential data needed.</p>
-    <a class="btn" href="mailto:hello@therhizomespace.com?subject=Introductory%20call">Request a free call</a>
-    <p class="cta-alt">Or message us on WhatsApp: <a href="https://wa.me/66617930404">+66 61 793 0404</a> · Thai or English</p>
+    <a class="btn" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=hello@therhizomespace.com&amp;su=Introductory%20call" target="_blank" rel="noopener">Request a free call</a>
+    <p class="cta-alt">Or message us on WhatsApp: <a href="https://wa.me/66617930404">+66 61 793 0404</a>, or email hello@therhizomespace.com · Thai or English</p>
   </div>
 </div>
 </main>
