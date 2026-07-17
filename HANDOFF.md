@@ -4,12 +4,12 @@ _Last session: 2026-07-17. Tracked in git, but excluded from every deploy — th
 
 ## Live state — SHIPPED
 
-Deployed to production via `wrangler pages deploy` (deployment `a77eee36`, 2026-07-17).
-Verified on therhizomespace.com + www: Function `/api/subscribe` POST -> `{"ok":true,"emailed":true}` (Resend accepted the verified-domain send), HANDOFF.md serves homepage fallback (not leaked).
+Deployed to production via `wrangler pages deploy` (deployment `9e9f1d89`, 2026-07-17).
+Verified on therhizomespace.com + www: guidebook renders new closing section + inline CTAs, zero mailto in pages, Gmail-compose CTAs live, visible hello@ address CF-obfuscated (1 email-protection span), Function `/api/subscribe` POST -> `{"ok":true,"emailed":true}`, HANDOFF.md serves homepage fallback (not leaked).
 
 - Branch `content-revision`, git == live.
-- Latest commit: `c55e8ff` — send guidebook from verified `mail.therhizomespace.com` subdomain.
-- Earlier session commits: `3a41b53` AI-smell reduction + rhizome alignment/spore-stem fixes, `c1312d1` baseline snapshot, `f6f2abd` scannable-flow trim + new pages, `f0a8679` meta-text sweep, `abbdac0` track HANDOFF.md.
+- Latest commit: `e45163a` — contact-path (mailto -> Gmail-compose) + guidebook conversion rewrite + email wrapper polish.
+- Earlier session commits: `c55e8ff` send from verified mail. subdomain, `3a41b53` AI-smell reduction + rhizome alignment/spore-stem fixes, `c1312d1` baseline snapshot, `f6f2abd` scannable-flow trim + new pages.
 - Deploy method: **staging-dir** (`rsync` html/assets/functions/wrangler.toml to a temp dir, deploy that). HANDOFF.md must stay excluded — verified it serves the homepage fallback, not the file.
 
 ## Pages
@@ -28,6 +28,14 @@ Verified on therhizomespace.com + www: Function `/api/subscribe` POST -> `{"ok":
 
 ## Contact
 WhatsApp +66 61 793 0404 (Thai/English). Office 207/44, Village 3, Mae Hia, Mueang Chiang Mai 50100. hello@therhizomespace.com.
+
+## Contact path + guidebook conversion (shipped `e45163a`, deploy `9e9f1d89`, 2026-07-17)
+- **Page contact CTAs are Gmail-compose deep-links, NOT mailto.** Format: `https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=hello@therhizomespace.com&amp;su=<subject>` + `target="_blank" rel="noopener"`. WhatsApp = equal-prominence alt; a visible non-linked `hello@` sits in the `.cta-alt` lines for non-Gmail/non-WhatsApp readers. **DO NOT re-add `mailto:` to pages** — it grows the harvest surface and Cloudflare rewrites it into the ugly `cdn-cgi/l/email-protection` wrapper. Cloudflare Scrape Shield email-obfuscation stays **ON** (it protects the visible plain-text address; verified 1 `email-protection` span live).
+- The only `mailto:` in the repo is the **unsubscribe** link/header inside the transactional email (`subscribe.js`). That is intended.
+- Inline `.mid-cta` prompts anchor to `#talk` (guidebook bottom call block). Guidebook nav CTA = `/#start` (homepage contact section, id `start`).
+- Guidebook closing section: renamed "Where this guide stops" (banned AI slop) -> "The three places this breaks on your own", naming 3 concrete solo-failure modes. **Do not reintroduce "where this guide stops".**
+- Voice enforced this pass (all 4 pages): no em dashes (colons), no "not X, it is Y" antithesis. Fable-reviewed.
+- Email wrapper (`subscribe.js`): bulletproof button = padding + `bgcolor` on the `<td>` (Outlook Word-engine ignores inline-block + anchor padding); `List-Unsubscribe` header; logo via absolute https URL + alt fallback + text wordmark. Preview render: submit a real address on the live form (best-effort, non-fatal).
 
 ---
 
@@ -59,17 +67,28 @@ Two real bugs, both were also on the old live:
 
 <!-- git-snapshot-start -->
 
-## Git Snapshot (auto-generated 2026-07-17 12:49)
+## Git Snapshot (auto-generated 2026-07-17 15:32)
 
 **Branch:** `content-revision`
 
 **Recent commits:**
 ```
-abbdac0 Track session handoff; stop gitignoring HANDOFF.md
-f0a8679 Tighten meta-text across all pages
-f6f2abd Trim homepage to scannable flow; add guidebook, sample-handover and about pages
-c1312d1 Match live deployment d74773af: rhizome hero, cutaway horizon, phone-reference palette
-a8575e1 Grow audience shoots upward from root nodes
+7322145 docs: mark guidebook email live; note prod-branch deploy gotcha
+c55e8ff fix: send guidebook from verified mail. subdomain
+aa47579 Update handoff: guidebook email wired via Resend (deploy acdc1b83)
+7fec146 Send guidebook to new subscribers via Resend (best-effort)
+ed4abe7 Update handoff: button sweep done, deploy 2c4a3220
+```
+
+**Uncommitted changes:**
+```
+ M functions/api/subscribe.js
+```
+
+**Diff summary:**
+```
+ functions/api/subscribe.js | 42 +++++++++++++++++++++++++-----
+ 1 file changed, 35 insertions(+), 7 deletions(-)
 ```
 
 <!-- git-snapshot-end -->
