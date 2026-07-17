@@ -18,11 +18,12 @@ Verified on therhizomespace.com + www: new markers present, Function `/api/subsc
 - `/about` — practice depth + proof lines + contact card
 - `/guidebook` — full written guide (3-zone data-safety taxonomy, thirty-second test, five-step method, workflow-brief template, review checklist). `noindex`.
 
-## Guidebook opt-in — PARTIAL
+## Guidebook opt-in — email wired (Resend), pending secret + domain verify
 - Form → `functions/api/subscribe.js` → KV namespace `SUBSCRIBERS` (id `443c191d6f8b46ab80c8c70ca6b3413e`), bound via `wrangler.toml`.
 - Honeypot + client/server email validation. Live-tested on prod: valid stores, bad rejects, bot no-ops.
-- **GAP: no email is actually sent.** Subscriber gets the on-page "read it now" link only. No delivery pipeline wired (needs Cloudflare Email Routing or a provider).
-- Read captured emails: `wrangler kv key list --binding SUBSCRIBERS`.
+- **Send wired via Resend** (`3a...`/latest): first-time subscribers get the guidebook link emailed; best-effort + non-fatal (no key or failed send still stores + returns `ok`, on-page link is fallback). Repeat submits don't re-send. Homepage copy shows "Sent to your inbox" when `emailed:true`.
+- **TO ACTIVATE (user does this):** 1) verify `therhizomespace.com` sending domain in Resend (add DKIM/SPF DNS in Cloudflare — MERGE the SPF include, don't add a 2nd SPF record alongside Email Routing's). 2) `wrangler pages secret put RESEND_API_KEY --project-name=rhizome`. Optional `RESEND_FROM` (default `hello@therhizomespace.com`, must be on the verified domain). Secrets take effect without redeploy. Tracked in pxeodev/rhizome#1.
+- Read captured emails: `wrangler kv key list --namespace-id 443c191d6f8b46ab80c8c70ca6b3413e --remote`.
 
 ## Contact
 WhatsApp +66 61 793 0404 (Thai/English). Office 207/44, Village 3, Mae Hia, Mueang Chiang Mai 50100. hello@therhizomespace.com.
