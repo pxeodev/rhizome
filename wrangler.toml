@@ -1,0 +1,7 @@
+name = "rhizome"
+pages_build_output_dir = "."
+compatibility_date = "2026-07-01"
+
+[[kv_namespaces]]
+binding = "SUBSCRIBERS"
+id = "443c191d6f8b46ab80c8c70ca6b3413e"

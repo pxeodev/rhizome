@@ -152,8 +152,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--turmeric);outline-o
 .roots .tuber[aria-selected="true"]{fill:var(--turmeric);stroke:var(--turmeric)}
 .roots .hit{fill:transparent;cursor:pointer}
 .roots text{fill:var(--leaf);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.04em;pointer-events:none}
-.root-counter{margin-top:-2px;padding-right:10px;color:var(--mist);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-align:right}
-.root-counter b{color:var(--ginger);font-weight:500}
 @media(max-width:980px){.hero-layout{grid-template-columns:1fr;gap:58px}.hero-copy{max-width:720px}.hero-rhizome{max-width:620px;margin:0}}
 @media(max-width:600px){.hero{padding:58px 0 70px;background:radial-gradient(circle at 50% 72%,rgba(225,167,47,.12),transparent 34%)}.hero .hero-ctas{align-items:flex-start;gap:18px}.hero-rhizome{margin-top:2px}.shoot-card{padding:24px 20px 0}.shoot{min-height:224px}.shoot-step{font-size:12px}.shoot-step small{font-size:11px}.roots text{font-size:8.5px}.underground{padding-inline:0}}
 
@@ -168,6 +166,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--turmeric);outline-o
 
 /* ---------- sections ---------- */
 section{padding:88px 0}
+.bridge{padding:72px 0}
+.bridge-text{max-width:62ch;margin:0 auto;font-size:clamp(19px,2.2vw,24px);line-height:1.55;color:#3d4438;font-family:'Bricolage Grotesque',sans-serif;font-weight:400;text-wrap:pretty}
+.bridge-text strong{color:var(--leaf);font-weight:650}
 .eyebrow{color:var(--ginger);margin-bottom:14px;display:block}
 .sec-title{font-size:clamp(30px,3.6vw,46px);color:var(--leaf);max-width:22ch;letter-spacing:-.015em}
 .sec-lede{margin-top:16px;max-width:54ch;color:#3d4438}
@@ -200,18 +201,6 @@ section{padding:88px 0}
 @media(max-width:820px){.offer{grid-template-columns:1fr;gap:28px}.offer-detail{grid-template-columns:1fr 1fr}.offer-output,.offer-actions{grid-column:1/-1}}
 @media(max-width:540px){.offer-detail{grid-template-columns:1fr}.offer-output,.offer-actions{grid-column:1}.offer-actions{align-items:flex-start;flex-direction:column}.offer:first-child{padding:30px 24px}}
 
-/* practitioner-led */
-.practitioner{background:var(--leaf);color:var(--paper)}
-.practitioner .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:68px;align-items:start}
-.practitioner .eyebrow{color:var(--turmeric)}
-.practitioner .sec-title{color:var(--paper);max-width:18ch}
-.practitioner-copy p{margin-top:22px;max-width:57ch;color:#c7d2c4}
-.practice-proof{border-top:1px solid rgba(250,246,238,.22)}
-.proof-line{display:grid;grid-template-columns:150px 1fr;gap:24px;padding:19px 0;border-bottom:1px solid rgba(250,246,238,.22)}
-.proof-line strong{font-family:'Bricolage Grotesque',sans-serif;color:var(--paper)}
-.proof-line span{color:#b9c6b5;font-size:14px}
-@media(max-width:820px){.practitioner .wrap{grid-template-columns:1fr}.proof-line{grid-template-columns:1fr;gap:4px}}
-
 /* process */
 .process{background:var(--paper-dim)}
 .process-list{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:50px}
@@ -222,51 +211,25 @@ section{padding:88px 0}
 .process-step strong{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:19px;color:var(--leaf);margin:8px 0}
 .process-step p{color:#4a5046;font-size:13px;line-height:1.45}
 .process-step .mono{color:var(--ginger)}
-@media(max-width:760px){.process-list{grid-template-columns:1fr;margin-left:8px;gap:0}.process-list::before{left:14px;right:auto;top:20px;bottom:20px;width:2px;height:auto}.process-step{text-align:left;padding:0 0 28px 52px}.process-step::before{top:2px;left:15px}.process-step strong{margin-top:3px}.process-step p{max-width:48ch}}
-
-/* engagement specimen */
-.builder{background:var(--paper)}
-.specimen-layout{margin-top:44px;display:grid;grid-template-columns:.72fr 1.28fr;gap:42px;align-items:start}
-.specimen-tabs{display:flex;flex-direction:column;border-top:1px solid rgba(35,53,36,.22)}
-.specimen-tab{position:relative;text-align:left;background:transparent;border:0;border-bottom:1px solid rgba(35,53,36,.22);padding:19px 42px 19px 0;cursor:pointer;font:inherit;color:var(--leaf);transition:transform 180ms var(--ease-out),color 180ms var(--ease-out)}
-.specimen-tab::after{content:"→";position:absolute;right:4px;color:var(--mist)}
-.specimen-tab[aria-pressed="true"]{font-weight:700;color:var(--ginger);transform:translateX(12px)}
-.specimen-tab[aria-pressed="true"]::after{color:var(--ginger)}
-.specimen-tab small{display:block;font-size:12px;font-weight:400;color:var(--mist);margin-top:3px}
-.engagement-sheet{background:#faf9f4;border:1px solid rgba(35,53,36,.18);box-shadow:8px 8px 0 var(--paper-dim);padding:34px 38px 38px}
-.sheet-head{display:flex;justify-content:space-between;gap:24px;padding-bottom:22px;border-bottom:2px solid var(--leaf)}
-.sheet-head .mono{color:var(--ginger);font-size:11px}
-.sheet-head span:last-child{color:var(--mist);font-size:12px;text-align:right}
-.sheet-title{margin:26px 0 8px;color:var(--leaf);font-size:30px}
-.sheet-summary{color:#3d4438;max-width:58ch;font-size:15px}
-.sheet-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 32px;margin-top:28px;border-top:1px solid rgba(35,53,36,.18)}
-.sheet-field{padding:20px 0;border-bottom:1px solid rgba(35,53,36,.18)}
-.sheet-field dt{font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--ginger);font-size:11px;margin-bottom:7px}
-.sheet-field dd{color:#3d4438;font-size:14px;line-height:1.5}
-.sheet-handover{margin-top:26px;background:var(--leaf);color:var(--paper);padding:20px 22px}
-.sheet-handover strong{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:18px;margin-bottom:5px}
-.sheet-handover span{color:#c7d2c4;font-size:13px}
-.builder-note{margin-top:20px;font-size:13px;color:var(--mist)}
+.process-proof{margin-top:44px;text-align:center}
+@media(max-width:760px){.process-list{grid-template-columns:1fr;margin-left:8px;gap:0}.process-list::before{left:14px;right:auto;top:20px;bottom:20px;width:2px;height:auto}.process-step{text-align:left;padding:0 0 28px 52px}.process-step::before{top:2px;left:15px}.process-step strong{margin-top:3px}.process-step p{max-width:48ch}.process-proof{text-align:left;margin-left:8px}}
 .sr-status{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-@media(max-width:860px){.specimen-layout{grid-template-columns:1fr}.specimen-tabs{display:grid;grid-template-columns:repeat(3,1fr)}.specimen-tab{padding:16px 12px}.specimen-tab[aria-pressed="true"]{transform:translateY(3px)}.specimen-tab::after{display:none}}
-@media(max-width:600px){.specimen-tabs{grid-template-columns:1fr}.engagement-sheet{padding:26px 22px;box-shadow:5px 5px 0 var(--paper-dim)}.sheet-grid{grid-template-columns:1fr}.sheet-head{display:block}.sheet-head span:last-child{display:block;text-align:left;margin-top:5px}}
 
-/* safety */
-.safety{background:var(--paper-dim);color:var(--ink)}
-.safety-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:28px;margin-top:44px;align-items:stretch}
-.safety-map{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;background:var(--leaf-dark);border-radius:20px;padding:20px}
-.safety-zone{position:relative;border-radius:13px;padding:22px 18px;background:rgba(250,246,238,.07);color:var(--paper);min-height:220px;display:flex;flex-direction:column}
-.safety-zone::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--mist);margin-bottom:26px;box-shadow:0 0 0 6px rgba(139,160,143,.12)}
-.safety-zone:nth-child(2)::before{background:var(--turmeric);box-shadow:0 0 0 6px rgba(225,167,47,.12)}
-.safety-zone:nth-child(3)::before{background:var(--ginger);box-shadow:0 0 0 6px rgba(201,127,61,.13)}
-.safety-zone strong{font-family:'Bricolage Grotesque',sans-serif;font-size:19px;margin-bottom:8px}
-.safety-zone span{color:#b9c6b5;font-size:13px;line-height:1.45}
-.safety-zone small{margin-top:auto;padding-top:18px;color:var(--turmeric);font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase}
-.safety-note{background:var(--paper);padding:30px;border-radius:20px;border:1px solid rgba(35,53,36,.14);align-self:stretch;display:flex;flex-direction:column;justify-content:center}
-.safety-note h3{font-size:25px;color:var(--leaf);margin-bottom:14px}.safety-note p{color:#4a5046;font-size:15px}
-.safety-rule{margin-top:22px;padding-top:18px;border-top:1px solid rgba(35,53,36,.15);font-weight:650;color:var(--leaf)}
-@media(max-width:900px){.safety-grid{grid-template-columns:1fr}}
-@media(max-width:620px){.safety-map{grid-template-columns:1fr}.safety-zone{min-height:auto}.safety-zone small{margin-top:14px}}
+/* guidebook opt-in */
+.guidebook{background:var(--leaf-dark);color:var(--paper)}
+.guidebook .eyebrow{color:var(--turmeric)}
+.guidebook .sec-title{color:var(--paper)}
+.guidebook .sec-lede{color:#c7d2c4}
+.guidebook-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
+.guidebook-form label{display:block;color:var(--turmeric);font-size:11px;margin-bottom:12px}
+.guidebook-row{display:flex;gap:12px;flex-wrap:wrap}
+.guidebook-row input{flex:1;min-width:220px;padding:13px 18px;font:inherit;font-size:15px;color:var(--ink);background:var(--paper);border:1px solid rgba(35,53,36,.2);border-radius:100px}
+.guidebook-row input:focus-visible{outline:2px solid var(--turmeric);outline-offset:2px}
+.guidebook-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.guidebook-form small{display:block;margin-top:14px;color:#b9c6b5;font-size:12.5px}
+.guidebook-status{margin-top:14px;font-size:14.5px;color:var(--turmeric);min-height:1.4em}
+.guidebook-status a{color:var(--turmeric);font-weight:650}
+@media(max-width:860px){.guidebook-grid{grid-template-columns:1fr;gap:36px}}
 
 /* chiang mai */
 .cnx{background:var(--paper-dim)}
@@ -279,6 +242,8 @@ section{padding:88px 0}
 .cnx-panel dt{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ginger);padding-top:3px}
 .cnx-panel dd{color:#3d4438}
 .cnx-panel address{font-style:normal}
+.practice-line{max-width:52ch;font-size:18px;line-height:1.6;color:#3d4438}
+.practice-more{margin-top:22px}
 @media(max-width:820px){.cnx .wrap{grid-template-columns:1fr}}
 
 /* cta */
@@ -290,6 +255,8 @@ section{padding:88px 0}
 .cta .hero-ctas{justify-content:center}
 .cta .hero-ctas .btn{margin-top:0}
 .cta .mono{color:#7a5c17}
+.cta-alt{margin-top:26px;font-size:14.5px;color:#4a3a14}
+.cta-alt a{font-weight:650;color:var(--leaf-dark)}
 
 /* footer */
 footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:14.5px}
@@ -329,18 +296,18 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
     </a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
-      <li><a href="#example">Example</a></li>
       <li><a href="#process">How it works</a></li>
-      <li><a href="#safety">Data safety</a></li>
+      <li><a href="/sample-handover">Sample handover</a></li>
+      <li><a href="#guidebook">Guidebook</a></li>
       <li><a class="btn nav-cta" href="#start">Request a free call</a></li>
     </ul>
     <details class="nav-menu">
       <summary>Menu</summary>
       <ul>
         <li><a href="#services">Services</a></li>
-        <li><a href="#example">Example</a></li>
         <li><a href="#process">How it works</a></li>
-        <li><a href="#safety">Data safety</a></li>
+        <li><a href="/sample-handover">Sample handover</a></li>
+        <li><a href="#guidebook">Guidebook</a></li>
         <li><a href="#start">Request a free call</a></li>
       </ul>
     </details>
@@ -354,10 +321,10 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
     <div class="hero-copy">
       <span class="mono eyebrow">Practical AI help for real work</span>
       <h1>Make AI useful at <em>work.</em></h1>
-      <p class="hero-sub">Practical AI help for professionals, teams and small businesses. Start with one real task and leave with a documented workflow.</p>
+      <p class="hero-sub">Start with one real task from your actual week and leave with a working method you can run, explain and keep. Not a slideshow about what AI might do someday.</p>
       <div class="hero-ctas">
         <a class="btn gold" href="#start">Request a free call</a>
-        <a class="hero-text-link" href="#services">See the three services <span aria-hidden="true">↓</span></a>
+        <a class="hero-text-link" href="#services">See services and prices <span aria-hidden="true">↓</span></a>
       </div>
     </div>
     <figure class="hero-rhizome" aria-labelledby="rhizomeLabel">
@@ -390,7 +357,6 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
           <text x="260" y="90" text-anchor="middle">team</text>
           <text x="472" y="90" text-anchor="middle">small business</text>
         </svg>
-        <p class="root-counter"><b id="audienceNumber">01</b> / 03</p>
       </div>
       <p class="sr-status" id="audienceStatus" aria-live="polite"></p>
     </figure>
@@ -405,6 +371,12 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
   </div>
 </div>
 
+<section class="bridge" id="why-now">
+  <div class="wrap">
+    <p class="bridge-text">Until recently you either bought a big generic tool and bent your work to fit it, or described the thing you wished existed and hoped someone would build it. AI closed that gap. One specific task can now become a working version quickly, shaped around how you actually do the job, with clear boundaries and a person who stays responsible for the result. <strong>That first working version is what we help you build.</strong></p>
+  </div>
+</section>
+
 <section class="offers" id="services">
   <div class="wrap">
     <h2 class="sec-title">Know the time, price and outcome before we start.</h2>
@@ -417,17 +389,17 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
           <div class="offer-fact"><span>Format</span><strong>Online or Chiang Mai</strong></div>
           <div class="offer-fact"><span>Investment</span><strong>฿4,500 fixed</strong></div>
           <div class="offer-output"><strong>You leave with</strong><p>A workflow map, reusable prompt or template, review checklist and a short written handover within two business days.</p></div>
-          <div class="offer-actions"><a class="btn" href="mailto:hello@therhizomespace.com?subject=AI%20Workflow%20Clinic%20%E2%80%94%20introductory%20call">Ask about the clinic</a><small>Bring the task, not confidential data.</small></div>
+          <div class="offer-actions"><a class="btn" href="mailto:hello@therhizomespace.com?subject=AI%20Workflow%20Clinic%20%E2%80%94%20introductory%20call">Book a clinic session</a><small>Bring the task, not confidential data.</small></div>
         </div>
       </article>
       <article class="offer" id="team-sprint">
-        <div class="offer-lead"><span class="mono">For managers, HR and IT</span><h3>Team AI Starter Sprint</h3><p>Choose one candidate workflow, agree the boundaries and prepare a small team to run a controlled pilot.</p></div>
+        <div class="offer-lead"><span class="mono">For managers, HR and IT</span><h3>Team AI Starter Sprint</h3><p>Choose one candidate workflow, agree the boundaries and run a controlled pilot with a small team.</p></div>
         <div class="offer-detail">
           <div class="offer-fact"><span>Duration</span><strong>Two weeks</strong></div>
           <div class="offer-fact"><span>Format</span><strong>Two working sessions, up to 8 people</strong></div>
           <div class="offer-fact"><span>Investment</span><strong>From ฿28,000</strong></div>
           <div class="offer-output"><strong>Your team receives</strong><p>A ranked pilot brief, roles and review points, data-handling rules, a facilitated test and a documented adoption plan.</p></div>
-          <div class="offer-actions"><a class="btn" href="mailto:hello@therhizomespace.com?subject=Team%20AI%20Starter%20Sprint%20%E2%80%94%20introductory%20call">Discuss a team sprint</a><small>Final scope depends on team size and policy requirements.</small></div>
+          <div class="offer-actions"><a class="btn" href="mailto:hello@therhizomespace.com?subject=Team%20AI%20Starter%20Sprint%20%E2%80%94%20introductory%20call">Plan a team pilot</a><small>Final scope depends on team size and policy requirements.</small></div>
         </div>
       </article>
       <article class="offer" id="business-audit">
@@ -436,28 +408,12 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
           <div class="offer-fact"><span>Duration</span><strong>One week</strong></div>
           <div class="offer-fact"><span>Format</span><strong>Mapping session and findings call</strong></div>
           <div class="offer-fact"><span>Investment</span><strong>฿18,000 fixed</strong></div>
-          <div class="offer-output"><strong>You receive</strong><p>An opportunity map, value-risk-effort ranking and a practical build brief for the best first workflow—including what to leave alone.</p></div>
-          <div class="offer-actions"><a class="btn" href="mailto:hello@therhizomespace.com?subject=Small%20Business%20Workflow%20Audit%20%E2%80%94%20introductory%20call">Ask about the audit</a><small>No software purchase is required for the audit.</small></div>
+          <div class="offer-output"><strong>You receive</strong><p>An opportunity map, value-risk-effort ranking and a build brief for the best first workflow, including what to leave alone.</p></div>
+          <div class="offer-actions"><a class="btn" href="mailto:hello@therhizomespace.com?subject=Small%20Business%20Workflow%20Audit%20%E2%80%94%20introductory%20call">Start the audit</a><small>No software purchase is required for the audit.</small></div>
         </div>
       </article>
     </div>
-    <p class="pricing-disclaimer">These are introductory prices for the scopes shown. We confirm the work, schedule and total price in writing before you commit.</p>
-  </div>
-</section>
-
-<section class="practitioner" id="practice">
-  <div class="wrap">
-    <div class="practitioner-copy">
-      <span class="mono eyebrow">Independent and practitioner-led</span>
-      <h2 class="sec-title">Production depth, translated into ordinary work.</h2>
-      <p>The Rhizome Space is a local AI consultancy based in Chiang Mai. We bring hands-on experience building production AI systems and multi-agent workflows, then turn that technical depth into methods professionals and small teams can understand, supervise and own.</p>
-      <p>No mystery platform and no anonymous hand-off. The same practice that scopes the work stays close to the testing, documentation and final decision.</p>
-    </div>
-    <div class="practice-proof" aria-label="How the practice works">
-      <div class="proof-line"><strong>Production-minded</strong><span>We design around real inputs, failure modes and the person accountable for the result.</span></div>
-      <div class="proof-line"><strong>Tool-independent</strong><span>We choose around the task and your approved environment, not a software reseller agreement.</span></div>
-      <div class="proof-line"><strong>Documented</strong><span>You keep the workflow, boundaries, templates and next decision after the engagement ends.</span></div>
-    </div>
+    <p class="pricing-disclaimer">Introductory prices for the scopes shown. We confirm work, schedule and total price in writing before you commit.</p>
   </div>
 </section>
 
@@ -471,56 +427,37 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
       <div class="process-step"><span class="mono">04</span><strong>Review</strong><p>Test with approved examples and a named owner.</p></div>
       <div class="process-step"><span class="mono">05</span><strong>Document</strong><p>Keep the method, checklist and next decision.</p></div>
     </div>
+    <p class="process-proof"><a class="hero-text-link" href="/sample-handover">See a sample handover <span aria-hidden="true">→</span></a></p>
   </div>
 </section>
 
-<section class="builder" id="example">
-  <div class="wrap">
-    <h2 class="sec-title">Not a prompt list. A method someone can review.</h2>
-    <p class="sec-lede">These prepared examples show the shape of a handover document. Select a task to see what AI may assist with, what remains human and what data stays out.</p>
-    <div class="specimen-layout">
-      <div class="specimen-tabs" aria-label="Choose a sample workflow">
-        <button class="specimen-tab" type="button" data-example="project" aria-pressed="true">Project follow-through<small>Meeting notes to maintained actions and risks</small></button>
-        <button class="specimen-tab" type="button" data-example="accounting" aria-pressed="false">Monthly commentary<small>Summary table to review-ready first draft</small></button>
-        <button class="specimen-tab" type="button" data-example="support" aria-pressed="false">Support knowledge<small>Ticket themes to proposed article updates</small></button>
-      </div>
-      <article class="engagement-sheet" aria-labelledby="sheetTitle">
-        <header class="sheet-head"><span class="mono">Workflow brief · prepared example</span><span id="sheetRef">TRS–PM–01</span></header>
-        <h3 class="sheet-title" id="sheetTitle">Meeting notes to project follow-through</h3>
-        <p class="sheet-summary" id="sheetSummary">Reduce recurring project administration without allowing AI to assign owners, invent decisions or update records.</p>
-        <dl class="sheet-grid">
-          <div class="sheet-field"><dt>Approved input</dt><dd id="sheetInput">Meeting notes and the current project register</dd></div>
-          <div class="sheet-field"><dt>AI may assist</dt><dd id="sheetAssist">Extract proposed actions, dates and risks; compare them with the current register</dd></div>
-          <div class="sheet-field"><dt>Human decides</dt><dd id="sheetHuman">Confirm owners and deadlines, reject invented decisions and approve every change</dd></div>
-          <div class="sheet-field"><dt>Data boundary</dt><dd id="sheetBoundary">Remove personal data that is not required for the task</dd></div>
-        </dl>
-        <div class="sheet-handover"><strong>Handover</strong><span id="sheetHandover">Documented workflow, status-draft template and review checklist</span></div>
-      </article>
+<section class="guidebook" id="guidebook">
+  <div class="wrap guidebook-grid">
+    <div class="guidebook-copy">
+      <span class="mono eyebrow">Free guidebook</span>
+      <h2 class="sec-title">Not sure what's safe to put into AI at work?</h2>
+      <p class="sec-lede">The free Rhizome guidebook starts with the answer: a plain-language guide to what you can test freely, what to sanitize first, and what should never go into a tool by default. Then it walks through our full five-step method, with the templates and review checklists we use in paid engagements.</p>
     </div>
-    <p class="builder-note">Illustrative only. These examples use no client data and make no claim about results from a completed engagement.</p>
-    <p class="sr-status" id="specimenStatus" aria-live="polite"></p>
-  </div>
-</section>
-
-<section class="safety" id="safety">
-  <div class="wrap">
-    <h2 class="sec-title">Useful does not mean unsupervised.</h2>
-    <p class="sec-lede">Sort the information before it enters a tool. Keep a person responsible after it comes out.</p>
-    <div class="safety-grid">
-      <div class="safety-map" aria-label="Three-level data safety decision map">
-        <div class="safety-zone"><strong>Safe to map</strong><span>Invented examples, public material and approved process descriptions.</span><small>Use for the first draft</small></div>
-        <div class="safety-zone"><strong>Sanitize first</strong><span>Internal examples with names, identifiers or unnecessary business detail.</span><small>Remove before testing</small></div>
-        <div class="safety-zone"><strong>Approval required</strong><span>Employer, customer, health, financial or personal information.</span><small>Do not submit by default</small></div>
+    <form class="guidebook-form" id="guidebookForm" novalidate>
+      <label class="mono" for="guidebookEmail">Where should we send it?</label>
+      <div class="guidebook-row">
+        <input type="email" id="guidebookEmail" name="email" autocomplete="email" required placeholder="you@company.com" aria-describedby="guidebookNote">
+        <button class="btn gold" type="submit">Send me the guidebook</button>
       </div>
-      <aside class="safety-note"><h3>Bring the shape of the work, not confidential data.</h3><p>We can map inputs, decisions and review points with sanitized examples first.</p><div class="safety-rule">Approved tool in. Human review out.</div></aside>
-    </div>
+      <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" class="guidebook-hp">
+      <small id="guidebookNote">No confidential data needed to start. Unsubscribe anytime.</small>
+      <p class="guidebook-status" id="guidebookStatus" role="status"></p>
+    </form>
   </div>
 </section>
 
 <section class="cnx" id="chiangmai">
   <div class="wrap">
-    <div><h2 class="sec-title">Local enough to meet. Experienced enough to build.</h2><p class="sec-lede">The Rhizome Space is based in Chiang Mai and works online worldwide. Local sessions are available by arrangement; remote work is designed to be equally clear and hands-on.</p></div>
-    <aside class="cnx-panel"><dl><dt>Office</dt><dd><address>207/44, Village 3<br>Mae Hia, Mueang Chiang Mai<br>Chiang Mai 50100, Thailand</address></dd><dt>Time zone</dt><dd>ICT (UTC+7)</dd><dt>Delivery</dt><dd>Online worldwide</dd><dt>In person</dt><dd>Chiang Mai by arrangement</dd><dt>Working language</dt><dd>English</dd><dt>Approach</dt><dd>Small scopes, clear documents, human ownership</dd></dl></aside>
+    <div>
+      <p class="practice-line">The Rhizome Space is an independent AI consultancy in Chiang Mai, working online worldwide. We build production AI systems and multi-agent workflows for a living, and translate that depth into methods professionals can supervise and own.</p>
+      <p class="practice-more"><a class="hero-text-link" href="/about">More about the practice <span aria-hidden="true">→</span></a></p>
+    </div>
+    <aside class="cnx-panel"><dl><dt>Office</dt><dd><address>207/44, Village 3<br>Mae Hia, Mueang Chiang Mai<br>Chiang Mai 50100, Thailand</address></dd><dt>WhatsApp</dt><dd><a href="https://wa.me/66617930404">+66 61 793 0404</a></dd><dt>Time zone</dt><dd>ICT (UTC+7)</dd><dt>Delivery</dt><dd>Online worldwide</dd><dt>In person</dt><dd>Chiang Mai by arrangement</dd><dt>Working language</dt><dd>English or Thai</dd></dl></aside>
   </div>
 </section>
 
@@ -528,15 +465,16 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
   <div class="wrap">
     <span class="mono">Free 20-minute introductory call · bring no confidential data</span>
     <h2>Bring one piece of work.</h2>
-    <p>Tell us what repeats, who reviews it and what you want to improve. We will identify the smallest sensible engagement and reply within two business days.</p>
-    <div class="hero-ctas"><a class="btn" href="mailto:hello@therhizomespace.com?subject=Professional%20AI%20Workflow">My own workflow</a><a class="btn" href="mailto:hello@therhizomespace.com?subject=Team%20AI%20Adoption">My team</a><a class="btn" href="mailto:hello@therhizomespace.com?subject=Small%20Business%20AI">My small business</a></div>
+    <p>Tell us what repeats, who reviews it and what you want to improve. We reply within two business days.</p>
+    <div class="hero-ctas"><a class="btn" href="mailto:hello@therhizomespace.com?subject=Professional%20AI%20Workflow">For myself</a><a class="btn" href="mailto:hello@therhizomespace.com?subject=Team%20AI%20Adoption">For my team</a><a class="btn" href="mailto:hello@therhizomespace.com?subject=Small%20Business%20AI">For my business</a></div>
+    <p class="cta-alt">Or message us on WhatsApp: <a href="https://wa.me/66617930404">+66 61 793 0404</a> · Thai or English</p>
   </div>
 </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <div class="foot"><a class="logo" href="#top"><img class="logo-mark" src="assets/rhizome-thai-logo-256.png" alt="" width="36" height="32"><span class="logo-text">The Rhizome Space</span></a><ul><li><a href="#services">Services</a></li><li><a href="#example">Example</a></li><li><a href="#safety">Data safety</a></li><li><a href="#practice">The practice</a></li><li><a href="mailto:hello@therhizomespace.com">Email us</a></li></ul></div>
+    <div class="foot"><a class="logo" href="#top"><img class="logo-mark" src="assets/rhizome-thai-logo-256.png" alt="" width="36" height="32"><span class="logo-text">The Rhizome Space</span></a><ul><li><a href="#services">Services</a></li><li><a href="/sample-handover">Sample handover</a></li><li><a href="#guidebook">Guidebook</a></li><li><a href="/about">About</a></li><li><a href="mailto:hello@therhizomespace.com">Email us</a></li><li><a href="https://wa.me/66617930404">WhatsApp</a></li></ul></div>
     <div class="foot-bottom"><span>© 2026 The Rhizome Space · Chiang Mai, Thailand</span><span class="mono foot-domain">therhizomespace.com</span></div>
   </div>
 </footer>
@@ -571,7 +509,6 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
     lede: document.getElementById('audienceLede'),
     link: document.getElementById('audienceLink'),
     linkText: document.getElementById('audienceLinkText'),
-    number: document.getElementById('audienceNumber'),
     drop: document.getElementById('dropPath'),
     stem: document.getElementById('stemPath'),
     status: document.getElementById('audienceStatus')
@@ -595,7 +532,6 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
     audienceFields.lede.textContent = audience.lede;
     audienceFields.link.href = audience.href;
     audienceFields.linkText.textContent = audience.link;
-    audienceFields.number.textContent = '0' + (index + 1);
     audienceFields.drop.setAttribute('d', audienceDropPath(audience.x));
     audienceStepNodes.forEach(function(node, stepIndex){
       node.querySelector('span').textContent = audience.steps[stepIndex][0];
@@ -629,63 +565,37 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
     });
   });
 
-  const examples = {
-    project: {
-      ref: 'TRS–PM–01',
-      title: 'Meeting notes to project follow-through',
-      summary: 'Reduce recurring project administration without allowing AI to assign owners, invent decisions or update records.',
-      input: 'Meeting notes and the current project register',
-      assist: 'Extract proposed actions, dates and risks; compare them with the current register',
-      human: 'Confirm owners and deadlines, reject invented decisions and approve every change',
-      boundary: 'Remove personal data that is not required for the task',
-      handover: 'Documented workflow, status-draft template and review checklist'
-    },
-    accounting: {
-      ref: 'TRS–AC–01',
-      title: 'Summary table to monthly commentary',
-      summary: 'Prepare review material faster without inventing explanations or allowing unsupported conclusions into the final commentary.',
-      input: 'Approved summary table and prior-period commentary',
-      assist: 'Flag material changes and prepare factual descriptions tied to the approved table',
-      human: 'Trace every number, add the real business explanation and approve the final language',
-      boundary: 'Exclude bank details, personal information and raw client files',
-      handover: 'Commentary template, evidence checklist and review-ready example'
-    },
-    support: {
-      ref: 'TRS–CS–01',
-      title: 'Ticket themes to knowledge-base proposals',
-      summary: 'Identify repeated questions without exposing customer records or allowing AI to publish support guidance automatically.',
-      input: 'Anonymized ticket themes and approved help articles',
-      assist: 'Group questions by intent, identify gaps and draft proposed article updates',
-      human: 'Verify policy and product details, check tone and approve every publication',
-      boundary: 'Remove names, contact details, account data and unique case information',
-      handover: 'Ranked article plan, drafting template and publication review checklist'
-    }
-  };
-
-  const tabs = Array.from(document.querySelectorAll('.specimen-tab'));
-  const fields = {
-    ref: document.getElementById('sheetRef'),
-    title: document.getElementById('sheetTitle'),
-    summary: document.getElementById('sheetSummary'),
-    input: document.getElementById('sheetInput'),
-    assist: document.getElementById('sheetAssist'),
-    human: document.getElementById('sheetHuman'),
-    boundary: document.getElementById('sheetBoundary'),
-    handover: document.getElementById('sheetHandover')
-  };
-  const status = document.getElementById('specimenStatus');
-
-  function showExample(key){
-    const example = examples[key];
-    if(!example) return;
-    Object.keys(fields).forEach(function(name){ fields[name].textContent = example[name]; });
-    tabs.forEach(function(tab){ tab.setAttribute('aria-pressed', tab.dataset.example === key ? 'true' : 'false'); });
-    status.textContent = example.title + ' example selected.';
+  const guidebookForm = document.getElementById('guidebookForm');
+  if(guidebookForm){
+    const emailInput = document.getElementById('guidebookEmail');
+    const statusLine = document.getElementById('guidebookStatus');
+    const submitBtn = guidebookForm.querySelector('button[type="submit"]');
+    guidebookForm.addEventListener('submit', function(event){
+      event.preventDefault();
+      const email = emailInput.value.trim();
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){
+        statusLine.textContent = 'Please enter a valid email address.';
+        emailInput.focus();
+        return;
+      }
+      statusLine.textContent = 'Sending…';
+      submitBtn.disabled = true;
+      fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, company: guidebookForm.company.value })
+      }).then(function(response){
+        if(!response.ok) throw new Error('bad status');
+        return response.json();
+      }).then(function(){
+        guidebookForm.querySelector('.guidebook-row').hidden = true;
+        statusLine.innerHTML = 'Done. Read it now: <a href="/guidebook">the Rhizome guidebook</a>.';
+      }).catch(function(){
+        submitBtn.disabled = false;
+        statusLine.innerHTML = 'Something went wrong. Email us instead: <a href="mailto:hello@therhizomespace.com?subject=Guidebook%20request">hello@therhizomespace.com</a>';
+      });
+    });
   }
-
-  tabs.forEach(function(tab){
-    tab.addEventListener('click', function(){ showExample(tab.dataset.example); });
-  });
 })();
 </script>
 

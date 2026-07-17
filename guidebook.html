@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Rhizome Guidebook — Safe, Supervised AI at Work | The Rhizome Space</title>
+<meta name="description" content="A plain-language guide to what is safe to put into AI at work, what to sanitize first, and what should never go in by default. Plus the full five-step Rhizome method with templates and review checklists.">
+<meta name="theme-color" content="#f4f0e6">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png?v=2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&amp;family=Instrument+Sans:ital,wght@0,400..700;1,400&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+:root{
+  --leaf:#233524;
+  --leaf-dark:#14261a;
+  --paper:#f4f0e6;
+  --paper-dim:#f0ead8;
+  --turmeric:#e1a72f;
+  --ginger:#985426;
+  --ink:#22271f;
+  --mist:#56675b;
+  --maxw:760px;
+  --ease-out:cubic-bezier(.23,1,.32,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+.skip-link{position:absolute;left:16px;top:-60px;z-index:100;background:var(--leaf-dark);color:var(--paper);padding:10px 16px;border-radius:0 0 8px 8px}
+.skip-link:focus{top:0}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+body{font-family:'Instrument Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.65;font-size:17px}
+h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;line-height:1.1;font-weight:600;text-wrap:balance;color:var(--leaf)}
+p,li,dd{text-wrap:pretty}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+a{color:var(--ginger)}
+img{display:block;max-width:100%}
+::selection{background:var(--turmeric);color:var(--leaf-dark)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--turmeric);outline-offset:3px;border-radius:2px}
+nav{position:sticky;top:0;z-index:50;background:rgba(244,240,230,.94);backdrop-filter:blur(8px);border-bottom:1px solid rgba(35,53,36,.12)}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:'Bricolage Grotesque';font-weight:700;font-size:19px;color:var(--leaf)}
+.logo-mark{width:52px;height:47px;object-fit:contain;flex:none}
+.btn{display:inline-block;padding:12px 26px;border-radius:100px;background:var(--leaf);color:var(--paper);text-decoration:none;font-weight:600;font-size:15px;border:none;cursor:pointer;white-space:nowrap;transition:background-color 180ms var(--ease-out),transform 140ms var(--ease-out)}
+.btn:active{transform:scale(.97)}
+.nav-cta{padding:9px 20px;font-size:14px}
+@media(max-width:460px){nav .logo-text{display:none}}
+.gb-head{padding:76px 0 8px}
+.gb-head .mono{color:var(--ginger);display:block;margin-bottom:14px}
+.gb-head h1{font-size:clamp(34px,5vw,54px);letter-spacing:-.02em}
+.gb-head .gb-lede{margin-top:18px;color:#3d4438;font-size:19px}
+.gb-meta{margin-top:22px;color:var(--mist);font-size:13px}
+article{padding:40px 0 72px}
+article h2{font-size:clamp(26px,3.4vw,36px);margin:56px 0 16px;letter-spacing:-.015em}
+article h3{font-size:21px;margin:34px 0 10px}
+article p{margin:14px 0;color:#33392f}
+article ul,article ol{margin:14px 0 14px 24px;color:#33392f}
+article li{margin:7px 0}
+article li::marker{color:var(--ginger)}
+.zone-cards{display:grid;gap:14px;margin:24px 0}
+.zone{border-radius:14px;padding:24px 24px 20px;background:var(--leaf-dark);color:var(--paper)}
+.zone::before{content:"";display:block;width:12px;height:12px;border-radius:50%;margin-bottom:14px;background:var(--mist);box-shadow:0 0 0 6px rgba(139,160,143,.14)}
+.zone.z2::before{background:var(--turmeric);box-shadow:0 0 0 6px rgba(225,167,47,.14)}
+.zone.z3::before{background:#c97f3d;box-shadow:0 0 0 6px rgba(201,127,61,.16)}
+.zone strong{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:20px;margin-bottom:6px}
+.zone p{color:#c7d2c4;margin:6px 0;font-size:15px}
+.zone .mono{display:block;margin-top:12px;color:var(--turmeric);font-size:10px}
+.zone ul{margin:8px 0 0 20px}
+.zone li{color:#c7d2c4;font-size:14.5px;margin:4px 0}
+.rule-box{margin:26px 0;padding:20px 24px;background:var(--paper-dim);border-left:4px solid var(--turmeric);border-radius:0 12px 12px 0}
+.rule-box strong{color:var(--leaf)}
+.step-block{margin:26px 0;padding:24px 26px;background:#faf9f4;border:1px solid rgba(35,53,36,.16);border-radius:14px}
+.step-block .mono{color:var(--ginger);font-size:11px}
+.step-block h3{margin:6px 0 8px}
+.step-block .write-down{margin-top:14px;padding-top:14px;border-top:1px solid rgba(35,53,36,.14);font-size:14.5px;color:var(--mist)}
+.step-block .write-down strong{color:var(--leaf)}
+.tpl{margin:24px 0;border:1px solid rgba(35,53,36,.18);border-radius:14px;overflow:hidden;background:#faf9f4}
+.tpl-head{padding:16px 24px;background:var(--leaf);color:var(--paper);font-family:'Bricolage Grotesque',sans-serif;font-weight:650}
+.tpl dl{padding:8px 24px 18px}
+.tpl dt{font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--ginger);font-size:11px;margin-top:16px}
+.tpl dd{color:#33392f;font-size:15px;margin-top:4px}
+.check{list-style:none;margin:16px 0!important;padding:0}
+.check li{position:relative;margin:0!important;padding:12px 0 12px 34px;border-bottom:1px solid rgba(35,53,36,.14)}
+.check li::before{content:"";position:absolute;left:2px;top:16px;width:16px;height:16px;border:2px solid var(--ginger);border-radius:4px}
+.gb-cta{background:var(--turmeric);padding:60px 0;text-align:center}
+.gb-cta h2{color:var(--leaf-dark);font-size:clamp(26px,3.6vw,40px);max-width:24ch;margin:0 auto;letter-spacing:-.015em}
+.gb-cta p{max-width:48ch;margin:14px auto 0;color:#4a3a14}
+.gb-cta .btn{margin-top:26px;background:var(--leaf-dark);color:var(--paper)}
+.cta-alt{margin-top:22px;font-size:14.5px;color:#4a3a14}
+.cta-alt a{font-weight:650;color:var(--leaf-dark)}
+footer{background:var(--leaf-dark);color:#b9c6b5;padding:40px 0;font-size:14.5px}
+.foot-bottom{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:#7d9080}
+.foot-bottom a{color:#b9c6b5;opacity:.85;text-decoration:none}
+@media (hover:hover) and (pointer:fine){
+  .btn:hover{background:var(--leaf-dark)}
+  .gb-cta .btn:hover{background:var(--leaf)}
+  .foot-bottom a:hover{opacity:1;color:var(--turmeric)}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/" aria-label="The Rhizome Space home">
+      <img class="logo-mark" src="assets/rhizome-thai-logo-256.png" alt="" width="52" height="47">
+      <span class="logo-text">The Rhizome Space</span>
+    </a>
+    <a class="btn nav-cta" href="/#start">Request a free call</a>
+  </div>
+</nav>
+
+<main id="main">
+<header class="gb-head">
+  <div class="wrap">
+    <span class="mono">The Rhizome guidebook</span>
+    <h1>Safe, supervised AI at work.</h1>
+    <p class="gb-lede">What you can test freely, what to sanitize first, what should never go into a tool by default, and the five-step method we use to turn one real task into a working method you own.</p>
+    <p class="gb-meta">Free to read and share · No client data appears anywhere in this guide</p>
+  </div>
+</header>
+
+<article>
+  <div class="wrap">
+
+    <h2>Part one: what is safe to put in?</h2>
+    <p>Most AI-at-work anxiety comes from one unanswered question: <em>am I allowed to paste this?</em> The answer does not require a policy degree. Sort the information before it enters a tool, and keep a person responsible after it comes out. Every piece of work you might hand to an AI tool falls into one of three zones.</p>
+
+    <div class="zone-cards">
+      <div class="zone">
+        <strong>Zone 1 — Safe to map</strong>
+        <p>Material that exposes nothing if it appears on someone else's screen.</p>
+        <ul>
+          <li>Invented examples that mirror the shape of your real work</li>
+          <li>Public material: published reports, your own website, open documentation</li>
+          <li>Approved process descriptions: how the task flows, who reviews, what good looks like</li>
+        </ul>
+        <span class="mono">Use for the first draft</span>
+      </div>
+      <div class="zone z2">
+        <strong>Zone 2 — Sanitize first</strong>
+        <p>Real internal material that becomes safe once identifying detail is removed.</p>
+        <ul>
+          <li>Internal examples containing names, identifiers or account numbers</li>
+          <li>Documents with business detail the task does not actually need</li>
+          <li>Anything where "who" is visible but only "what shape" matters</li>
+        </ul>
+        <span class="mono">Remove identifiers before testing</span>
+      </div>
+      <div class="zone z3">
+        <strong>Zone 3 — Approval required</strong>
+        <p>Information that should never enter a tool by default, whatever the tool promises.</p>
+        <ul>
+          <li>Employer or customer confidential information</li>
+          <li>Health, financial and legal records</li>
+          <li>Personal data about identifiable people</li>
+        </ul>
+        <span class="mono">Do not submit without explicit approval</span>
+      </div>
+    </div>
+
+    <h3>The thirty-second test</h3>
+    <p>Before pasting anything, ask three questions:</p>
+    <ol>
+      <li><strong>Could this appear on a stranger's screen without harm?</strong> If yes, it is Zone 1. Go ahead.</li>
+      <li><strong>Would it be harmless if the names, numbers and identifiers were removed?</strong> Then it is Zone 2. Sanitize it first, then go ahead.</li>
+      <li><strong>Does it belong to someone else, or describe an identifiable person?</strong> That is Zone 3. Stop. Get written approval or use an invented stand-in.</li>
+    </ol>
+
+    <div class="rule-box"><strong>The one rule that covers everything:</strong> bring the shape of the work, not the confidential content. Almost every workflow can be designed, tested and documented entirely with Zone 1 and Zone 2 material. The confidential data only meets the finished method inside your own approved environment.</div>
+
+    <h3>Sanitizing in practice</h3>
+    <p>Sanitizing is faster than it sounds. Take one real example of the task and:</p>
+    <ul>
+      <li>Replace every personal and company name with a role: "the client", "the project manager", "Supplier A".</li>
+      <li>Replace real figures with plausible ones. The method does not care whether the invoice is ฿48,200 or ฿50,000.</li>
+      <li>Delete anything the task does not need. If the workflow processes meeting actions, the salary discussion in the same notes is not input, it is contamination.</li>
+      <li>Read it once more as a stranger. If you can still tell who it is about, keep going.</li>
+    </ul>
+
+    <h2>Part two: the five-step method</h2>
+    <p>This is the same method we use in paid engagements. It exists because the common failure is not a weak tool, it is a workflow nobody bounded, tested or wrote down. One useful workflow before anything bigger.</p>
+
+    <div class="step-block">
+      <span class="mono">Step 01</span>
+      <h3>Show</h3>
+      <p>Walk through the task exactly as it happens now, using one real (sanitized) example from your actual week. Not the idealized version in the process manual: the real one, with the messy inbox and the step everyone skips.</p>
+      <p class="write-down"><strong>Write down:</strong> the trigger that starts the task, each step in order, where the time actually goes, and who sees the result.</p>
+    </div>
+
+    <div class="step-block">
+      <span class="mono">Step 02</span>
+      <h3>Bound</h3>
+      <p>Before any tool is opened, mark the boundaries. Which zone does each input fall into? What must a human always decide? What does failure look like, and who would catch it?</p>
+      <p class="write-down"><strong>Write down:</strong> approved inputs, what AI may assist with, what remains a human decision, and the data boundary. This becomes the workflow brief (template below).</p>
+    </div>
+
+    <div class="step-block">
+      <span class="mono">Step 03</span>
+      <h3>Build</h3>
+      <p>Create the smallest useful assisted version of the task. One prompt or template, applied to the sanitized example. Resist the urge to automate the whole job: the goal is the first working version, shaped around how you actually do the work.</p>
+      <p class="write-down"><strong>Write down:</strong> the exact prompt or template used, in a place you can find again. If it lives only in a chat history, it does not exist.</p>
+    </div>
+
+    <div class="step-block">
+      <span class="mono">Step 04</span>
+      <h3>Review</h3>
+      <p>Test with several approved examples, including an awkward one. Compare against work you know is good. A named person owns the output: if the review checklist has no name on it, nobody is responsible.</p>
+      <p class="write-down"><strong>Write down:</strong> what the checker looks for every time, the failure you are most worried about, and what happened when you deliberately fed it a bad input.</p>
+    </div>
+
+    <div class="step-block">
+      <span class="mono">Step 05</span>
+      <h3>Document</h3>
+      <p>Keep the method, not just the result. A documented workflow survives staff changes, tool changes and your own forgetting. It is also the thing a colleague, manager or auditor can actually review.</p>
+      <p class="write-down"><strong>Write down:</strong> the final workflow brief, the template, the review checklist, and the next decision: what you would improve or extend, and what you decided to leave alone.</p>
+    </div>
+
+    <h2>Part three: the templates</h2>
+
+    <h3>The workflow brief</h3>
+    <p>One page. If it does not fit on one page, the scope is too big for a first workflow.</p>
+    <div class="tpl">
+      <div class="tpl-head">Workflow brief — template</div>
+      <dl>
+        <dt>Task</dt><dd>One sentence: the recurring task this workflow assists.</dd>
+        <dt>Approved input</dt><dd>Exactly which material may enter the tool, and which zone it is in.</dd>
+        <dt>AI may assist</dt><dd>The specific assistance allowed: extract, compare, draft, group, flag.</dd>
+        <dt>Human decides</dt><dd>The decisions that always stay with a named person.</dd>
+        <dt>Data boundary</dt><dd>What is removed or excluded before anything is submitted.</dd>
+        <dt>Handover</dt><dd>What exists at the end: the workflow, the template, the checklist, the next decision.</dd>
+      </dl>
+    </div>
+
+    <h3>The review checklist</h3>
+    <p>Run this every time until it becomes reflex, then keep running it anyway.</p>
+    <ul class="check">
+      <li>Every factual claim in the output traces to an approved input, not to the tool's imagination.</li>
+      <li>Nothing invented: no invented names, decisions, numbers or commitments.</li>
+      <li>The data boundary held: nothing from Zone 3 went in, and Zone 2 material was sanitized.</li>
+      <li>A named person has read the output and approved it for its actual use.</li>
+      <li>The awkward case was checked: what does the method do with a bad, empty or misleading input?</li>
+      <li>The prompt or template used is saved where the team can find it.</li>
+    </ul>
+
+    <h2>Where this guide stops</h2>
+    <p>This guide gives you the boundaries and the method. What it cannot give you is the two hours of focused work on your specific task: choosing the right first workflow, writing the prompt that fits your material, and stress-testing the result with someone who builds these systems for a living. That is what the paid engagements are for, and every one of them uses exactly the method you have just read.</p>
+
+  </div>
+</article>
+
+<div class="gb-cta">
+  <div class="wrap">
+    <h2>Ready to apply this to one real task?</h2>
+    <p>Bring one piece of work. Free 20-minute call, no confidential data needed.</p>
+    <a class="btn" href="mailto:hello@therhizomespace.com?subject=Introductory%20call">Request a free call</a>
+    <p class="cta-alt">Or message us on WhatsApp: <a href="https://wa.me/66617930404">+66 61 793 0404</a> · Thai or English</p>
+  </div>
+</div>
+</main>
+
+<footer>
+  <div class="foot-bottom">
+    <span>© 2026 The Rhizome Space · Chiang Mai, Thailand</span>
+    <a href="/">← Back to the homepage</a>
+  </div>
+</footer>
+
+</body>
+</html>
