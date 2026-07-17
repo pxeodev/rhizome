@@ -26,14 +26,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&amp;family=Instrument+Sans:ital,wght@0,400..700;1,400&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <style>
 :root{
-  --leaf:#1e3a2b;        /* deep leaf green */
-  --leaf-dark:#132619;   /* near-black green */
-  --paper:#faf6ee;       /* warm paper */
-  --paper-dim:#f1ead9;   /* darker paper panel */
-  --turmeric:#e2a72e;    /* turmeric gold */
-  --ginger:#c97f3d;      /* ginger tan */
+  --leaf:#233524;        /* phone-reference leaf green */
+  --leaf-dark:#14261a;   /* phone-reference forest */
+  --paper:#f4f0e6;       /* phone-reference paper */
+  --paper-dim:#f0ead8;   /* phone-reference soil paper */
+  --turmeric:#e1a72f;    /* phone-reference turmeric */
+  --ginger:#985426;      /* accessible ginger for text */
   --ink:#22271f;         /* body ink */
-  --mist:#8ba08f;        /* muted green-grey */
+  --mist:#56675b;        /* accessible muted green-grey */
+  --soil:#e7ddc7;        /* underground field */
+  --stem:#52705a;        /* shared root and shoot line */
   --maxw:1120px;
   --ease-out:cubic-bezier(.23,1,.32,1);
 }
@@ -63,8 +65,8 @@ img{display:block;max-width:100%}
 /* ---------- nav ---------- */
 nav{
   position:sticky;top:0;z-index:50;
-  background:rgba(250,246,238,.92);backdrop-filter:blur(8px);
-  border-bottom:1px solid rgba(30,58,43,.12);
+  background:rgba(244,240,230,.94);backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(35,53,36,.12);
 }
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:'Bricolage Grotesque';font-weight:700;font-size:19px;color:var(--leaf)}
@@ -75,6 +77,14 @@ nav{
 .nav-links a{text-decoration:none;font-size:15px;color:var(--ink);opacity:.85;transition:color 160ms var(--ease-out),opacity 160ms var(--ease-out)}
 .nav-links a.btn{color:var(--paper);opacity:1}
 .nav-links a.btn:focus-visible{color:var(--paper)}
+.nav-menu{display:none;position:relative}
+.nav-menu summary{list-style:none;cursor:pointer;font-weight:650;color:var(--leaf);padding:10px 2px}
+.nav-menu summary::-webkit-details-marker{display:none}
+.nav-menu summary::after{content:" +";color:var(--ginger)}
+.nav-menu[open] summary::after{content:" −"}
+.nav-menu ul{position:absolute;right:0;top:48px;min-width:230px;list-style:none;background:var(--paper);border:1px solid rgba(35,53,36,.16);padding:12px;box-shadow:0 8px 18px rgba(35,53,36,.10)}
+.nav-menu li+li{border-top:1px solid rgba(35,53,36,.10)}
+.nav-menu a{display:block;padding:11px 10px;text-decoration:none;font-size:15px}
 a:focus-visible,button:focus-visible{outline:2px solid var(--turmeric);outline-offset:3px;border-radius:2px}
 .btn{
   display:inline-block;padding:12px 26px;border-radius:100px;
@@ -86,12 +96,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--turmeric);outline-o
 .btn.gold{background:var(--turmeric);color:var(--leaf-dark)}
 .btn.ghost{background:transparent;color:var(--leaf);box-shadow:inset 0 0 0 1.5px var(--leaf)}
 .nav-cta{padding:9px 20px;font-size:14px}
-@media(max-width:760px){.nav-links li:not(:last-child){display:none}}
+@media(max-width:760px){.nav-links{display:none}.nav-menu{display:block}}
 @media(max-width:460px){nav .logo-text{display:none}}
 
 /* ---------- hero ---------- */
-.hero{position:relative;overflow:hidden;padding:92px 0 104px;background:radial-gradient(circle at 75% 42%,rgba(226,167,46,.12),transparent 31%)}
-.hero-layout{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(420px,.92fr);gap:52px;align-items:center}
+.hero{position:relative;overflow:hidden;padding:82px 0 88px;background:radial-gradient(circle at 78% 44%,rgba(225,167,47,.12),transparent 32%)}
+.hero-layout{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(430px,.94fr);gap:68px;align-items:center}
 .hero h1{
   font-size:clamp(42px,6vw,76px);
   color:var(--leaf);
@@ -106,51 +116,46 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--turmeric);outline-o
 }
 .hero-sub{margin-top:26px;max-width:52ch;font-size:19px;color:#3d4438;text-wrap:pretty}
 .hero-ctas{margin-top:36px;display:flex;gap:24px;flex-wrap:wrap;align-items:center}
-.hero-text-link{display:inline-flex;align-items:center;gap:9px;color:var(--leaf);font-weight:650;text-decoration:none;border-bottom:1px solid rgba(30,58,43,.35);padding:7px 0 5px;transition:border-color 160ms var(--ease-out),transform 160ms var(--ease-out)}
+.hero-text-link{display:inline-flex;align-items:center;gap:9px;color:var(--leaf);font-weight:650;text-decoration:none;border-bottom:1px solid rgba(35,53,36,.35);padding:7px 0 5px;transition:border-color 160ms var(--ease-out),transform 160ms var(--ease-out)}
 .hero-text-link span{color:var(--ginger);font-size:18px;transition:transform 160ms var(--ease-out)}
+.spore-trace{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.spore-trace i{position:absolute;display:block;width:5px;height:5px;border-radius:50%;background:var(--turmeric);opacity:.34;box-shadow:0 0 0 4px rgba(225,167,47,.08);animation:spore-drift 7s var(--ease-out) infinite}
+.spore-trace i:nth-child(1){left:58%;top:77%;width:4px;height:4px;animation-delay:-1.2s}
+.spore-trace i:nth-child(2){left:67%;top:88%;background:var(--ginger);animation-delay:-4.5s}
+.spore-trace i:nth-child(3){left:78%;top:73%;width:3px;height:3px;background:var(--leaf);box-shadow:0 0 0 4px rgba(35,53,36,.06);animation-delay:-2.8s}
+.spore-trace i:nth-child(4){left:90%;top:84%;width:6px;height:6px;animation-delay:-6s}
+@keyframes spore-drift{0%,100%{transform:translate3d(0,8px,0) scale(.75);opacity:.12}45%{transform:translate3d(5px,-10px,0) scale(1);opacity:.42}70%{transform:translate3d(-3px,-18px,0) scale(.88);opacity:.24}}
 
-/* one root method, three audience shoots */
-.hero-field{position:relative;min-height:530px;isolation:isolate;overflow:hidden}
-.field-index{display:flex;align-items:center;justify-content:space-between;color:var(--ginger);padding:0 22px}
-.field-index::after{content:"swipe to choose →";font-size:9px;color:var(--mist)}
-.field-rail{position:relative;display:flex;gap:22px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scrollbar-width:none;padding:28px 22px 20px;margin-top:6px;-webkit-overflow-scrolling:touch}
-.field-rail::-webkit-scrollbar{display:none}
-.field-rail:focus-visible{outline:2px solid var(--turmeric);outline-offset:-4px;border-radius:10px}
-.swipe-note{position:relative;flex:0 0 calc(100% - 44px);min-height:348px;padding:30px 28px 26px;scroll-snap-align:center;scroll-snap-stop:always;border:1px solid rgba(30,58,43,.18);border-radius:12px;background:#fffdf8;box-shadow:0 18px 38px rgba(30,58,43,.09)}
-.note-kicker{display:block;color:var(--ginger);font-size:9px;margin-bottom:20px}
-.swipe-note h3{font-size:25px;color:var(--leaf);max-width:13ch;margin-bottom:12px}
-.swipe-note>p{font-size:14px;line-height:1.5;color:#596657;max-width:34ch}
-.swipe-note>h3,.swipe-note>p,.swipe-note>.note-flow,.swipe-note>.note-link{opacity:.28;transform:translateY(5px);transition:opacity 220ms var(--ease-out),transform 300ms var(--ease-out)}
-.swipe-note.is-active>h3,.swipe-note.is-active>p,.swipe-note.is-active>.note-flow,.swipe-note.is-active>.note-link{opacity:1;transform:translateY(0);transition-delay:360ms}
-.note-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:6px;margin:28px 0 24px;padding-top:22px;border-top:1px solid rgba(30,58,43,.14)}
-.note-flow span{font-family:'IBM Plex Mono',monospace;font-size:9px;line-height:1.3;text-align:center;color:var(--leaf);padding:9px 5px;background:var(--paper-dim);border-radius:6px}
-.note-flow b{color:var(--ginger);font-size:14px}
-.note-link{display:inline-flex;align-items:center;gap:8px;font-weight:650;color:var(--leaf);text-decoration:none;border-bottom:1px solid rgba(30,58,43,.35);padding-bottom:4px}
-.field-growth{height:62px;margin-top:-6px;display:grid;place-items:center;pointer-events:none}
-.field-growth svg{display:block;width:220px;height:62px;overflow:visible}
-.field-growth .shoot{display:none}
-.field-growth path{fill:none;vector-effect:non-scaling-stroke;stroke-dasharray:1;stroke-dashoffset:1}
-.field-growth .stem{stroke:var(--leaf);stroke-width:1.35;opacity:.44}
-.field-growth .leaf{stroke:var(--ginger);stroke-width:1.25;opacity:.78}
-.hero-field[data-active="01"] .shoot-1,.hero-field[data-active="02"] .shoot-2,.hero-field[data-active="03"] .shoot-3{display:block}
-.hero-field[data-active="01"] .shoot-1 .stem,.hero-field[data-active="02"] .shoot-2 .stem,.hero-field[data-active="03"] .shoot-3 .stem{animation:shoot-grow 360ms var(--ease-out) forwards}
-.hero-field[data-active="01"] .shoot-1 .leaf,.hero-field[data-active="02"] .shoot-2 .leaf,.hero-field[data-active="03"] .shoot-3 .leaf{animation:leaf-unfurl 240ms var(--ease-out) 280ms forwards}
-@keyframes shoot-grow{to{stroke-dashoffset:0}}
-@keyframes leaf-unfurl{to{stroke-dashoffset:0}}
-.field-controls{position:relative;display:flex;justify-content:center;align-items:center;gap:4px;padding:0 22px}
-.field-controls::before{content:"";position:absolute;left:50%;top:50%;width:72px;height:1px;background:rgba(30,58,43,.28);transform:translate(-50%,-50%)}
-.field-dot{position:relative;z-index:1;width:32px;height:32px;padding:0;border:0;background:transparent;cursor:pointer}
-.field-dot::before{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;border-radius:50%;background:var(--paper);box-shadow:0 0 0 1px rgba(30,58,43,.38);transform:translate(-50%,-50%);transition:background-color 180ms var(--ease-out),box-shadow 180ms var(--ease-out),transform 180ms var(--ease-out)}
-.field-dot[aria-current="true"]::before{background:var(--ginger);box-shadow:0 0 0 4px rgba(201,127,61,.14);transform:translate(-50%,-50%) scale(1.18)}
-.field-dot[aria-current="true"]::before{animation:bud-wake 300ms var(--ease-out)}
-@keyframes bud-wake{0%{transform:translate(-50%,-50%) scale(.78)}55%{transform:translate(-50%,-50%) scale(1.48)}100%{transform:translate(-50%,-50%) scale(1.18)}}
-.field-dot:active::before{transform:translate(-50%,-50%) scale(.86)}
-.field-status{position:absolute;right:22px;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--mist)}
-.hero-field figcaption{margin:24px 22px 0;padding-top:12px;border-top:1px solid rgba(30,58,43,.18);color:#667164;font-size:12px;line-height:1.45}
-.hero-field figcaption strong{color:var(--leaf)}
-@media(prefers-reduced-motion:reduce){.field-growth path{stroke-dashoffset:0}.swipe-note>h3,.swipe-note>p,.swipe-note>.note-flow,.swipe-note>.note-link{transform:none}}
-@media(max-width:980px){.hero-layout{grid-template-columns:1fr;gap:58px}.hero-copy{max-width:720px}.hero-field{width:min(100%,650px);margin-inline:auto}}
-@media(max-width:600px){.hero{padding:58px 0 76px;background:radial-gradient(circle at 50% 64%,rgba(226,167,46,.12),transparent 32%)}.hero .hero-ctas{align-items:flex-start;gap:18px}.hero-field{min-height:0;padding-top:28px;border-top:1px solid rgba(30,58,43,.14)}.field-index{padding:0 4px}.field-rail{gap:14px;padding:24px 4px 18px}.swipe-note{flex-basis:calc(100% - 8px);min-height:342px;padding:26px 22px}.swipe-note h3{font-size:23px}.note-flow{grid-template-columns:1fr;gap:5px}.note-flow b{transform:rotate(90deg);justify-self:center}.field-growth{height:54px}.field-growth svg{height:54px}.field-status{right:4px}.hero-field figcaption{margin:22px 4px 0}}
+/* one continuous rhizome: card stem, path link and root navigation */
+.hero-rhizome{width:100%;max-width:540px;margin-left:auto}
+.rhizome-label{display:block;margin:0 0 14px 4px;color:var(--ginger)}
+.shoot-card{position:relative;z-index:1;overflow:hidden;background:#fffdf8;border:1px solid rgba(35,53,36,.16);border-radius:16px 16px 0 0;padding:28px 28px 0}
+.shoot-card .audience-tag{display:block;color:var(--ginger);font-size:10px}
+.shoot-card .audience-lede{margin-top:10px;max-width:38ch;color:#3d4438;font-size:16px;line-height:1.5}
+.shoot{position:relative;margin-top:20px;padding-left:34px;min-height:218px}
+.stemline{position:absolute;left:0;top:0;width:34px;height:100%;overflow:visible}
+.stemline path,.roots .drop{fill:none;stroke:var(--stem);stroke-width:2;vector-effect:non-scaling-stroke;stroke-dasharray:400;stroke-dashoffset:400;animation:rhizome-grow .72s var(--ease-out) forwards}
+@keyframes rhizome-grow{to{stroke-dashoffset:0}}
+.shoot-steps{list-style:none}
+.shoot-step{position:relative;padding:9px 0 9px 14px;color:var(--leaf);font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.35}
+.shoot-step::before{content:"";position:absolute;left:-24px;top:21px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--stem);transform:translateY(-50%)}
+.shoot-step.reached::before{background:var(--turmeric);border-color:var(--turmeric)}
+.shoot-step small{display:block;margin-top:2px;color:var(--mist);font-family:'Instrument Sans',sans-serif;font-size:12px;line-height:1.4}
+.shoot-path{position:relative;display:flex;align-items:center;gap:9px;margin:10px 0 0 -34px;padding:16px 0 22px 34px;color:var(--leaf);font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:650;text-decoration:none}
+.shoot-path::before{content:"";position:absolute;left:16px;top:0;bottom:-30px;width:2px;background:var(--stem)}
+.shoot-path svg{transition:transform 180ms var(--ease-out)}
+.underground{position:relative;z-index:2;margin-top:-12px;padding:0 8px 20px;background:var(--soil);border-radius:0 0 16px 16px;clip-path:polygon(0 2px,18% 1px,38% 3px,60% 1px,82% 2px,100% 0,100% 100%,0 100%)}
+.roots{display:block;width:100%;height:auto;overflow:visible}
+.roots .rootline{fill:none;stroke:var(--stem);stroke-width:2;vector-effect:non-scaling-stroke;opacity:.78}
+.roots .root-crown{fill:var(--turmeric);stroke:var(--soil);stroke-width:3;vector-effect:non-scaling-stroke}
+.roots .tuber{fill:var(--paper);stroke:var(--stem);stroke-width:2;cursor:pointer;transition:fill 160ms var(--ease-out),stroke 160ms var(--ease-out),r 160ms var(--ease-out)}
+.roots .tuber[aria-selected="true"]{fill:var(--turmeric);stroke:var(--turmeric)}
+.roots .hit{fill:transparent;cursor:pointer}
+.roots text{fill:var(--leaf);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.04em;pointer-events:none}
+.root-counter{margin-top:-2px;padding-right:10px;color:var(--mist);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-align:right}
+.root-counter b{color:var(--ginger);font-weight:500}
+@media(max-width:980px){.hero-layout{grid-template-columns:1fr;gap:58px}.hero-copy{max-width:720px}.hero-rhizome{max-width:620px;margin:0}}
+@media(max-width:600px){.hero{padding:58px 0 70px;background:radial-gradient(circle at 50% 72%,rgba(225,167,47,.12),transparent 34%)}.hero .hero-ctas{align-items:flex-start;gap:18px}.hero-rhizome{margin-top:2px}.shoot-card{padding:24px 20px 0}.shoot{min-height:224px}.shoot-step{font-size:12px}.shoot-step small{font-size:11px}.roots text{font-size:8.5px}.underground{padding-inline:0}}
 
 /* ---------- principle strip ---------- */
 .strip{background:var(--leaf);color:var(--paper);padding:20px 0}
@@ -167,64 +172,50 @@ section{padding:88px 0}
 .sec-title{font-size:clamp(30px,3.6vw,46px);color:var(--leaf);max-width:22ch;letter-spacing:-.015em}
 .sec-lede{margin-top:16px;max-width:54ch;color:#3d4438}
 
-/* audience paths */
-.paths{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;margin-top:48px}
-.path-card{
-  background:var(--paper-dim);border:1px solid rgba(30,58,43,.14);
-  border-radius:18px;padding:38px 34px;position:relative;overflow:hidden;
-  grid-column:span 6;
-}
-.path-card:last-child{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:24px 48px;align-items:start;background:#f5ead1}
-.path-card:last-child .path-main{grid-row:span 2}
-.path-number{font-family:'IBM Plex Mono',monospace;color:var(--ginger);font-size:12px;letter-spacing:.12em}
-.path-card h3{font-size:26px;color:var(--leaf);margin:14px 0 12px}
-.path-card p{color:#3d4438;font-size:16px;max-width:47ch}
-.path-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:8px;margin:24px 0 26px}
-.path-flow span{min-height:74px;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;border:1px solid rgba(30,58,43,.16);border-radius:10px;background:rgba(255,255,255,.48);font-size:12px;font-weight:650;line-height:1.3}
-.path-flow b{color:var(--ginger);font-size:18px}
-.path-card .btn{align-self:start}
-@media(max-width:820px){.paths{grid-template-columns:1fr}.path-card,.path-card:last-child{grid-column:auto;display:block}.path-card:last-child .btn{margin-top:0}}
-@media(max-width:480px){.path-flow{grid-template-columns:1fr}.path-flow b{transform:rotate(90deg);justify-self:center}.path-flow span{min-height:auto}}
+/* fixed-scope offers */
+.offers{background:var(--paper-dim)}
+.offer-list{margin-top:52px;border-top:1px solid rgba(35,53,36,.24)}
+.offer{display:grid;grid-template-columns:minmax(220px,.75fr) minmax(0,1.25fr);gap:34px 70px;padding:44px 0 48px;border-bottom:1px solid rgba(35,53,36,.24);scroll-margin-top:90px}
+.offer:first-child{margin:0 0 12px;padding:38px 36px;background:var(--leaf-dark);border:0;border-radius:18px;color:var(--paper)}
+.offer:first-child .offer-lead .mono{color:var(--turmeric)}
+.offer:first-child h3,.offer:first-child .offer-fact strong,.offer:first-child .offer-output strong{color:var(--paper)}
+.offer:first-child .offer-lead p,.offer:first-child .offer-output p{color:#c7d2c4}
+.offer:first-child .offer-fact{border-top-color:var(--turmeric)}
+.offer:first-child .offer-fact span,.offer:first-child .offer-actions small{color:#b9c6b5}
+.offer:first-child .offer-output{background:rgba(244,240,230,.07)}
+.offer:first-child .btn{background:var(--turmeric);color:var(--leaf-dark)}
+.offer-lead .mono{color:var(--ginger);font-size:11px}
+.offer h3{margin:12px 0 14px;font-size:clamp(27px,3vw,38px);color:var(--leaf)}
+.offer-lead p{max-width:37ch;color:#3d4438;font-size:16px}
+.offer-detail{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-content:start}
+.offer-fact{padding-top:10px;border-top:2px solid var(--leaf)}
+.offer-fact span{display:block;color:var(--mist);font-size:12px;margin-bottom:5px}
+.offer-fact strong{display:block;color:var(--leaf);font-size:16px;line-height:1.35}
+.offer-output{grid-column:1/-1;margin-top:10px;padding:22px 24px;background:var(--paper)}
+.offer-output strong{display:block;font-family:'Bricolage Grotesque',sans-serif;color:var(--leaf);font-size:18px;margin-bottom:8px}
+.offer-output p{color:#3d4438;font-size:14px;max-width:62ch}
+.offer-actions{grid-column:1/-1;display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:4px}
+.offer-actions small{color:var(--mist);font-size:12px}
+.pricing-disclaimer{margin-top:18px;color:var(--mist);font-size:13px;max-width:68ch}
+@media(max-width:820px){.offer{grid-template-columns:1fr;gap:28px}.offer-detail{grid-template-columns:1fr 1fr}.offer-output,.offer-actions{grid-column:1/-1}}
+@media(max-width:540px){.offer-detail{grid-template-columns:1fr}.offer-output,.offer-actions{grid-column:1}.offer-actions{align-items:flex-start;flex-direction:column}.offer:first-child{padding:30px 24px}}
 
-/* services */
-.courses{background:var(--paper-dim);color:var(--ink)}
-.course-grid{display:grid;grid-template-columns:1.15fr .85fr;grid-template-rows:1fr 1fr;gap:20px;margin-top:48px}
-.course{
-  border:1px solid rgba(30,58,43,.16);border-radius:18px;padding:30px;
-  display:grid;grid-template-columns:1fr auto;gap:10px 24px;background:var(--paper);
-  transition:border-color 180ms var(--ease-out);
-}
-.course:first-child{grid-row:1/-1;background:var(--leaf-dark);color:var(--paper);padding:38px}
-.course-copy{display:flex;flex-direction:column;gap:10px}.course .mono{color:var(--ginger)}
-.course:first-child .mono{color:var(--turmeric)}
-.course h3{font-size:23px;color:var(--leaf)}.course:first-child h3{font-size:31px;color:var(--paper)}
-.course p{font-size:15px;color:#4a5046;max-width:45ch}.course:first-child p{color:#c7d2c4}
-.course .btn{margin-top:14px;text-align:center;align-self:flex-start}.course:first-child .btn{background:var(--turmeric);color:var(--leaf-dark)}
-.deliverable{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:126px}
-.paper-stack{position:relative;width:108px;height:92px;margin-bottom:10px}
-.paper-stack i{position:absolute;inset:0;border-radius:8px;background:#fff;border:1px solid rgba(30,58,43,.17)}
-.paper-stack i:nth-child(1){transform:translate(-12px,10px);opacity:.45}.paper-stack i:nth-child(2){transform:translate(-6px,5px);opacity:.72}
-.paper-stack i:nth-child(3){display:flex;align-items:center;justify-content:center;color:var(--leaf);font-family:'IBM Plex Mono',monospace;font-size:10px;font-style:normal;text-align:center;padding:10px;line-height:1.4}
-.deliverable small{font-size:11px;text-align:center;color:var(--mist);max-width:15ch}.course:first-child .deliverable small{color:#9fb0a2}
-@media(max-width:880px){.course-grid{grid-template-columns:1fr;grid-template-rows:auto}.course:first-child{grid-row:auto}.course{grid-template-columns:1fr auto}}
-@media(max-width:540px){.course,.course:first-child{grid-template-columns:1fr;padding:26px}.deliverable{align-items:flex-start;margin-top:10px}.paper-stack{margin-left:12px}}
-
-/* role map */
-.roles{background:var(--paper)}
-.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:48px}
-.role{padding:24px;border:1px solid rgba(30,58,43,.16);border-radius:16px;display:grid;grid-template-columns:150px 1fr;gap:22px;background:#fff}
-.role h3{font-size:19px;color:var(--leaf)}
-.role .mono{color:var(--ginger);font-size:10px;margin-top:5px}
-.role-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:5px}
-.role-flow span{font-size:11px;line-height:1.25;padding:8px 5px;text-align:center;background:var(--paper-dim);border-radius:7px;min-width:0}
-.role-flow b{color:var(--ginger);font-size:14px}
-@media(max-width:860px){.role-grid{grid-template-columns:1fr}.role{grid-template-columns:150px 1fr}}
-@media(max-width:520px){.role{grid-template-columns:1fr;gap:14px}}
+/* practitioner-led */
+.practitioner{background:var(--leaf);color:var(--paper)}
+.practitioner .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:68px;align-items:start}
+.practitioner .eyebrow{color:var(--turmeric)}
+.practitioner .sec-title{color:var(--paper);max-width:18ch}
+.practitioner-copy p{margin-top:22px;max-width:57ch;color:#c7d2c4}
+.practice-proof{border-top:1px solid rgba(250,246,238,.22)}
+.proof-line{display:grid;grid-template-columns:150px 1fr;gap:24px;padding:19px 0;border-bottom:1px solid rgba(250,246,238,.22)}
+.proof-line strong{font-family:'Bricolage Grotesque',sans-serif;color:var(--paper)}
+.proof-line span{color:#b9c6b5;font-size:14px}
+@media(max-width:820px){.practitioner .wrap{grid-template-columns:1fr}.proof-line{grid-template-columns:1fr;gap:4px}}
 
 /* process */
 .process{background:var(--paper-dim)}
 .process-list{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:50px}
-.process-list::before{content:"";position:absolute;left:8%;right:8%;top:28px;height:2px;background:rgba(30,58,43,.22)}
+.process-list::before{content:"";position:absolute;left:8%;right:8%;top:28px;height:2px;background:rgba(35,53,36,.22)}
 .process-step{position:relative;z-index:1;padding-top:55px;text-align:center}
 .process-step::before{content:"";position:absolute;top:18px;left:50%;width:20px;height:20px;border-radius:50%;background:var(--paper);border:5px solid var(--ginger);transform:translateX(-50%)}
 .process-step:first-child::before,.process-step:last-child::before{border-color:var(--leaf)}
@@ -233,50 +224,32 @@ section{padding:88px 0}
 .process-step .mono{color:var(--ginger)}
 @media(max-width:760px){.process-list{grid-template-columns:1fr;margin-left:8px;gap:0}.process-list::before{left:14px;right:auto;top:20px;bottom:20px;width:2px;height:auto}.process-step{text-align:left;padding:0 0 28px 52px}.process-step::before{top:2px;left:15px}.process-step strong{margin-top:3px}.process-step p{max-width:48ch}}
 
-/* builder widget */
+/* engagement specimen */
 .builder{background:var(--paper)}
-.builder-box{
-  margin-top:44px;display:grid;grid-template-columns:.9fr 1.1fr;gap:22px;align-items:start;
-}
-@media(max-width:860px){.builder-box{grid-template-columns:1fr}}
-.builder-left{display:flex;flex-direction:column;gap:14px}
-.idea-chip{
-  text-align:left;background:#fff;border:1.5px solid rgba(30,58,43,.18);
-  border-radius:14px;padding:16px 18px;cursor:pointer;font:inherit;font-size:15.5px;
-  transition:border-color 160ms var(--ease-out),background-color 160ms var(--ease-out),transform 140ms var(--ease-out);
-}
-.idea-chip:active{transform:scale(.985)}
-.idea-chip.active{border-color:var(--turmeric);background:#fff8e8}
-.idea-chip .mono{display:block;color:var(--ginger);margin-bottom:4px}
-.idea-custom{display:flex;gap:10px;margin-top:4px}
-.idea-custom input{
-  flex:1;font:inherit;font-size:15px;padding:12px 16px;border-radius:100px;
-  border:1.5px solid rgba(30,58,43,.18);background:#fff;color:var(--ink);
-}
-.idea-custom input:focus{outline:2px solid var(--turmeric);outline-offset:2px}
-.terminal{
-  background:var(--leaf-dark);border-radius:16px;overflow:hidden;
-  border:1px solid rgba(30,58,43,.3);min-height:420px;display:flex;flex-direction:column;
-}
-.term-bar{
-  display:flex;align-items:center;gap:8px;padding:12px 16px;
-  background:rgba(250,246,238,.06);border-bottom:1px solid rgba(250,246,238,.1);
-}
-.term-bar i{width:11px;height:11px;border-radius:50%;background:#8ba08f;opacity:.5}
-.term-bar i:first-child{background:var(--turmeric);opacity:1}
-.term-bar span{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8ba08f;letter-spacing:.1em}
-.term-body{
-  padding:22px 24px;font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.75;
-  color:#d7e2d3;white-space:pre-wrap;flex:1;
-}
-.term-body .c-kw{color:var(--turmeric)}
-.term-body .c-str{color:#9fd0a5}
-.term-body .c-cm{color:#7d9080}
-.term-body .c-fn{color:#e8b4d8}
-.cursor{display:inline-block;width:8px;height:15px;background:var(--turmeric);vertical-align:-2px;animation:blink 1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-@media (prefers-reduced-motion: reduce){.cursor{animation:none}}
-.builder-note{margin-top:14px;font-size:13.5px;color:var(--mist)}
+.specimen-layout{margin-top:44px;display:grid;grid-template-columns:.72fr 1.28fr;gap:42px;align-items:start}
+.specimen-tabs{display:flex;flex-direction:column;border-top:1px solid rgba(35,53,36,.22)}
+.specimen-tab{position:relative;text-align:left;background:transparent;border:0;border-bottom:1px solid rgba(35,53,36,.22);padding:19px 42px 19px 0;cursor:pointer;font:inherit;color:var(--leaf);transition:transform 180ms var(--ease-out),color 180ms var(--ease-out)}
+.specimen-tab::after{content:"→";position:absolute;right:4px;color:var(--mist)}
+.specimen-tab[aria-pressed="true"]{font-weight:700;color:var(--ginger);transform:translateX(12px)}
+.specimen-tab[aria-pressed="true"]::after{color:var(--ginger)}
+.specimen-tab small{display:block;font-size:12px;font-weight:400;color:var(--mist);margin-top:3px}
+.engagement-sheet{background:#faf9f4;border:1px solid rgba(35,53,36,.18);box-shadow:8px 8px 0 var(--paper-dim);padding:34px 38px 38px}
+.sheet-head{display:flex;justify-content:space-between;gap:24px;padding-bottom:22px;border-bottom:2px solid var(--leaf)}
+.sheet-head .mono{color:var(--ginger);font-size:11px}
+.sheet-head span:last-child{color:var(--mist);font-size:12px;text-align:right}
+.sheet-title{margin:26px 0 8px;color:var(--leaf);font-size:30px}
+.sheet-summary{color:#3d4438;max-width:58ch;font-size:15px}
+.sheet-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 32px;margin-top:28px;border-top:1px solid rgba(35,53,36,.18)}
+.sheet-field{padding:20px 0;border-bottom:1px solid rgba(35,53,36,.18)}
+.sheet-field dt{font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--ginger);font-size:11px;margin-bottom:7px}
+.sheet-field dd{color:#3d4438;font-size:14px;line-height:1.5}
+.sheet-handover{margin-top:26px;background:var(--leaf);color:var(--paper);padding:20px 22px}
+.sheet-handover strong{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:18px;margin-bottom:5px}
+.sheet-handover span{color:#c7d2c4;font-size:13px}
+.builder-note{margin-top:20px;font-size:13px;color:var(--mist)}
+.sr-status{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:860px){.specimen-layout{grid-template-columns:1fr}.specimen-tabs{display:grid;grid-template-columns:repeat(3,1fr)}.specimen-tab{padding:16px 12px}.specimen-tab[aria-pressed="true"]{transform:translateY(3px)}.specimen-tab::after{display:none}}
+@media(max-width:600px){.specimen-tabs{grid-template-columns:1fr}.engagement-sheet{padding:26px 22px;box-shadow:5px 5px 0 var(--paper-dim)}.sheet-grid{grid-template-columns:1fr}.sheet-head{display:block}.sheet-head span:last-child{display:block;text-align:left;margin-top:5px}}
 
 /* safety */
 .safety{background:var(--paper-dim);color:var(--ink)}
@@ -284,54 +257,28 @@ section{padding:88px 0}
 .safety-map{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;background:var(--leaf-dark);border-radius:20px;padding:20px}
 .safety-zone{position:relative;border-radius:13px;padding:22px 18px;background:rgba(250,246,238,.07);color:var(--paper);min-height:220px;display:flex;flex-direction:column}
 .safety-zone::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--mist);margin-bottom:26px;box-shadow:0 0 0 6px rgba(139,160,143,.12)}
-.safety-zone:nth-child(2)::before{background:var(--turmeric);box-shadow:0 0 0 6px rgba(226,167,46,.12)}
+.safety-zone:nth-child(2)::before{background:var(--turmeric);box-shadow:0 0 0 6px rgba(225,167,47,.12)}
 .safety-zone:nth-child(3)::before{background:var(--ginger);box-shadow:0 0 0 6px rgba(201,127,61,.13)}
 .safety-zone strong{font-family:'Bricolage Grotesque',sans-serif;font-size:19px;margin-bottom:8px}
 .safety-zone span{color:#b9c6b5;font-size:13px;line-height:1.45}
 .safety-zone small{margin-top:auto;padding-top:18px;color:var(--turmeric);font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase}
-.safety-note{background:var(--paper);padding:30px;border-radius:20px;border:1px solid rgba(30,58,43,.14);align-self:stretch;display:flex;flex-direction:column;justify-content:center}
+.safety-note{background:var(--paper);padding:30px;border-radius:20px;border:1px solid rgba(35,53,36,.14);align-self:stretch;display:flex;flex-direction:column;justify-content:center}
 .safety-note h3{font-size:25px;color:var(--leaf);margin-bottom:14px}.safety-note p{color:#4a5046;font-size:15px}
-.safety-rule{margin-top:22px;padding-top:18px;border-top:1px solid rgba(30,58,43,.15);font-weight:650;color:var(--leaf)}
+.safety-rule{margin-top:22px;padding-top:18px;border-top:1px solid rgba(35,53,36,.15);font-weight:650;color:var(--leaf)}
 @media(max-width:900px){.safety-grid{grid-template-columns:1fr}}
 @media(max-width:620px){.safety-map{grid-template-columns:1fr}.safety-zone{min-height:auto}.safety-zone small{margin-top:14px}}
-
-/* learning tracks */
-.learning{background:var(--paper)}
-.learning-grid{display:grid;grid-template-columns:1.2fr .9fr .9fr;gap:20px;margin-top:44px}
-.learning-card{background:var(--paper-dim);border-radius:16px;padding:30px;display:flex;flex-direction:column;gap:12px}
-.learning-card:first-child{background:#f5ead1}
-.learning-card .mono{color:var(--ginger)}
-.learning-card h3{font-size:23px;color:var(--leaf)}
-.learning-card p{font-size:15px;color:#3d4438;flex:1}
-.learning-card a{margin-top:12px;font-weight:600;color:var(--leaf)}
-@media(max-width:860px){.learning-grid{grid-template-columns:1fr}}
-
-/* blog */
-.blog-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:22px;margin-top:48px}
-.post{
-  background:#fff;border:1px solid rgba(30,58,43,.14);border-radius:18px;
-  padding:32px 30px;text-decoration:none;display:flex;flex-direction:column;gap:12px;
-}
-.post[aria-disabled="true"]{cursor:default}
-.post .mono{color:var(--ginger)}
-.post h3{font-size:24px;color:var(--leaf)}
-.post p{color:#3d4438;font-size:15.5px}
-.post .byline{margin-top:auto;padding-top:16px;font-size:13.5px;color:var(--mist)}
-.post.featured{grid-row:span 2}
-.post.featured h3{font-size:30px}
-.blog-side{display:flex;flex-direction:column;gap:22px}
-@media(max-width:820px){.blog-grid{grid-template-columns:1fr}.post.featured{grid-row:auto}}
 
 /* chiang mai */
 .cnx{background:var(--paper-dim)}
 .cnx .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
 .cnx-panel{
   background:var(--paper-dim);border-radius:18px;padding:36px 32px;
-  border:1px solid rgba(30,58,43,.14);
+  border:1px solid rgba(35,53,36,.14);
 }
 .cnx-panel dl{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;font-size:15px}
 .cnx-panel dt{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ginger);padding-top:3px}
 .cnx-panel dd{color:#3d4438}
+.cnx-panel address{font-style:normal}
 @media(max-width:820px){.cnx .wrap{grid-template-columns:1fr}}
 
 /* cta */
@@ -360,14 +307,12 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
   .nav-links a.btn:hover,.nav-links a.btn:focus-visible{color:var(--paper)}
   .btn:hover{background:var(--leaf-dark)}
   .btn.gold:hover{background:#f0b944}
-  .btn.ghost:hover{background:rgba(30,58,43,.07)}
+  .btn.ghost:hover{background:rgba(35,53,36,.07)}
   .hero-text-link:hover{border-color:var(--leaf);transform:translateX(2px)}
   .hero-text-link:hover span{transform:translateY(2px)}
-  .note-link:hover{border-color:var(--leaf)}
-  .field-dot:hover::before{background:var(--paper-dim);box-shadow:0 0 0 3px rgba(30,58,43,.10)}
-  .field-dot[aria-current="true"]:hover::before{background:var(--ginger);box-shadow:0 0 0 4px rgba(201,127,61,.14)}
-  .course:hover{border-color:var(--turmeric)}
-  .idea-chip:hover{border-color:var(--ginger)}
+  .shoot-path:hover svg{transform:translateY(3px)}
+  .roots .tuber:hover{fill:var(--turmeric);stroke:var(--turmeric)}
+  .specimen-tab:hover{transform:translateX(12px);color:var(--ginger)}
   .cta .btn:hover{background:var(--leaf)}
   .foot a:hover{opacity:1;color:var(--turmeric)}
 }
@@ -379,21 +324,32 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
 <nav>
   <div class="wrap nav-inner">
     <a class="logo" href="#top" aria-label="The Rhizome Space home">
-      <img class="logo-mark" src="assets/rhizome-thai-logo.png" alt="" width="52" height="47">
+      <img class="logo-mark" src="assets/rhizome-thai-logo-256.png" alt="" width="52" height="47">
       <span class="logo-text">The Rhizome Space</span>
     </a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
-      <li><a href="#roles">By role</a></li>
+      <li><a href="#example">Example</a></li>
       <li><a href="#process">How it works</a></li>
-      <li><a href="#courses">Courses</a></li>
+      <li><a href="#safety">Data safety</a></li>
       <li><a class="btn nav-cta" href="#start">Request a free call</a></li>
     </ul>
+    <details class="nav-menu">
+      <summary>Menu</summary>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#example">Example</a></li>
+        <li><a href="#process">How it works</a></li>
+        <li><a href="#safety">Data safety</a></li>
+        <li><a href="#start">Request a free call</a></li>
+      </ul>
+    </details>
   </div>
 </nav>
 
 <main id="main">
 <header class="hero" id="top">
+  <div class="spore-trace" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
   <div class="wrap hero-layout">
     <div class="hero-copy">
       <span class="mono eyebrow">Practical AI help for real work</span>
@@ -401,48 +357,42 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
       <p class="hero-sub">Practical AI help for professionals, teams and small businesses. Start with one real task and leave with a documented workflow.</p>
       <div class="hero-ctas">
         <a class="btn gold" href="#start">Request a free call</a>
-        <a class="hero-text-link" href="#paths">See who it is for <span aria-hidden="true">↓</span></a>
+        <a class="hero-text-link" href="#services">See the three services <span aria-hidden="true">↓</span></a>
       </div>
     </div>
-    <figure class="hero-field" data-active="01" aria-labelledby="field-title">
-      <span class="mono field-index" id="field-title">Choose where you’re starting</span>
-      <div class="field-rail" id="fieldRail" tabindex="0" aria-label="Swipe through audience starting points">
-        <article class="swipe-note" data-index="0">
-          <span class="mono note-kicker">01 · Professional</span>
-          <h3>Build a method you can reuse.</h3>
-          <p>Start with one report, research task or recurring admin job from your actual work.</p>
-          <div class="note-flow" aria-label="Task to assisted method to review checklist"><span>Real task</span><b aria-hidden="true">→</b><span>Assisted method</span><b aria-hidden="true">→</b><span>Review checklist</span></div>
-          <a class="note-link" href="#professionals">View the professional path <span aria-hidden="true">↓</span></a>
-        </article>
-        <article class="swipe-note" data-index="1">
-          <span class="mono note-kicker">02 · Team</span>
-          <h3>Run one controlled pilot.</h3>
-          <p>Choose a useful workflow, set sensible rules and prepare staff before wider adoption.</p>
-          <div class="note-flow" aria-label="Candidate workflow to risk review to controlled pilot"><span>Candidate</span><b aria-hidden="true">→</b><span>Risk review</span><b aria-hidden="true">→</b><span>Team pilot</span></div>
-          <a class="note-link" href="#teams">View the team path <span aria-hidden="true">↓</span></a>
-        </article>
-        <article class="swipe-note" data-index="2">
-          <span class="mono note-kicker">03 · Small business</span>
-          <h3>Find the work worth changing.</h3>
-          <p>Rank repetitive work by value, risk and effort before buying another platform.</p>
-          <div class="note-flow" aria-label="Weekly time drain to opportunity ranking to build plan"><span>Time drain</span><b aria-hidden="true">→</b><span>Rank it</span><b aria-hidden="true">→</b><span>Build plan</span></div>
-          <a class="note-link" href="#small-business">View the small-business path <span aria-hidden="true">↓</span></a>
-        </article>
+    <figure class="hero-rhizome" aria-labelledby="rhizomeLabel">
+      <figcaption class="mono rhizome-label" id="rhizomeLabel">Choose where you’re starting</figcaption>
+      <div class="shoot-card" id="audienceCard" role="tabpanel">
+        <span class="mono audience-tag" id="audienceTag">For professionals</span>
+        <p class="audience-lede" id="audienceLede">Start with one report, research task or recurring admin job from your actual work.</p>
+        <div class="shoot">
+          <svg class="stemline" viewBox="0 0 34 218" preserveAspectRatio="none" aria-hidden="true"><path id="stemPath" d="M17,218 L17,10"/></svg>
+          <ol class="shoot-steps" id="audienceSteps">
+            <li class="shoot-step reached"><span>Real task</span><small>From your actual week, not a demo</small></li>
+            <li class="shoot-step reached"><span>Assisted method</span><small>The same job, with AI in the loop</small></li>
+            <li class="shoot-step"><span>Review checklist</span><small>You stay responsible for the output</small></li>
+          </ol>
+          <a class="shoot-path" href="#clinic" id="audienceLink"><span id="audienceLinkText">View the workflow clinic</span><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M9 2v12M4 9l5 6 5-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
       </div>
-      <div class="field-growth" aria-hidden="true">
-        <svg viewBox="0 0 220 62" preserveAspectRatio="none">
-          <g class="shoot shoot-1"><path class="stem" pathLength="1" d="M74 62 C82 32 110 28 110 8"/><path class="leaf" pathLength="1" d="M110 13 C101 11 96 7 94 2"/><path class="leaf" pathLength="1" d="M110 13 C119 11 124 7 126 2"/></g>
-          <g class="shoot shoot-2"><path class="stem" pathLength="1" d="M110 62 C110 36 110 28 110 8"/><path class="leaf" pathLength="1" d="M110 13 C101 11 96 7 94 2"/><path class="leaf" pathLength="1" d="M110 13 C119 11 124 7 126 2"/></g>
-          <g class="shoot shoot-3"><path class="stem" pathLength="1" d="M146 62 C138 32 110 28 110 8"/><path class="leaf" pathLength="1" d="M110 13 C101 11 96 7 94 2"/><path class="leaf" pathLength="1" d="M110 13 C119 11 124 7 126 2"/></g>
+      <div class="underground">
+        <svg class="roots" viewBox="0 0 520 96" role="tablist" aria-label="Choose an audience">
+          <path class="rootline" d="M0,64 C60,58 110,70 170,64 C230,58 290,70 350,64 C410,58 470,68 520,63"/>
+          <path class="drop" id="dropPath" d="M48,64 C48,44 48,28 48,4"/>
+          <circle class="root-crown" cx="48" cy="4" r="5" aria-hidden="true"/>
+          <circle class="tuber" data-audience="0" cx="48" cy="64" r="9" role="tab" aria-selected="true" aria-controls="audienceCard" tabindex="0" aria-label="Professionals"/>
+          <circle class="tuber" data-audience="1" cx="260" cy="64" r="9" role="tab" aria-selected="false" aria-controls="audienceCard" tabindex="-1" aria-label="Teams"/>
+          <circle class="tuber" data-audience="2" cx="472" cy="64" r="9" role="tab" aria-selected="false" aria-controls="audienceCard" tabindex="-1" aria-label="Small business"/>
+          <circle class="hit" data-audience="0" cx="48" cy="64" r="22" aria-hidden="true"/>
+          <circle class="hit" data-audience="1" cx="260" cy="64" r="22" aria-hidden="true"/>
+          <circle class="hit" data-audience="2" cx="472" cy="64" r="22" aria-hidden="true"/>
+          <text x="48" y="90" text-anchor="middle">professional</text>
+          <text x="260" y="90" text-anchor="middle">team</text>
+          <text x="472" y="90" text-anchor="middle">small business</text>
         </svg>
+        <p class="root-counter"><b id="audienceNumber">01</b> / 03</p>
       </div>
-      <div class="field-controls" aria-label="Choose a starting point">
-        <button class="field-dot" type="button" data-slide="0" aria-label="Show professional starting point" aria-current="true"></button>
-        <button class="field-dot" type="button" data-slide="1" aria-label="Show team starting point" aria-current="false"></button>
-        <button class="field-dot" type="button" data-slide="2" aria-label="Show small-business starting point" aria-current="false"></button>
-        <span class="field-status" aria-live="polite">01 / 03</span>
-      </div>
-      <figcaption><strong>Select a starting point.</strong> Swipe, use the nodes, or press the arrow keys. Open the path that fits.</figcaption>
+      <p class="sr-status" id="audienceStatus" aria-live="polite"></p>
     </figure>
   </div>
 </header>
@@ -455,63 +405,58 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
   </div>
 </div>
 
-<section id="paths">
+<section class="offers" id="services">
   <div class="wrap">
-    <h2 class="sec-title">Three ways into the same practical problem.</h2>
-    <p class="sec-lede">Choose the outcome you need. Each path begins with work you already do.</p>
-    <div class="paths">
-      <article class="path-card" id="professionals">
-        <div class="path-main"><span class="path-number">01 · For professionals</span><h3>I need AI to help me at work</h3><p>Build a method you can use confidently and explain to your manager.</p></div>
-        <div class="path-flow" aria-label="Professional path from recurring task to documented workflow"><span>Report, research or admin task</span><b aria-hidden="true">→</b><span>Assisted working method</span><b aria-hidden="true">→</b><span>Template and review checklist</span></div>
-        <a class="btn" href="#services">See the Workflow Clinic</a>
+    <h2 class="sec-title">Know the time, price and outcome before we start.</h2>
+    <p class="sec-lede">Each engagement begins with work you already do and ends with a documented method you can keep.</p>
+    <div class="offer-list">
+      <article class="offer" id="clinic">
+        <div class="offer-lead"><span class="mono">For one professional</span><h3>AI Workflow Clinic</h3><p>Turn one report, research task or recurring admin job into a supervised method you can reuse and explain.</p></div>
+        <div class="offer-detail">
+          <div class="offer-fact"><span>Duration</span><strong>90-minute working session</strong></div>
+          <div class="offer-fact"><span>Format</span><strong>Online or Chiang Mai</strong></div>
+          <div class="offer-fact"><span>Investment</span><strong>฿4,500 fixed</strong></div>
+          <div class="offer-output"><strong>You leave with</strong><p>A workflow map, reusable prompt or template, review checklist and a short written handover within two business days.</p></div>
+          <div class="offer-actions"><a class="btn" href="mailto:hello@therhizomespace.com?subject=AI%20Workflow%20Clinic%20%E2%80%94%20introductory%20call">Ask about the clinic</a><small>Bring the task, not confidential data.</small></div>
+        </div>
       </article>
-      <article class="path-card" id="teams">
-        <div class="path-main"><span class="path-number">02 · For managers, HR and IT</span><h3>I need my team to adopt AI safely</h3><p>Choose one controlled pilot before asking everyone to change how they work.</p></div>
-        <div class="path-flow" aria-label="Team path from candidate workflows to safe pilot"><span>Candidate workflows</span><b aria-hidden="true">→</b><span>Risk and role review</span><b aria-hidden="true">→</b><span>Pilot with guardrails</span></div>
-        <a class="btn" href="#services">See the Team Starter Sprint</a>
+      <article class="offer" id="team-sprint">
+        <div class="offer-lead"><span class="mono">For managers, HR and IT</span><h3>Team AI Starter Sprint</h3><p>Choose one candidate workflow, agree the boundaries and prepare a small team to run a controlled pilot.</p></div>
+        <div class="offer-detail">
+          <div class="offer-fact"><span>Duration</span><strong>Two weeks</strong></div>
+          <div class="offer-fact"><span>Format</span><strong>Two working sessions, up to 8 people</strong></div>
+          <div class="offer-fact"><span>Investment</span><strong>From ฿28,000</strong></div>
+          <div class="offer-output"><strong>Your team receives</strong><p>A ranked pilot brief, roles and review points, data-handling rules, a facilitated test and a documented adoption plan.</p></div>
+          <div class="offer-actions"><a class="btn" href="mailto:hello@therhizomespace.com?subject=Team%20AI%20Starter%20Sprint%20%E2%80%94%20introductory%20call">Discuss a team sprint</a><small>Final scope depends on team size and policy requirements.</small></div>
+        </div>
       </article>
-      <article class="path-card" id="small-business">
-        <div class="path-main"><span class="path-number">03 · For owners and operators</span><h3>I need repetitive work off my plate</h3><p>Find the weekly time drain worth improving before buying another platform.</p></div>
-        <div class="path-flow" aria-label="Small business path from time drain to build plan"><span>Weekly time drain</span><b aria-hidden="true">→</b><span>Value, risk and effort</span><b aria-hidden="true">→</b><span>Ranked build plan</span></div>
-        <a class="btn" href="#services">See the Small Business Audit</a>
+      <article class="offer" id="business-audit">
+        <div class="offer-lead"><span class="mono">For owners and operators</span><h3>Small Business Workflow Audit</h3><p>Find the recurring work worth improving before you buy another platform or commission a larger build.</p></div>
+        <div class="offer-detail">
+          <div class="offer-fact"><span>Duration</span><strong>One week</strong></div>
+          <div class="offer-fact"><span>Format</span><strong>Mapping session and findings call</strong></div>
+          <div class="offer-fact"><span>Investment</span><strong>฿18,000 fixed</strong></div>
+          <div class="offer-output"><strong>You receive</strong><p>An opportunity map, value-risk-effort ranking and a practical build brief for the best first workflow—including what to leave alone.</p></div>
+          <div class="offer-actions"><a class="btn" href="mailto:hello@therhizomespace.com?subject=Small%20Business%20Workflow%20Audit%20%E2%80%94%20introductory%20call">Ask about the audit</a><small>No software purchase is required for the audit.</small></div>
+        </div>
       </article>
     </div>
+    <p class="pricing-disclaimer">These are introductory prices for the scopes shown. We confirm the work, schedule and total price in writing before you commit.</p>
   </div>
 </section>
 
-<section class="courses" id="services">
+<section class="practitioner" id="practice">
   <div class="wrap">
-    <span class="mono eyebrow">Fixed-scope services</span>
-    <h2 class="sec-title">Bring a task. Leave with a working method.</h2>
-    <p class="sec-lede">Every engagement ends with something your team can use, review and explain.</p>
-    <div class="course-grid">
-      <article class="course">
-        <div class="course-copy"><span class="mono">For one professional</span><h3>AI Workflow Clinic</h3><p>Map one task, test an assisted version and document the method.</p><a class="btn" href="mailto:hello@therhizomespace.com?subject=AI%20Workflow%20Clinic">Ask about the clinic</a></div>
-        <div class="deliverable" aria-label="Deliverables: workflow map, reusable template and review checklist"><span class="paper-stack" aria-hidden="true"><i></i><i></i><i>MAP<br>TEMPLATE<br>CHECKLIST</i></span><small>Your reusable working pack</small></div>
-      </article>
-      <article class="course">
-        <div class="course-copy"><span class="mono">For a department or team</span><h3>Team AI Starter Sprint</h3><p>Choose a pilot, set guardrails and prepare staff to use it.</p><a class="btn" href="mailto:hello@therhizomespace.com?subject=Team%20AI%20Starter%20Sprint">Discuss a team sprint</a></div>
-        <div class="deliverable" aria-label="Deliverables: roadmap, pilot and guardrails"><span class="paper-stack" aria-hidden="true"><i></i><i></i><i>ROADMAP<br>PILOT<br>RULES</i></span><small>One controlled team pilot</small></div>
-      </article>
-      <article class="course">
-        <div class="course-copy"><span class="mono">For an owner or operator</span><h3>Small Business Workflow Audit</h3><p>Rank recurring work and turn the best candidate into a build plan.</p><a class="btn" href="mailto:hello@therhizomespace.com?subject=Small%20Business%20AI%20Workflow%20Audit">Ask about the audit</a></div>
-        <div class="deliverable" aria-label="Deliverables: opportunity map, ranking and build plan"><span class="paper-stack" aria-hidden="true"><i></i><i></i><i>MAP<br>RANKING<br>BUILD PLAN</i></span><small>A practical next step</small></div>
-      </article>
+    <div class="practitioner-copy">
+      <span class="mono eyebrow">Independent and practitioner-led</span>
+      <h2 class="sec-title">Production depth, translated into ordinary work.</h2>
+      <p>The Rhizome Space is a local AI consultancy based in Chiang Mai. We bring hands-on experience building production AI systems and multi-agent workflows, then turn that technical depth into methods professionals and small teams can understand, supervise and own.</p>
+      <p>No mystery platform and no anonymous hand-off. The same practice that scopes the work stays close to the testing, documentation and final decision.</p>
     </div>
-  </div>
-</section>
-
-<section class="roles" id="roles">
-  <div class="wrap">
-    <h2 class="sec-title">What could AI help with in your role?</h2>
-    <p class="sec-lede">Start with a bounded flow, not a promise to automate a profession.</p>
-    <div class="role-grid">
-      <article class="role"><div><h3>Accounting</h3><span class="mono">Professional</span></div><div class="role-flow" aria-label="Summary table to commentary draft to accountant review"><span>Summary table</span><b aria-hidden="true">→</b><span>Commentary draft</span><b aria-hidden="true">→</b><span>Accountant review</span></div></article>
-      <article class="role"><div><h3>Project management</h3><span class="mono">Professional</span></div><div class="role-flow" aria-label="Meeting notes to action draft to project manager review"><span>Meeting notes</span><b aria-hidden="true">→</b><span>Actions and risks</span><b aria-hidden="true">→</b><span>PM review</span></div></article>
-      <article class="role"><div><h3>HR and people ops</h3><span class="mono">Team</span></div><div class="role-flow" aria-label="Approved policy to employee answer to people team review"><span>Approved policy</span><b aria-hidden="true">→</b><span>Employee answer</span><b aria-hidden="true">→</b><span>People review</span></div></article>
-      <article class="role"><div><h3>Marketing</h3><span class="mono">Professional or team</span></div><div class="role-flow" aria-label="Source material to campaign draft to editorial review"><span>Source material</span><b aria-hidden="true">→</b><span>Campaign draft</span><b aria-hidden="true">→</b><span>Editorial review</span></div></article>
-      <article class="role"><div><h3>Customer support</h3><span class="mono">Team</span></div><div class="role-flow" aria-label="Anonymized themes to article proposal to support review"><span>Ticket themes</span><b aria-hidden="true">→</b><span>Article proposal</span><b aria-hidden="true">→</b><span>Support review</span></div></article>
-      <article class="role"><div><h3>Management</h3><span class="mono">Leadership</span></div><div class="role-flow" aria-label="Team evidence to decision memo to leader judgment"><span>Team evidence</span><b aria-hidden="true">→</b><span>Decision memo</span><b aria-hidden="true">→</b><span>Leader judgment</span></div></article>
+    <div class="practice-proof" aria-label="How the practice works">
+      <div class="proof-line"><strong>Production-minded</strong><span>We design around real inputs, failure modes and the person accountable for the result.</span></div>
+      <div class="proof-line"><strong>Tool-independent</strong><span>We choose around the task and your approved environment, not a software reseller agreement.</span></div>
+      <div class="proof-line"><strong>Documented</strong><span>You keep the workflow, boundaries, templates and next decision after the engagement ends.</span></div>
     </div>
   </div>
 </section>
@@ -529,32 +474,36 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
   </div>
 </section>
 
-<section class="builder" id="builder">
+<section class="builder" id="example">
   <div class="wrap">
-    <h2 class="sec-title">Choose a task you do every week.</h2>
-    <p class="sec-lede">See how a vague request becomes a bounded workflow with inputs, human checks and data rules. This browser demo uses prepared examples and sends nothing anywhere.</p>
-    <div class="builder-box">
-      <div class="builder-left">
-        <button class="idea-chip active" data-idea="project"><span class="mono">Project management</span>Turn meeting notes into actions, risks and a status draft</button>
-        <button class="idea-chip" data-idea="accounting"><span class="mono">Accounting</span>Prepare a first draft of monthly variance commentary</button>
-        <button class="idea-chip" data-idea="support"><span class="mono">Customer support</span>Find repeated questions and propose knowledge-base updates</button>
-        <div class="idea-custom">
-          <input type="text" id="ideaInput" placeholder="Describe one recurring task…" aria-label="Describe one recurring work task">
-          <button class="btn gold" id="ideaGo" type="button">Map the workflow</button>
-        </div>
+    <h2 class="sec-title">Not a prompt list. A method someone can review.</h2>
+    <p class="sec-lede">These prepared examples show the shape of a handover document. Select a task to see what AI may assist with, what remains human and what data stays out.</p>
+    <div class="specimen-layout">
+      <div class="specimen-tabs" aria-label="Choose a sample workflow">
+        <button class="specimen-tab" type="button" data-example="project" aria-pressed="true">Project follow-through<small>Meeting notes to maintained actions and risks</small></button>
+        <button class="specimen-tab" type="button" data-example="accounting" aria-pressed="false">Monthly commentary<small>Summary table to review-ready first draft</small></button>
+        <button class="specimen-tab" type="button" data-example="support" aria-pressed="false">Support knowledge<small>Ticket themes to proposed article updates</small></button>
       </div>
-      <div class="terminal" aria-live="polite">
-        <div class="term-bar"><i></i><i></i><i></i><span>workflow-map.txt</span></div>
-        <div class="term-body" id="termBody"></div>
-      </div>
+      <article class="engagement-sheet" aria-labelledby="sheetTitle">
+        <header class="sheet-head"><span class="mono">Workflow brief · prepared example</span><span id="sheetRef">TRS–PM–01</span></header>
+        <h3 class="sheet-title" id="sheetTitle">Meeting notes to project follow-through</h3>
+        <p class="sheet-summary" id="sheetSummary">Reduce recurring project administration without allowing AI to assign owners, invent decisions or update records.</p>
+        <dl class="sheet-grid">
+          <div class="sheet-field"><dt>Approved input</dt><dd id="sheetInput">Meeting notes and the current project register</dd></div>
+          <div class="sheet-field"><dt>AI may assist</dt><dd id="sheetAssist">Extract proposed actions, dates and risks; compare them with the current register</dd></div>
+          <div class="sheet-field"><dt>Human decides</dt><dd id="sheetHuman">Confirm owners and deadlines, reject invented decisions and approve every change</dd></div>
+          <div class="sheet-field"><dt>Data boundary</dt><dd id="sheetBoundary">Remove personal data that is not required for the task</dd></div>
+        </dl>
+        <div class="sheet-handover"><strong>Handover</strong><span id="sheetHandover">Documented workflow, status-draft template and review checklist</span></div>
+      </article>
     </div>
-    <p class="builder-note">Illustrative only. A real engagement uses your approved tools, policies and sanitized examples.</p>
+    <p class="builder-note">Illustrative only. These examples use no client data and make no claim about results from a completed engagement.</p>
+    <p class="sr-status" id="specimenStatus" aria-live="polite"></p>
   </div>
 </section>
 
 <section class="safety" id="safety">
   <div class="wrap">
-    <span class="mono eyebrow">Data safety and human judgment</span>
     <h2 class="sec-title">Useful does not mean unsupervised.</h2>
     <p class="sec-lede">Sort the information before it enters a tool. Keep a person responsible after it comes out.</p>
     <div class="safety-grid">
@@ -568,45 +517,18 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
   </div>
 </section>
 
-<section class="learning" id="courses">
-  <div class="wrap">
-    <h2 class="sec-title">Courses built around work you can reuse.</h2>
-    <p class="sec-lede">Planned learning tracks for people who want a structured route before or alongside consulting.</p>
-    <div class="learning-grid">
-      <article class="learning-card"><span class="mono">Foundation</span><h3>AI at Work: Your First Workflow</h3><p>Learn what modern AI can and cannot do, choose one recurring task and build a supervised workflow you can reuse.</p><a href="mailto:hello@therhizomespace.com?subject=Interest%20in%20AI%20at%20Work">Join the interest list →</a></article>
-      <article class="learning-card"><span class="mono">Business</span><h3>AI for Small Business</h3><p>Map recurring operations, assess value and risk, and prepare one realistic automation or assistance project.</p><a href="mailto:hello@therhizomespace.com?subject=Interest%20in%20AI%20for%20Small%20Business">Join the interest list →</a></article>
-      <article class="learning-card"><span class="mono">Advanced</span><h3>Working with AI Agents</h3><p>Scope multi-step systems, supervise their actions and decide where a person must remain in control.</p><a href="mailto:hello@therhizomespace.com?subject=Interest%20in%20Working%20with%20AI%20Agents">Join the interest list →</a></article>
-    </div>
-  </div>
-</section>
-
-<section id="blog">
-  <div class="wrap">
-    <h2 class="sec-title">Answer the questions people ask before they hire anyone.</h2>
-    <p class="sec-lede">Practical guides by role, built around concrete workflows, limitations and safe-use decisions.</p>
-    <div class="blog-grid">
-      <article class="post featured" aria-disabled="true"><span class="mono">AI at work · Planned guide</span><h3>How to use AI at work without sharing confidential company data</h3><p>A practical framework for separating safe examples from sensitive information, choosing approved tools and keeping human review visible. Includes a worksheet for mapping one recurring task before any data enters an AI system.</p><span class="byline">Foundation guide · links to the Workflow Clinic</span></article>
-      <div class="blog-side">
-        <article class="post" aria-disabled="true"><span class="mono">Accounting · Planned guide</span><h3>AI for accountants: workflows worth testing first</h3><p>Document intake, recurring commentary and client communication, with controls for accuracy and confidentiality.</p><span class="byline">Role guide</span></article>
-        <article class="post" aria-disabled="true"><span class="mono">Project management · Planned guide</span><h3>From meeting notes to a maintained risk log</h3><p>A bounded workflow for actions, owners, risks and status updates that never skips project-manager review.</p><span class="byline">Role guide</span></article>
-        <article class="post" aria-disabled="true"><span class="mono">Employee training · Planned guide</span><h3>What AI training for employees should actually produce</h3><p>Why a useful workshop ends with documented workflows and safe-use rules, not a list of prompts people forget.</p><span class="byline">Buyer guide</span></article>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="cnx" id="chiangmai">
   <div class="wrap">
-    <div><h2 class="sec-title">Based in Chiang Mai. Working online.</h2><p class="sec-lede">The Rhizome Space is being built in northern Thailand for people who want practical, understandable help with AI. Consulting and learning can run online; in-person sessions will be announced when they are scheduled.</p></div>
-    <aside class="cnx-panel"><dl><dt>Base</dt><dd>Chiang Mai, Thailand (ICT, UTC+7)</dd><dt>Delivery</dt><dd>Online worldwide</dd><dt>In person</dt><dd>Announced when scheduled</dd><dt>Languages</dt><dd>English first; Thai-friendly materials in development</dd><dt>Approach</dt><dd>Small workflows, documented clearly</dd></dl></aside>
+    <div><h2 class="sec-title">Local enough to meet. Experienced enough to build.</h2><p class="sec-lede">The Rhizome Space is based in Chiang Mai and works online worldwide. Local sessions are available by arrangement; remote work is designed to be equally clear and hands-on.</p></div>
+    <aside class="cnx-panel"><dl><dt>Office</dt><dd><address>207/44, Village 3<br>Mae Hia, Mueang Chiang Mai<br>Chiang Mai 50100, Thailand</address></dd><dt>Time zone</dt><dd>ICT (UTC+7)</dd><dt>Delivery</dt><dd>Online worldwide</dd><dt>In person</dt><dd>Chiang Mai by arrangement</dd><dt>Working language</dt><dd>English</dd><dt>Approach</dt><dd>Small scopes, clear documents, human ownership</dd></dl></aside>
   </div>
 </section>
 
 <section class="cta" id="start">
   <div class="wrap">
-    <span class="mono">Free introductory call · bring no confidential data</span>
+    <span class="mono">Free 20-minute introductory call · bring no confidential data</span>
     <h2>Bring one piece of work.</h2>
-    <p>Tell us whether you are improving your own job, introducing AI to a team or running a small business. We will help identify a sensible first step.</p>
+    <p>Tell us what repeats, who reviews it and what you want to improve. We will identify the smallest sensible engagement and reply within two business days.</p>
     <div class="hero-ctas"><a class="btn" href="mailto:hello@therhizomespace.com?subject=Professional%20AI%20Workflow">My own workflow</a><a class="btn" href="mailto:hello@therhizomespace.com?subject=Team%20AI%20Adoption">My team</a><a class="btn" href="mailto:hello@therhizomespace.com?subject=Small%20Business%20AI">My small business</a></div>
   </div>
 </section>
@@ -614,186 +536,158 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
 
 <footer>
   <div class="wrap">
-    <div class="foot"><a class="logo" href="#top"><img class="logo-mark" src="assets/rhizome-thai-logo.png" alt="" width="36" height="32"><span class="logo-text">The Rhizome Space</span></a><ul><li><a href="#services">Services</a></li><li><a href="#roles">By role</a></li><li><a href="#safety">Data safety</a></li><li><a href="#courses">Courses</a></li><li><a href="mailto:hello@therhizomespace.com">Email us</a></li></ul></div>
+    <div class="foot"><a class="logo" href="#top"><img class="logo-mark" src="assets/rhizome-thai-logo-256.png" alt="" width="36" height="32"><span class="logo-text">The Rhizome Space</span></a><ul><li><a href="#services">Services</a></li><li><a href="#example">Example</a></li><li><a href="#safety">Data safety</a></li><li><a href="#practice">The practice</a></li><li><a href="mailto:hello@therhizomespace.com">Email us</a></li></ul></div>
     <div class="foot-bottom"><span>© 2026 The Rhizome Space · Chiang Mai, Thailand</span><span class="mono foot-domain">therhizomespace.com</span></div>
   </div>
 </footer>
 
 <script>
 (function(){
-  // Each blueprint is a list of [cssClass, text] segments. Newlines are explicit.
-  const blueprints = {
-    project: [
-      ['cm','# Workflow: meeting notes -> project follow-through\n'],
-      ['cm','# Goal: reduce admin without letting AI assign decisions\n\n'],
-      ['kw','INPUT'],['',' approved meeting notes + current project register\n'],
-      ['kw','REMOVE'],['',' personal data not needed for the task\n\n'],
-      ['','draft = '],['fn','extract'],['','(actions, owners, dates, risks)\n'],
-      ['','status = '],['fn','compare'],['','(draft, current_register)\n\n'],
-      ['kw','HUMAN CHECK'],['',':\n'],
-      ['','  confirm owners and deadlines\n'],
-      ['','  reject invented decisions\n'],
-      ['','  approve changes before updating records\n\n'],
-      ['kw','OUTPUT'],['',' status draft + proposed register changes\n'],
-      ['cm','# Boundary: AI proposes; the project manager updates']
-    ],
-    accounting: [
-      ['cm','# Workflow: monthly variance commentary first draft\n'],
-      ['cm','# Goal: prepare review material, never invent explanations\n\n'],
-      ['kw','INPUT'],['',' approved summary table + prior-period commentary\n'],
-      ['kw','DO NOT INPUT'],['',' bank details, personal data, raw client files\n\n'],
-      ['','flags = '],['fn','find_material_changes'],['','(threshold=approved)\n'],
-      ['','draft = '],['fn','describe'],['','(flags, evidence=summary_table)\n\n'],
-      ['kw','HUMAN CHECK'],['',':\n'],
-      ['','  trace every number to the source\n'],
-      ['','  add the real business explanation\n'],
-      ['','  remove unsupported causal language\n\n'],
-      ['kw','OUTPUT'],['',' review-ready commentary draft\n'],
-      ['cm','# Boundary: a qualified person owns every conclusion']
-    ],
-    support: [
-      ['cm','# Workflow: repeated questions -> knowledge-base proposal\n'],
-      ['cm','# Goal: improve self-service without exposing customer data\n\n'],
-      ['kw','INPUT'],['',' anonymized ticket themes + current help articles\n'],
-      ['kw','REMOVE'],['',' names, contact details, account information\n\n'],
-      ['','clusters = '],['fn','group_questions'],['','(by_intent=true)\n'],
-      ['','gaps = '],['fn','compare'],['','(clusters, help_articles)\n'],
-      ['','drafts = '],['fn','propose_updates'],['','(top_gaps)\n\n'],
-      ['kw','HUMAN CHECK'],['',':\n'],
-      ['','  verify policy and product details\n'],
-      ['','  check tone, accessibility and escalation paths\n\n'],
-      ['kw','OUTPUT'],['',' ranked article updates for approval\n'],
-      ['cm','# Boundary: no automatic publishing or customer decisions']
-    ],
-    custom: [
-      ['cm','# Workflow candidate: {IDEA}\n'],
-      ['cm','# First rule: map it before choosing a tool\n\n'],
-      ['kw','DEFINE'],['',' the current work:\n'],
-      ['','  input = '],['fn','what_arrives'],['','()\n'],
-      ['','  decisions = '],['fn','what_requires_judgment'],['','()\n'],
-      ['','  output = '],['fn','what_someone_needs'],['','()\n\n'],
-      ['kw','BOUNDARIES'],['',':\n'],
-      ['','  confidential_data = '],['fn','identify_and_remove'],['','()\n'],
-      ['','  human_review = '],['fn','assign_owner'],['','()\n'],
-      ['','  failure_response = '],['fn','define'],['','()\n\n'],
-      ['kw','START'],['',' with one sanitized example and one reviewer\n'],
-      ['cm','# Automate only after the assisted version proves useful']
-    ]
+  const audiences = [
+    {
+      tag:'For professionals',
+      lede:'Start with one report, research task or recurring admin job from your actual work.',
+      steps:[['Real task','From your actual week, not a demo'],['Assisted method','The same job, with AI in the loop'],['Review checklist','You stay responsible for the output']],
+      link:'View the workflow clinic', href:'#clinic', x:48
+    },
+    {
+      tag:'For teams',
+      lede:'Choose one useful workflow, agree sensible rules and prepare a small team before wider adoption.',
+      steps:[['Candidate','One workflow worth improving'],['Risk review','Rules and boundaries agreed first'],['Team pilot','Real work, small group, reviewed']],
+      link:'View the team starter sprint', href:'#team-sprint', x:260
+    },
+    {
+      tag:'For small business',
+      lede:'Rank repetitive work by value, risk and effort before buying another platform.',
+      steps:[['Time drain','Find what repeatedly eats the hours'],['Rank it','Value, risk and effort together'],['Build plan','Start where the payoff is clearest']],
+      link:'View the workflow audit', href:'#business-audit', x:472
+    }
+  ];
+  const audienceTabs = Array.from(document.querySelectorAll('.tuber'));
+  const audienceHits = Array.from(document.querySelectorAll('.roots .hit'));
+  const audienceStepNodes = Array.from(document.querySelectorAll('.shoot-step'));
+  const audienceFields = {
+    tag: document.getElementById('audienceTag'),
+    lede: document.getElementById('audienceLede'),
+    link: document.getElementById('audienceLink'),
+    linkText: document.getElementById('audienceLinkText'),
+    number: document.getElementById('audienceNumber'),
+    drop: document.getElementById('dropPath'),
+    stem: document.getElementById('stemPath'),
+    status: document.getElementById('audienceStatus')
   };
 
-  const body = document.getElementById('termBody');
-  const chips = document.querySelectorAll('.idea-chip');
-  const input = document.getElementById('ideaInput');
-  const go = document.getElementById('ideaGo');
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let timer = null;
-
-  function segments(key, idea){
-    return blueprints[key].map(function(s){
-      return { cls: s[0], text: s[1].replace('{IDEA}', idea || 'your idea') };
-    });
+  function restartGrowth(element){
+    if(!element || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    element.style.animation = 'none';
+    element.getBoundingClientRect();
+    element.style.animation = '';
   }
 
-  function renderInstant(segs){
-    segs.forEach(function(seg){
-      var node;
-      if(seg.cls){ node = document.createElement('span'); node.className = 'c-' + seg.cls; node.textContent = seg.text; }
-      else { node = document.createTextNode(seg.text); }
-      body.appendChild(node);
-    });
+  function audienceDropPath(x){
+    return 'M' + x + ',64 C' + x + ',44 48,30 48,4';
   }
 
-  function render(key, idea){
-    if(timer){ clearInterval(timer); timer = null; }
-    body.innerHTML = '';
-    var segs = segments(key, idea);
-    if(reduced){ renderInstant(segs); return; }
-    var cursor = document.createElement('span');
-    cursor.className = 'cursor';
-    body.appendChild(cursor);
-    var si = 0, ci = 0, current = null;
-    timer = setInterval(function(){
-      // type 2 chars per tick for speed
-      for(var step = 0; step < 2; step++){
-        if(si >= segs.length){ clearInterval(timer); timer = null; cursor.remove(); return; }
-        var seg = segs[si];
-        if(!current){
-          if(seg.cls){ current = document.createElement('span'); current.className = 'c-' + seg.cls; }
-          else { current = document.createTextNode(''); }
-          body.insertBefore(current, cursor);
-        }
-        current.textContent += seg.text[ci];
-        ci++;
-        if(ci >= seg.text.length){ si++; ci = 0; current = null; }
+  function selectAudience(index, announce){
+    const audience = audiences[index];
+    if(!audience) return;
+    audienceFields.tag.textContent = audience.tag;
+    audienceFields.lede.textContent = audience.lede;
+    audienceFields.link.href = audience.href;
+    audienceFields.linkText.textContent = audience.link;
+    audienceFields.number.textContent = '0' + (index + 1);
+    audienceFields.drop.setAttribute('d', audienceDropPath(audience.x));
+    audienceStepNodes.forEach(function(node, stepIndex){
+      node.querySelector('span').textContent = audience.steps[stepIndex][0];
+      node.querySelector('small').textContent = audience.steps[stepIndex][1];
+    });
+    audienceTabs.forEach(function(tab, tabIndex){
+      const selected = tabIndex === index;
+      tab.setAttribute('aria-selected', selected ? 'true' : 'false');
+      tab.setAttribute('tabindex', selected ? '0' : '-1');
+    });
+    restartGrowth(audienceFields.drop);
+    restartGrowth(audienceFields.stem);
+    if(announce) audienceFields.status.textContent = audience.tag + ' selected.';
+  }
+
+  function audienceIndex(target){ return Number(target.dataset.audience); }
+  audienceHits.forEach(function(hit){
+    hit.addEventListener('click', function(){ selectAudience(audienceIndex(hit), true); });
+  });
+  audienceTabs.forEach(function(tab){
+    tab.addEventListener('click', function(){ selectAudience(audienceIndex(tab), true); });
+    tab.addEventListener('keydown', function(event){
+      const index = audienceIndex(tab);
+      if(event.key === 'Enter' || event.key === ' '){ event.preventDefault(); selectAudience(index, true); }
+      if(event.key === 'ArrowRight' || event.key === 'ArrowLeft'){
+        event.preventDefault();
+        const next = (index + (event.key === 'ArrowRight' ? 1 : 2)) % audiences.length;
+        selectAudience(next, true);
+        audienceTabs[next].focus();
       }
-    }, 12);
-  }
-
-  chips.forEach(function(chip){
-    chip.addEventListener('click', function(){
-      chips.forEach(function(c){ c.classList.remove('active'); });
-      chip.classList.add('active');
-      render(chip.dataset.idea);
     });
   });
-  go.addEventListener('click', function(){
-    chips.forEach(function(c){ c.classList.remove('active'); });
-    render('custom', input.value.trim());
+
+  const examples = {
+    project: {
+      ref: 'TRS–PM–01',
+      title: 'Meeting notes to project follow-through',
+      summary: 'Reduce recurring project administration without allowing AI to assign owners, invent decisions or update records.',
+      input: 'Meeting notes and the current project register',
+      assist: 'Extract proposed actions, dates and risks; compare them with the current register',
+      human: 'Confirm owners and deadlines, reject invented decisions and approve every change',
+      boundary: 'Remove personal data that is not required for the task',
+      handover: 'Documented workflow, status-draft template and review checklist'
+    },
+    accounting: {
+      ref: 'TRS–AC–01',
+      title: 'Summary table to monthly commentary',
+      summary: 'Prepare review material faster without inventing explanations or allowing unsupported conclusions into the final commentary.',
+      input: 'Approved summary table and prior-period commentary',
+      assist: 'Flag material changes and prepare factual descriptions tied to the approved table',
+      human: 'Trace every number, add the real business explanation and approve the final language',
+      boundary: 'Exclude bank details, personal information and raw client files',
+      handover: 'Commentary template, evidence checklist and review-ready example'
+    },
+    support: {
+      ref: 'TRS–CS–01',
+      title: 'Ticket themes to knowledge-base proposals',
+      summary: 'Identify repeated questions without exposing customer records or allowing AI to publish support guidance automatically.',
+      input: 'Anonymized ticket themes and approved help articles',
+      assist: 'Group questions by intent, identify gaps and draft proposed article updates',
+      human: 'Verify policy and product details, check tone and approve every publication',
+      boundary: 'Remove names, contact details, account data and unique case information',
+      handover: 'Ranked article plan, drafting template and publication review checklist'
+    }
+  };
+
+  const tabs = Array.from(document.querySelectorAll('.specimen-tab'));
+  const fields = {
+    ref: document.getElementById('sheetRef'),
+    title: document.getElementById('sheetTitle'),
+    summary: document.getElementById('sheetSummary'),
+    input: document.getElementById('sheetInput'),
+    assist: document.getElementById('sheetAssist'),
+    human: document.getElementById('sheetHuman'),
+    boundary: document.getElementById('sheetBoundary'),
+    handover: document.getElementById('sheetHandover')
+  };
+  const status = document.getElementById('specimenStatus');
+
+  function showExample(key){
+    const example = examples[key];
+    if(!example) return;
+    Object.keys(fields).forEach(function(name){ fields[name].textContent = example[name]; });
+    tabs.forEach(function(tab){ tab.setAttribute('aria-pressed', tab.dataset.example === key ? 'true' : 'false'); });
+    status.textContent = example.title + ' example selected.';
+  }
+
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){ showExample(tab.dataset.example); });
   });
-  input.addEventListener('keydown', function(e){ if(e.key === 'Enter') go.click(); });
-
-  // Native scroll-snap carousel: no gesture library or new network payload.
-  const field = document.querySelector('.hero-field');
-  const rail = document.getElementById('fieldRail');
-  const notes = rail ? Array.from(rail.querySelectorAll('.swipe-note')) : [];
-  const dots = Array.from(document.querySelectorAll('.field-dot'));
-  const status = document.querySelector('.field-status');
-  let activeNote = 0, scrollFrame = null;
-
-  function setActiveNote(index){
-    activeNote = Math.max(0, Math.min(notes.length - 1, index));
-    notes.forEach(function(note, i){ note.classList.toggle('is-active', i === activeNote); });
-    dots.forEach(function(dot, i){ dot.setAttribute('aria-current', i === activeNote ? 'true' : 'false'); });
-    if(status) status.textContent = String(activeNote + 1).padStart(2, '0') + ' / 03';
-    if(field) field.dataset.active = String(activeNote + 1).padStart(2, '0');
-  }
-
-  function showNote(index){
-    var note = notes[index];
-    if(!note || !rail) return;
-    var left = note.offsetLeft - (rail.clientWidth - note.clientWidth) / 2;
-    rail.scrollTo({ left: left, behavior: reduced ? 'auto' : 'smooth' });
-    setActiveNote(index);
-  }
-
-  dots.forEach(function(dot){
-    dot.addEventListener('click', function(){ showNote(Number(dot.dataset.slide)); });
-  });
-
-  if(rail){
-    rail.addEventListener('scroll', function(){
-      if(scrollFrame) return;
-      scrollFrame = requestAnimationFrame(function(){
-        var center = rail.scrollLeft + rail.clientWidth / 2;
-        var closest = 0, distance = Infinity;
-        notes.forEach(function(note, i){
-          var d = Math.abs((note.offsetLeft + note.clientWidth / 2) - center);
-          if(d < distance){ distance = d; closest = i; }
-        });
-        setActiveNote(closest);
-        scrollFrame = null;
-      });
-    }, { passive:true });
-    rail.addEventListener('keydown', function(e){
-      if(e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
-      e.preventDefault();
-      showNote(activeNote + (e.key === 'ArrowRight' ? 1 : -1));
-    });
-  }
-  setActiveNote(0);
-
-  render('project');
 })();
 </script>
+
 </body>
 </html>
