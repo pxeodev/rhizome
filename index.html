@@ -87,7 +87,7 @@ nav{
 .nav-menu a{display:block;padding:11px 10px;text-decoration:none;font-size:15px}
 a:focus-visible,button:focus-visible{outline:2px solid var(--turmeric);outline-offset:3px;border-radius:2px}
 .btn{
-  display:inline-block;padding:12px 26px;border-radius:100px;
+  display:inline-block;padding:12px 26px;border-radius:7px;
   background:var(--leaf);color:var(--paper);text-decoration:none;
   font-weight:600;font-size:15px;border:none;cursor:pointer;white-space:nowrap;
   transition:background-color 180ms var(--ease-out),transform 140ms var(--ease-out);
@@ -135,6 +135,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--turmeric);outline-o
 .shoot{position:relative;margin-top:20px;padding-left:34px;min-height:218px}
 .stemline{position:absolute;left:0;top:0;width:34px;height:100%;overflow:visible}
 .stemline path,.roots .drop{fill:none;stroke:var(--stem);stroke-width:2;vector-effect:non-scaling-stroke;stroke-dasharray:400;stroke-dashoffset:400;animation:rhizome-grow .72s var(--ease-out) forwards}
+/* normalize the drop to its own length so the grow always covers the full path (small-business drop exceeds 400 units) */
+.roots .drop{stroke-dasharray:100;stroke-dashoffset:100}
 @keyframes rhizome-grow{to{stroke-dashoffset:0}}
 .shoot-steps{list-style:none}
 .shoot-step{position:relative;padding:9px 0 9px 14px;color:var(--leaf);font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.35}
@@ -156,13 +158,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--turmeric);outline-o
 @media(max-width:600px){.hero{padding:58px 0 70px;background:radial-gradient(circle at 50% 72%,rgba(225,167,47,.12),transparent 34%)}.hero .hero-ctas{align-items:flex-start;gap:18px}.hero-rhizome{margin-top:2px}.shoot-card{padding:24px 20px 0}.shoot{min-height:224px}.shoot-step{font-size:12px}.shoot-step small{font-size:11px}.roots text{font-size:8.5px}.underground{padding-inline:0}}
 
 /* ---------- principle strip ---------- */
-.strip{background:var(--leaf);color:var(--paper);padding:20px 0}
-.strip .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
-.principle{padding:4px 26px;border-left:1px solid rgba(250,246,238,.16)}
-.principle:first-child{border-left:0;padding-left:0}.principle:last-child{padding-right:0}
-.principle strong{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:18px;color:var(--paper);margin-bottom:2px}
-.principle span{font-size:13px;color:#aebbad}
-@media(max-width:700px){.strip .wrap{grid-template-columns:1fr}.principle,.principle:first-child,.principle:last-child{padding:14px 0;border-left:0;border-top:1px solid rgba(250,246,238,.16)}.principle:first-child{border-top:0}}
+.strip{background:var(--leaf);color:var(--paper);padding:22px 0}
+.strip-inner{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px 30px}
+.strip-lead{flex:none;font-family:'Bricolage Grotesque',sans-serif;font-weight:650;font-size:16px;color:var(--paper)}
+.strip-points{list-style:none;display:flex;flex-wrap:wrap;gap:10px 28px;font-size:14px;color:#aebbad;line-height:1.4}
+.strip-points li{max-width:31ch}
+.strip-points strong{color:var(--paper);font-weight:600}
+@media(max-width:820px){.strip-points{flex-direction:column;gap:9px}.strip-points li{max-width:none}}
 
 /* ---------- sections ---------- */
 section{padding:88px 0}
@@ -197,6 +199,14 @@ section{padding:88px 0}
 .offer-output p{color:#3d4438;font-size:14px;max-width:62ch}
 .offer-actions{grid-column:1/-1;display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:4px}
 .offer-actions small{color:var(--mist);font-size:12px}
+.offer--compact{display:block;padding:44px 0 48px}
+.offer--compact .offer-lead{max-width:62ch}
+.offer--compact .offer-lead p{max-width:62ch;margin-top:8px}
+.offer-meta{display:flex;flex-wrap:wrap;gap:8px 24px;margin:22px 0 20px;list-style:none;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.02em;color:var(--mist)}
+.offer-meta strong{color:var(--leaf);font-weight:600}
+.offer-body{max-width:64ch;color:#3d4438;font-size:15.5px;line-height:1.6}
+.offer-body strong{color:var(--leaf);font-weight:650}
+.offer--compact .offer-actions{margin-top:24px}
 .pricing-disclaimer{margin-top:18px;color:var(--mist);font-size:13px;max-width:68ch}
 @media(max-width:820px){.offer{grid-template-columns:1fr;gap:28px}.offer-detail{grid-template-columns:1fr 1fr}.offer-output,.offer-actions{grid-column:1/-1}}
 @media(max-width:540px){.offer-detail{grid-template-columns:1fr}.offer-output,.offer-actions{grid-column:1}.offer-actions{align-items:flex-start;flex-direction:column}.offer:first-child{padding:30px 24px}}
@@ -223,7 +233,7 @@ section{padding:88px 0}
 .guidebook-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
 .guidebook-form label{display:block;color:var(--turmeric);font-size:11px;margin-bottom:12px}
 .guidebook-row{display:flex;gap:12px;flex-wrap:wrap}
-.guidebook-row input{flex:1;min-width:220px;padding:13px 18px;font:inherit;font-size:15px;color:var(--ink);background:var(--paper);border:1px solid rgba(35,53,36,.2);border-radius:100px}
+.guidebook-row input{flex:1;min-width:220px;padding:13px 18px;font:inherit;font-size:15px;color:var(--ink);background:var(--paper);border:1px solid rgba(35,53,36,.2);border-radius:8px}
 .guidebook-row input:focus-visible{outline:2px solid var(--turmeric);outline-offset:2px}
 .guidebook-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .guidebook-form small{display:block;margin-top:14px;color:#b9c6b5;font-size:12.5px}
@@ -320,9 +330,9 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
   <div class="spore-trace" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
   <div class="wrap hero-layout">
     <div class="hero-copy">
-      <span class="mono eyebrow">Practical AI help for real work</span>
+      <span class="mono eyebrow">Practical AI &middot; Chiang Mai</span>
       <h1>Make AI useful at <em>work.</em></h1>
-      <p class="hero-sub">Bring one real task from your week. Leave with a working method you can run, explain and keep. Not a slideshow about what AI might do someday.</p>
+      <p class="hero-sub">Bring something you already do most weeks. Leave with a way to do it using AI that you can run yourself, explain to a colleague and keep. Not a slideshow about what AI might do someday.</p>
       <div class="hero-ctas">
         <a class="btn gold" href="#start">Request a free call</a>
         <a class="hero-text-link" href="#services">See services and prices <span aria-hidden="true">↓</span></a>
@@ -346,7 +356,7 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
       <div class="underground">
         <svg class="roots" viewBox="0 0 520 96" role="tablist" aria-label="Choose an audience">
           <path class="rootline" d="M0,64 C60,58 110,70 170,64 C230,58 290,70 350,64 C410,58 470,68 520,63"/>
-          <path class="drop" id="dropPath" d="M48,64 C48,44 48,28 48,4"/>
+          <path class="drop" id="dropPath" pathLength="100" d="M48,64 C48,44 48,28 48,4"/>
           <circle class="root-crown" cx="48" cy="4" r="5" aria-hidden="true"/>
           <circle class="tuber" data-audience="0" cx="48" cy="64" r="9" role="tab" aria-selected="true" aria-controls="audienceCard" tabindex="0" aria-label="Professionals"/>
           <circle class="tuber" data-audience="1" cx="260" cy="64" r="9" role="tab" aria-selected="false" aria-controls="audienceCard" tabindex="-1" aria-label="Teams"/>
@@ -365,10 +375,13 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
 </header>
 
 <div class="strip">
-  <div class="wrap">
-    <div class="principle"><strong>Fixed scope</strong><span>One task before a wider programme</span></div>
-    <div class="principle"><strong>Sanitized examples</strong><span>Test without exposing sensitive data</span></div>
-    <div class="principle"><strong>Human review</strong><span>A named person owns the result</span></div>
+  <div class="wrap strip-inner">
+    <p class="strip-lead">How we keep it safe</p>
+    <ul class="strip-points">
+      <li><strong>Fixed scope.</strong> One task before any wider programme.</li>
+      <li><strong>Sanitized examples.</strong> Test without exposing sensitive data.</li>
+      <li><strong>A named reviewer.</strong> A person owns the result, not the model.</li>
+    </ul>
   </div>
 </div>
 
@@ -402,15 +415,15 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
           <div class="offer-actions"><a class="btn" href="mailto:hello@therhizomespace.com?subject=Team%20AI%20Starter%20Sprint%20%E2%80%94%20introductory%20call">Plan a team pilot</a><small>Final scope depends on team size and policy requirements.</small></div>
         </div>
       </article>
-      <article class="offer" id="business-audit">
-        <div class="offer-lead"><span class="mono">For owners and operators</span><h3>Small Business Workflow Audit</h3><p>Find the recurring work worth improving before you buy another platform or commission a larger build.</p></div>
-        <div class="offer-detail">
-          <div class="offer-fact"><span>Duration</span><strong>One week</strong></div>
-          <div class="offer-fact"><span>Format</span><strong>Mapping session and findings call</strong></div>
-          <div class="offer-fact"><span>Investment</span><strong>฿18,000 fixed</strong></div>
-          <div class="offer-output"><strong>You receive</strong><p>An opportunity map, value-risk-effort ranking and a build brief for the best first workflow, including what to leave alone.</p></div>
-          <div class="offer-actions"><a class="btn" href="mailto:hello@therhizomespace.com?subject=Small%20Business%20Workflow%20Audit%20%E2%80%94%20introductory%20call">Start the audit</a><small>No software purchase is required for the audit.</small></div>
-        </div>
+      <article class="offer offer--compact" id="business-audit">
+        <div class="offer-lead"><span class="mono">For owners and operators</span><h3>Small Business Workflow Audit</h3><p>Find the recurring work worth improving before you buy another platform or commission a bigger build.</p></div>
+        <ul class="offer-meta">
+          <li><strong>One week</strong></li>
+          <li>Mapping session and findings call</li>
+          <li><strong>฿18,000</strong> fixed</li>
+        </ul>
+        <p class="offer-body"><strong>You receive:</strong> an opportunity map, a value / risk / effort ranking, and a build brief for the best first workflow, including what to leave alone.</p>
+        <div class="offer-actions"><a class="btn" href="mailto:hello@therhizomespace.com?subject=Small%20Business%20Workflow%20Audit%20introductory%20call">Start the audit</a><small>No software purchase is required for the audit.</small></div>
       </article>
     </div>
     <p class="pricing-disclaimer">Introductory prices for the scopes shown. We confirm work, schedule and total price in writing before you commit.</p>
@@ -454,7 +467,7 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
 <section class="cnx" id="chiangmai">
   <div class="wrap">
     <div>
-      <p class="practice-line">The Rhizome Space is an independent AI consultancy in Chiang Mai. We build production AI systems for a living, and we teach the working methods, not the hype.</p>
+      <p class="practice-line">The Rhizome Space is an independent AI consultancy in Chiang Mai. We build production AI systems for a living, and we teach the same methods we use on that work.</p>
       <p class="practice-more"><a class="hero-text-link" href="/about">More about the practice <span aria-hidden="true">→</span></a></p>
     </div>
     <aside class="cnx-panel">
@@ -527,6 +540,7 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
   }
 
   function audienceDropPath(x){
+    // spore stem grows from the selected root (x) up to the crown at x=48
     return 'M' + x + ',64 C' + x + ',44 48,30 48,4';
   }
 
@@ -569,6 +583,26 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
       }
     });
   });
+
+  // Align the rhizome so the crown (and professional tuber) sit under the card stem.
+  // The stem is fixed-px; the tubers are a fraction of card width — so the offset changes
+  // with viewport. Measure it live and shift the whole SVG by the exact delta on resize.
+  const rootsSvg = document.querySelector('.roots');
+  const stemNode = document.getElementById('stemPath');
+  const crownNode = document.querySelector('.root-crown');
+  function alignRhizome(){
+    if(!rootsSvg || !stemNode || !crownNode) return;
+    rootsSvg.style.transform = '';
+    const s = stemNode.getBoundingClientRect();
+    const c = crownNode.getBoundingClientRect();
+    const delta = (s.left + s.width/2) - (c.left + c.width/2);
+    rootsSvg.style.transform = 'translateX(' + delta.toFixed(2) + 'px)';
+  }
+  let alignRAF;
+  function scheduleAlign(){ cancelAnimationFrame(alignRAF); alignRAF = requestAnimationFrame(alignRhizome); }
+  alignRhizome();
+  window.addEventListener('resize', scheduleAlign);
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(alignRhizome); }
 
   const guidebookForm = document.getElementById('guidebookForm');
   if(guidebookForm){
