@@ -4,7 +4,7 @@ _Last session: 2026-07-17. Tracked in git, but excluded from every deploy — th
 
 ## Live state — SHIPPED
 
-Deployed to production via `wrangler pages deploy` (deployment `ea76c6b4`, 2026-07-17).
+Deployed to production via `wrangler pages deploy` (deployment `2c4a3220`, 2026-07-17).
 Verified on therhizomespace.com + www: new markers present, Function `/api/subscribe` POST -> 200 (not 404), HANDOFF.md serves homepage fallback (not leaked).
 
 - Branch `content-revision`, git == live.
@@ -34,7 +34,7 @@ WhatsApp +66 61 793 0404 (Thai/English). Office 207/44, Village 3, Mae Hia, Muea
 Verdict was "moderate AI smell." Homepage (`index.html`) only. What shipped:
 
 **Done:**
-- Squared buttons + guidebook input (`border-radius` 100px -> 7/8px). NOTE: only `index.html` changed; about/guidebook/sample-handover still have `border-radius:100px` `.btn` — apply the same sweep there if consistency wanted.
+- Squared buttons + guidebook input (`border-radius` 100px -> 7/8px). Sweep completed across all 4 pages (`cfe259d` did about/guidebook/sample-handover) — no `100px` radius remains anywhere.
 - Hero de-duped: brand stays in the sticky nav only; eyebrow -> "Practical AI · Chiang Mai". (Reviewer's "move the widget below fold" was REJECTED — the rhizome widget is the distinctive asset; kept in hero. User confirmed.)
 - Trust strip: 3-equal-column feature grid -> "How we keep it safe" lead + flowing list (`.strip-inner/.strip-lead/.strip-points`). Same 3 promises, breaks the pattern. `.principle` classes removed.
 - Offer #3 (Small Business Audit) -> single-column narrative w/ inline `.offer-meta` row (`.offer--compact`). Three offers now read as three shapes.
