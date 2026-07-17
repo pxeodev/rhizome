@@ -16,7 +16,7 @@ function json(body, status = 200) {
 async function sendGuidebook(env, email, origin) {
   if (!env.RESEND_API_KEY) return false;
 
-  const from = env.RESEND_FROM || 'The Rhizome Space <hello@therhizomespace.com>';
+  const from = env.RESEND_FROM || 'The Rhizome Space <hello@mail.therhizomespace.com>';
   const link = origin + '/guidebook';
   const text =
     'Thanks for asking for the guidebook.\n\n' +
