@@ -65,10 +65,11 @@ section{padding:44px 0 88px}
 .proof-line strong{font-family:'Bricolage Grotesque',sans-serif;color:var(--leaf)}
 .proof-line span{color:var(--mist);font-size:14px}
 .cnx-panel{margin-top:34px;background:var(--paper-dim);border-radius:18px;padding:36px 32px;border:1px solid rgba(35,53,36,.14)}
-.cnx-panel dl{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;font-size:15px}
-.cnx-panel dt{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ginger);padding-top:3px}
-.cnx-panel dd{color:#3d4438}
-.cnx-panel address{font-style:normal}
+.cnx-place{color:var(--ginger);margin-bottom:14px}
+.cnx-panel address{font-style:normal;color:#3d4438;font-size:15px}
+.cnx-contact{margin-top:16px;font-size:15px;line-height:1.8}
+.cnx-contact a{color:var(--leaf);font-weight:650;text-decoration-color:rgba(35,53,36,.3)}
+.cnx-note{margin-top:16px;color:var(--mist);font-size:13px}
 @media(max-width:820px){.about-grid{grid-template-columns:1fr}.proof-line{grid-template-columns:1fr;gap:4px}}
 .page-cta{background:var(--turmeric);padding:64px 0}
 .page-cta .wrap{text-align:center}
@@ -109,18 +110,17 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:40px 0;font-size:14.5px
 <main id="main">
 <header class="page-head">
   <div class="wrap">
-    <span class="mono eyebrow">Independent and practitioner-led</span>
-    <h1 class="sec-title">Production depth, translated into ordinary work.</h1>
+    <span class="mono eyebrow">About the practice</span>
+    <h1 class="sec-title">We build AI systems for a living.</h1>
   </div>
 </header>
 
 <section>
   <div class="wrap about-grid">
     <div class="about-copy">
-      <p>The Rhizome Space is an independent AI consultancy based in Chiang Mai, working online worldwide. We build production AI systems and multi-agent workflows for a living, then turn that technical depth into methods professionals and small teams can understand, supervise and own.</p>
-      <p>No mystery platform and no anonymous hand-off. The same practice that scopes the work stays close to the testing, documentation and final decision.</p>
-      <p>Every engagement is fixed in scope before it begins: you know the time, the price and the deliverable in writing. Work starts from a task you already do, uses sanitized examples until boundaries are agreed, and ends with a documented method that belongs to you, not to us.</p>
-      <p>Local sessions are available in Chiang Mai by arrangement; remote work is designed to be equally clear and hands-on.</p>
+      <p>The Rhizome Space is an independent AI consultancy based in Chiang Mai, working online worldwide. We build production AI systems and multi-agent workflows, and we bring that hands-on experience to work professionals and small teams do every day.</p>
+      <p>No mystery platform and no anonymous hand-off. The person who scopes the work does the testing, the documentation and the handover.</p>
+      <p>Every engagement is fixed in scope: you know the time, the price and the deliverable in writing before you commit. Work starts from a task you already do, uses sanitized examples until boundaries are agreed, and ends with a documented method that belongs to you.</p>
     </div>
     <div>
       <div class="practice-proof" aria-label="How the practice works">
@@ -128,7 +128,12 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:40px 0;font-size:14.5px
         <div class="proof-line"><strong>Tool-independent</strong><span>We choose around the task and your approved environment, not a software reseller agreement.</span></div>
         <div class="proof-line"><strong>Documented</strong><span>You keep the workflow, boundaries, templates and next decision after the engagement ends.</span></div>
       </div>
-      <aside class="cnx-panel"><dl><dt>Office</dt><dd><address>207/44, Village 3<br>Mae Hia, Mueang Chiang Mai<br>Chiang Mai 50100, Thailand</address></dd><dt>WhatsApp</dt><dd><a href="https://wa.me/66617930404">+66 61 793 0404</a></dd><dt>Time zone</dt><dd>ICT (UTC+7)</dd><dt>Delivery</dt><dd>Online worldwide</dd><dt>In person</dt><dd>Chiang Mai by arrangement</dd><dt>Working language</dt><dd>English or Thai</dd><dt>Approach</dt><dd>Small scopes, clear documents, human ownership</dd></dl></aside>
+      <aside class="cnx-panel">
+        <p class="mono cnx-place">Chiang Mai · UTC+7</p>
+        <address>207/44, Village 3, Mae Hia<br>Mueang Chiang Mai 50100, Thailand</address>
+        <p class="cnx-contact"><a href="https://wa.me/66617930404">WhatsApp +66 61 793 0404</a><br><a href="mailto:hello@therhizomespace.com">hello@therhizomespace.com</a></p>
+        <p class="cnx-note">Online worldwide, in person by arrangement. Thai or English.</p>
+      </aside>
     </div>
   </div>
 </section>

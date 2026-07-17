@@ -238,10 +238,11 @@ section{padding:88px 0}
   background:var(--paper-dim);border-radius:18px;padding:36px 32px;
   border:1px solid rgba(35,53,36,.14);
 }
-.cnx-panel dl{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;font-size:15px}
-.cnx-panel dt{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ginger);padding-top:3px}
-.cnx-panel dd{color:#3d4438}
-.cnx-panel address{font-style:normal}
+.cnx-place{color:var(--ginger);margin-bottom:14px}
+.cnx-panel address{font-style:normal;color:#3d4438;font-size:15px}
+.cnx-contact{margin-top:16px;font-size:15px;line-height:1.8}
+.cnx-contact a{color:var(--leaf);font-weight:650;text-decoration-color:rgba(35,53,36,.3)}
+.cnx-note{margin-top:16px;color:var(--mist);font-size:13px}
 .practice-line{max-width:52ch;font-size:18px;line-height:1.6;color:#3d4438}
 .practice-more{margin-top:22px}
 @media(max-width:820px){.cnx .wrap{grid-template-columns:1fr}}
@@ -321,7 +322,7 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
     <div class="hero-copy">
       <span class="mono eyebrow">Practical AI help for real work</span>
       <h1>Make AI useful at <em>work.</em></h1>
-      <p class="hero-sub">Start with one real task from your actual week and leave with a working method you can run, explain and keep. Not a slideshow about what AI might do someday.</p>
+      <p class="hero-sub">Bring one real task from your week. Leave with a working method you can run, explain and keep. Not a slideshow about what AI might do someday.</p>
       <div class="hero-ctas">
         <a class="btn gold" href="#start">Request a free call</a>
         <a class="hero-text-link" href="#services">See services and prices <span aria-hidden="true">↓</span></a>
@@ -373,14 +374,13 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
 
 <section class="bridge" id="why-now">
   <div class="wrap">
-    <p class="bridge-text">Until recently you either bought a big generic tool and bent your work to fit it, or described the thing you wished existed and hoped someone would build it. AI closed that gap. One specific task can now become a working version quickly, shaped around how you actually do the job, with clear boundaries and a person who stays responsible for the result. <strong>That first working version is what we help you build.</strong></p>
+    <p class="bridge-text">You no longer have to bend your work around a generic tool. One real task can now become a working version in days, shaped around how you actually do the job. <strong>That first working version is what we help you build.</strong></p>
   </div>
 </section>
 
 <section class="offers" id="services">
   <div class="wrap">
     <h2 class="sec-title">Know the time, price and outcome before we start.</h2>
-    <p class="sec-lede">Each engagement begins with work you already do and ends with a documented method you can keep.</p>
     <div class="offer-list">
       <article class="offer" id="clinic">
         <div class="offer-lead"><span class="mono">For one professional</span><h3>AI Workflow Clinic</h3><p>Turn one report, research task or recurring admin job into a supervised method you can reuse and explain.</p></div>
@@ -436,7 +436,7 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
     <div class="guidebook-copy">
       <span class="mono eyebrow">Free guidebook</span>
       <h2 class="sec-title">Not sure what's safe to put into AI at work?</h2>
-      <p class="sec-lede">The free Rhizome guidebook starts with the answer: a plain-language guide to what you can test freely, what to sanitize first, and what should never go into a tool by default. Then it walks through our full five-step method, with the templates and review checklists we use in paid engagements.</p>
+      <p class="sec-lede">A plain-language guide to what you can test freely, what to sanitize first, and what should never go into a tool by default. Plus the five-step method, templates and checklists we use in paid engagements.</p>
     </div>
     <form class="guidebook-form" id="guidebookForm" novalidate>
       <label class="mono" for="guidebookEmail">Where should we send it?</label>
@@ -454,10 +454,15 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
 <section class="cnx" id="chiangmai">
   <div class="wrap">
     <div>
-      <p class="practice-line">The Rhizome Space is an independent AI consultancy in Chiang Mai, working online worldwide. We build production AI systems and multi-agent workflows for a living, and translate that depth into methods professionals can supervise and own.</p>
+      <p class="practice-line">The Rhizome Space is an independent AI consultancy in Chiang Mai. We build production AI systems for a living, and we teach the working methods, not the hype.</p>
       <p class="practice-more"><a class="hero-text-link" href="/about">More about the practice <span aria-hidden="true">→</span></a></p>
     </div>
-    <aside class="cnx-panel"><dl><dt>Office</dt><dd><address>207/44, Village 3<br>Mae Hia, Mueang Chiang Mai<br>Chiang Mai 50100, Thailand</address></dd><dt>WhatsApp</dt><dd><a href="https://wa.me/66617930404">+66 61 793 0404</a></dd><dt>Time zone</dt><dd>ICT (UTC+7)</dd><dt>Delivery</dt><dd>Online worldwide</dd><dt>In person</dt><dd>Chiang Mai by arrangement</dd><dt>Working language</dt><dd>English or Thai</dd></dl></aside>
+    <aside class="cnx-panel">
+      <p class="mono cnx-place">Chiang Mai · UTC+7</p>
+      <address>207/44, Village 3, Mae Hia<br>Mueang Chiang Mai 50100, Thailand</address>
+      <p class="cnx-contact"><a href="https://wa.me/66617930404">WhatsApp +66 61 793 0404</a><br><a href="mailto:hello@therhizomespace.com">hello@therhizomespace.com</a></p>
+      <p class="cnx-note">Online worldwide, in person by arrangement. Thai or English.</p>
+    </aside>
   </div>
 </section>
 
