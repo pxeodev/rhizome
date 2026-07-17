@@ -626,9 +626,11 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
       }).then(function(response){
         if(!response.ok) throw new Error('bad status');
         return response.json();
-      }).then(function(){
+      }).then(function(res){
         guidebookForm.querySelector('.guidebook-row').hidden = true;
-        statusLine.innerHTML = 'Done. Read it now: <a href="/guidebook">the Rhizome guidebook</a>.';
+        statusLine.innerHTML = (res && res.emailed)
+          ? 'Sent to your inbox. Or read it now: <a href="/guidebook">the Rhizome guidebook</a>.'
+          : 'Done. Read it now: <a href="/guidebook">the Rhizome guidebook</a>.';
       }).catch(function(){
         submitBtn.disabled = false;
         statusLine.innerHTML = 'Something went wrong. Email us instead: <a href="mailto:hello@therhizomespace.com?subject=Guidebook%20request">hello@therhizomespace.com</a>';
