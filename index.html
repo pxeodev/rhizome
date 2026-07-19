@@ -130,7 +130,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--turmeric);outline-o
 .hero-rhizome{width:100%;max-width:540px;margin-left:auto}
 .rhizome-label{display:block;margin:0 0 14px 4px;color:var(--ginger)}
 .shoot-card{position:relative;z-index:1;overflow:hidden;background:#fffdf8;border:1px solid rgba(35,53,36,.16);border-radius:16px 16px 0 0;padding:28px 28px 0}
-.shoot-card .audience-tag{display:block;color:var(--ginger);font-size:10px}
+.shoot-card .audience-tag{display:block;color:var(--ginger);font-size:12px}
 .shoot-card .audience-lede{margin-top:10px;max-width:38ch;color:#3d4438;font-size:16px;line-height:1.5}
 .shoot{position:relative;margin-top:20px;padding-left:34px;min-height:218px}
 .stemline{position:absolute;left:0;top:0;width:34px;height:100%;overflow:visible}
@@ -139,23 +139,46 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--turmeric);outline-o
 .roots .drop{stroke-dasharray:100;stroke-dashoffset:100}
 @keyframes rhizome-grow{to{stroke-dashoffset:0}}
 .shoot-steps{list-style:none}
-.shoot-step{position:relative;padding:9px 0 9px 14px;color:var(--leaf);font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.35}
+.shoot-step{position:relative;padding:9px 0 9px 14px;color:var(--leaf);font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.35}
 .shoot-step::before{content:"";position:absolute;left:-24px;top:21px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--stem);transform:translateY(-50%)}
 .shoot-step.reached::before{background:var(--turmeric);border-color:var(--turmeric)}
-.shoot-step small{display:block;margin-top:2px;color:var(--mist);font-family:'Instrument Sans',sans-serif;font-size:12px;line-height:1.4}
+.shoot-step small{display:block;margin-top:2px;color:var(--mist);font-family:'Instrument Sans',sans-serif;font-size:13px;line-height:1.4}
 .shoot-path{position:relative;display:flex;align-items:center;gap:9px;margin:10px 0 0 -34px;padding:16px 0 22px 34px;color:var(--leaf);font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:650;text-decoration:none}
 .shoot-path::before{content:"";position:absolute;left:16px;top:0;bottom:-30px;width:2px;background:var(--stem)}
 .shoot-path svg{transition:transform 180ms var(--ease-out)}
-.underground{position:relative;z-index:2;margin-top:-12px;padding:0 8px 20px;background:var(--soil);border-radius:0 0 16px 16px;clip-path:polygon(0 2px,18% 1px,38% 3px,60% 1px,82% 2px,100% 0,100% 100%,0 100%)}
+.underground{position:relative;z-index:2;margin-top:-12px;padding:0 8px 14px;background:var(--soil);border-radius:0 0 16px 16px;overflow:hidden;clip-path:polygon(0 2px,18% 1px,38% 3px,60% 1px,82% 2px,100% 0,100% 100%,0 100%)}
+.roots-wrap{position:relative;width:100%}
 .roots{display:block;width:100%;height:auto;overflow:visible}
 .roots .rootline{fill:none;stroke:var(--stem);stroke-width:2;vector-effect:non-scaling-stroke;opacity:.78}
 .roots .root-crown{fill:var(--turmeric);stroke:var(--soil);stroke-width:3;vector-effect:non-scaling-stroke}
 .roots .tuber{fill:var(--paper);stroke:var(--stem);stroke-width:2;cursor:pointer;transition:fill 160ms var(--ease-out),stroke 160ms var(--ease-out),r 160ms var(--ease-out)}
 .roots .tuber[aria-selected="true"]{fill:var(--turmeric);stroke:var(--turmeric)}
 .roots .hit{fill:transparent;cursor:pointer}
-.roots text{fill:var(--leaf);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.04em;pointer-events:none}
+/* Tab labels live in HTML (CSS px). 3 equal columns so edge words never clip. */
+.root-labels{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;width:100%;margin-top:2px;padding:0 2px}
+.root-labels button{
+  appearance:none;margin:0;border:0;padding:8px 4px;background:transparent;cursor:pointer;
+  font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.03em;line-height:1.25;
+  color:var(--mist);text-align:center;
+}
+.root-labels button[aria-selected="true"]{color:var(--leaf);font-weight:600}
+.root-labels button:focus-visible{outline:2px solid var(--turmeric);outline-offset:2px;border-radius:2px}
 @media(max-width:980px){.hero-layout{grid-template-columns:1fr;gap:58px}.hero-copy{max-width:720px}.hero-rhizome{max-width:620px;margin:0}}
-@media(max-width:600px){.hero{padding:58px 0 70px;background:radial-gradient(circle at 50% 72%,rgba(225,167,47,.12),transparent 34%)}.hero .hero-ctas{align-items:flex-start;gap:18px}.hero-rhizome{margin-top:2px}.shoot-card{padding:24px 20px 0}.shoot{min-height:224px}.shoot-step{font-size:12px}.shoot-step small{font-size:11px}.roots text{font-size:8.5px}.underground{padding-inline:0}}
+@media(max-width:600px){
+  .hero{padding:58px 0 70px;background:radial-gradient(circle at 50% 72%,rgba(225,167,47,.12),transparent 34%)}
+  .hero .hero-ctas{align-items:flex-start;gap:18px}
+  .hero-rhizome{margin-top:2px}
+  .shoot-card{padding:24px 20px 0}
+  .shoot{min-height:224px}
+  .shoot-card .audience-tag{font-size:13px}
+  .shoot-card .audience-lede{font-size:17px}
+  .shoot-step{font-size:15px}
+  .shoot-step small{font-size:14px}
+  .shoot-path{font-size:19px}
+  .root-labels{gap:4px;margin-top:4px;padding:0}
+  .root-labels button{font-size:14px;letter-spacing:.02em;padding:10px 2px}
+  .underground{padding:0 10px 16px}
+}
 
 /* ---------- principle strip ---------- */
 .strip{background:var(--leaf);color:var(--paper);padding:22px 0}
@@ -354,20 +377,24 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
         </div>
       </div>
       <div class="underground">
-        <svg class="roots" viewBox="0 0 520 96" role="tablist" aria-label="Choose an audience">
-          <path class="rootline" d="M0,64 C60,58 110,70 170,64 C230,58 290,70 350,64 C410,58 470,68 520,63"/>
-          <path class="drop" id="dropPath" pathLength="100" d="M48,64 C48,44 48,28 48,4"/>
-          <circle class="root-crown" cx="48" cy="4" r="5" aria-hidden="true"/>
-          <circle class="tuber" data-audience="0" cx="48" cy="64" r="9" role="tab" aria-selected="true" aria-controls="audienceCard" tabindex="0" aria-label="Professionals"/>
-          <circle class="tuber" data-audience="1" cx="260" cy="64" r="9" role="tab" aria-selected="false" aria-controls="audienceCard" tabindex="-1" aria-label="Teams"/>
-          <circle class="tuber" data-audience="2" cx="472" cy="64" r="9" role="tab" aria-selected="false" aria-controls="audienceCard" tabindex="-1" aria-label="Small business"/>
-          <circle class="hit" data-audience="0" cx="48" cy="64" r="22" aria-hidden="true"/>
-          <circle class="hit" data-audience="1" cx="260" cy="64" r="22" aria-hidden="true"/>
-          <circle class="hit" data-audience="2" cx="472" cy="64" r="22" aria-hidden="true"/>
-          <text x="48" y="90" text-anchor="middle">professional</text>
-          <text x="260" y="90" text-anchor="middle">team</text>
-          <text x="472" y="90" text-anchor="middle">small business</text>
-        </svg>
+        <div class="roots-wrap">
+          <svg class="roots" viewBox="0 0 520 84" aria-hidden="true">
+            <path class="rootline" d="M0,64 C60,58 110,70 170,64 C230,58 290,70 350,64 C410,58 470,68 520,63"/>
+            <path class="drop" id="dropPath" pathLength="100" d="M90,64 C90,44 90,28 90,4"/>
+            <circle class="root-crown" cx="90" cy="4" r="5"/>
+            <circle class="tuber" data-audience="0" cx="90" cy="64" r="9" aria-selected="true"/>
+            <circle class="tuber" data-audience="1" cx="260" cy="64" r="9" aria-selected="false"/>
+            <circle class="tuber" data-audience="2" cx="430" cy="64" r="9" aria-selected="false"/>
+            <circle class="hit" data-audience="0" cx="90" cy="64" r="22"/>
+            <circle class="hit" data-audience="1" cx="260" cy="64" r="22"/>
+            <circle class="hit" data-audience="2" cx="430" cy="64" r="22"/>
+          </svg>
+        </div>
+        <div class="root-labels" role="tablist" aria-label="Choose an audience">
+          <button type="button" role="tab" data-audience="0" aria-selected="true" aria-controls="audienceCard" tabindex="0">professional</button>
+          <button type="button" role="tab" data-audience="1" aria-selected="false" aria-controls="audienceCard" tabindex="-1">team</button>
+          <button type="button" role="tab" data-audience="2" aria-selected="false" aria-controls="audienceCard" tabindex="-1">small business</button>
+        </div>
       </div>
       <p class="sr-status" id="audienceStatus" aria-live="polite"></p>
     </figure>
@@ -499,12 +526,13 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
 
 <script>
 (function(){
+  const crownX = 90;
   const audiences = [
     {
       tag:'For professionals',
       lede:'Start with one report, research task or recurring admin job from your actual work.',
       steps:[['Real task','From your actual week, not a demo'],['Assisted method','The same job, with AI in the loop'],['Review checklist','You stay responsible for the output']],
-      link:'View the workflow clinic', href:'#clinic', x:48
+      link:'View the workflow clinic', href:'#clinic', x:90
     },
     {
       tag:'For teams',
@@ -516,10 +544,11 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
       tag:'For small business',
       lede:'Rank repetitive work by value, risk and effort before buying another platform.',
       steps:[['Time drain','Find what repeatedly eats the hours'],['Rank it','Value, risk and effort together'],['Build plan','Start where the payoff is clearest']],
-      link:'View the workflow audit', href:'#business-audit', x:472
+      link:'View the workflow audit', href:'#business-audit', x:430
     }
   ];
-  const audienceTabs = Array.from(document.querySelectorAll('.tuber'));
+  const audienceTabs = Array.from(document.querySelectorAll('.root-labels [role="tab"]'));
+  const audienceTubers = Array.from(document.querySelectorAll('.tuber'));
   const audienceHits = Array.from(document.querySelectorAll('.roots .hit'));
   const audienceStepNodes = Array.from(document.querySelectorAll('.shoot-step'));
   const audienceFields = {
@@ -540,8 +569,8 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
   }
 
   function audienceDropPath(x){
-    // spore stem grows from the selected root (x) up to the crown at x=48
-    return 'M' + x + ',64 C' + x + ',44 48,30 48,4';
+    // spore stem grows from the selected root (x) up to the crown under the card stem
+    return 'M' + x + ',64 C' + x + ',44 ' + crownX + ',30 ' + crownX + ',4';
   }
 
   function selectAudience(index, announce){
@@ -561,17 +590,22 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
       tab.setAttribute('aria-selected', selected ? 'true' : 'false');
       tab.setAttribute('tabindex', selected ? '0' : '-1');
     });
+    audienceTubers.forEach(function(tuber, tabIndex){
+      tuber.setAttribute('aria-selected', tabIndex === index ? 'true' : 'false');
+    });
     restartGrowth(audienceFields.drop);
     restartGrowth(audienceFields.stem);
     if(announce) audienceFields.status.textContent = audience.tag + ' selected.';
   }
 
   function audienceIndex(target){ return Number(target.dataset.audience); }
-  audienceHits.forEach(function(hit){
-    hit.addEventListener('click', function(){ selectAudience(audienceIndex(hit), true); });
-  });
+  function bindAudienceTarget(target){
+    target.addEventListener('click', function(){ selectAudience(audienceIndex(target), true); });
+  }
+  audienceHits.forEach(bindAudienceTarget);
+  audienceTubers.forEach(bindAudienceTarget);
   audienceTabs.forEach(function(tab){
-    tab.addEventListener('click', function(){ selectAudience(audienceIndex(tab), true); });
+    bindAudienceTarget(tab);
     tab.addEventListener('keydown', function(event){
       const index = audienceIndex(tab);
       if(event.key === 'Enter' || event.key === ' '){ event.preventDefault(); selectAudience(index, true); }
@@ -584,19 +618,19 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
     });
   });
 
-  // Align the rhizome so the crown (and professional tuber) sit under the card stem.
-  // The stem is fixed-px; the tubers are a fraction of card width — so the offset changes
-  // with viewport. Measure it live and shift the whole SVG by the exact delta on resize.
-  const rootsSvg = document.querySelector('.roots');
+  // Align the rhizome so the crown sits under the card stem.
+  // The stem is fixed-px; the crown is a fraction of card width — offset changes with viewport.
+  // Labels stay outside this wrap so readable type is never translated off-screen.
+  const rootsWrap = document.querySelector('.roots-wrap');
   const stemNode = document.getElementById('stemPath');
   const crownNode = document.querySelector('.root-crown');
   function alignRhizome(){
-    if(!rootsSvg || !stemNode || !crownNode) return;
-    rootsSvg.style.transform = '';
+    if(!rootsWrap || !stemNode || !crownNode) return;
+    rootsWrap.style.transform = '';
     const s = stemNode.getBoundingClientRect();
     const c = crownNode.getBoundingClientRect();
     const delta = (s.left + s.width/2) - (c.left + c.width/2);
-    rootsSvg.style.transform = 'translateX(' + delta.toFixed(2) + 'px)';
+    rootsWrap.style.transform = 'translateX(' + delta.toFixed(2) + 'px)';
   }
   let alignRAF;
   function scheduleAlign(){ cancelAnimationFrame(alignRAF); alignRAF = requestAnimationFrame(alignRhizome); }
