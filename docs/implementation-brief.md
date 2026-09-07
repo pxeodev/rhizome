@@ -17,8 +17,8 @@ Interactive client-side quiz. Eight questions across four axes (Comfort, Safety,
 
 - **Hero softened for learners:** H1 now "Learn AI for the work you already do." (turmeric underline on "already do"). Sub keeps "bring something you already do most weeks." Production-systems language removed from hero (remains in the Chiang Mai / About section).
 - **Hero CTAs:** primary "Take the free map" links to `/map`. Secondary "Join the space waitlist" links to `#space`.
-- **Three-doors strip** after safety strip: Learn (map, guidebook, workshops coming soon), Get help (clinic / audit / sprint), Come by (coffee and coworking, opening soon, waitlist link).
-- **The Space section** (`#space`): Mae Hia context, explicit "not open yet" language, waitlist form with name (optional), email (required), WhatsApp (optional). Honeypot + client validation matching guidebook form pattern.
+- **Three-doors strip** after safety strip: Learn (map, guidebook, workshops coming soon), Get help (clinic / audit / sprint), Come by (coffee and coworking, coming early 2027, waitlist link).
+- **The Space section** (`#space`): Mae Hia context, forward-looking "coming in early 2027" framing, waitlist form with name (optional), email (required), WhatsApp (optional). Honeypot + client validation matching guidebook form pattern.
 - **Offer cards:** added short "Fits if..." one-liners tied to map outcomes.
 - **Nav updated:** Map, Services, Guidebook, About, WhatsApp, "Join the waitlist" gold CTA button. Mobile hamburger menu matches.
 - **Footer updated:** Map link added, sample-handover link removed (still accessible via `/sample-handover`).
@@ -54,4 +54,4 @@ Interactive client-side quiz. Eight questions across four axes (Comfort, Safety,
 - Practitioner unnamed: "we" throughout.
 - Palette: leaf, paper, turmeric, ginger, soil, stem, mist.
 - Fonts: Bricolage Grotesque, Instrument Sans, IBM Plex Mono.
-- Space waitlist copy: honest "not open yet", no invented hours.
+- Space waitlist copy: forward-looking "coming in early 2027", no invented hours.
