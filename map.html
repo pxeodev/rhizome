@@ -248,9 +248,9 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
 <main id="main">
 <header class="page-head">
   <div class="wrap">
-    <span class="mono eyebrow">Free &middot; 2 minutes &middot; no email required</span>
+    <span class="mono eyebrow">Free &middot; 2 min &middot; no email</span>
     <h1 class="sec-title">Your AI Readiness Map</h1>
-    <p class="sec-lede">Answer eight short questions about how you use AI at work right now. You will see where you are strong, where to be careful and one clear next step.</p>
+    <p class="sec-lede">8 short questions. See your strong points, risks, and one next step.</p>
   </div>
 </header>
 
@@ -259,19 +259,19 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
 
     <!-- Step 0: Path chooser -->
     <div class="quiz-card" id="pathStep">
-      <h2 style="font-size:clamp(20px,2.6vw,24px);color:var(--leaf);margin-bottom:6px">Who is this map for?</h2>
-      <p style="color:var(--mist);font-size:15px;margin-bottom:0">Pick the one that fits best. It helps us point you to the right next step.</p>
+      <h2 style="font-size:clamp(20px,2.6vw,24px);color:var(--leaf);margin-bottom:6px">Who is this for?</h2>
+      <p style="color:var(--mist);font-size:15px;margin-bottom:0">Pick one. We suggest the next step.</p>
       <div class="path-chooser" role="radiogroup" aria-label="Who is this map for?">
         <button class="path-btn" type="button" role="radio" aria-pressed="false" data-path="self">
-          <span class="path-icon" aria-hidden="true">&#x1f9d1;</span>
+          <span class="path-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="20" r="3" fill="#e1a72f"/><path d="M14 17 V8" stroke="#52705a" stroke-width="2" fill="none"/><circle cx="14" cy="6" r="2.2" fill="none" stroke="#985426" stroke-width="1.8"/></svg></span>
           <span><span class="path-label">For myself</span><span class="path-sub">I want to use AI in my own work</span></span>
         </button>
         <button class="path-btn" type="button" role="radio" aria-pressed="false" data-path="team">
-          <span class="path-icon" aria-hidden="true">&#x1f465;</span>
+          <span class="path-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="10" cy="20" r="2.4" fill="#e1a72f"/><circle cx="18" cy="20" r="2.4" fill="none" stroke="#52705a" stroke-width="1.8"/><path d="M10 17.5 C10 12 18 12 18 17.5" stroke="#52705a" stroke-width="1.6" fill="none"/><circle cx="14" cy="8" r="2.2" fill="#985426"/></svg></span>
           <span><span class="path-label">For my team</span><span class="path-sub">I manage people who could benefit</span></span>
         </button>
         <button class="path-btn" type="button" role="radio" aria-pressed="false" data-path="business">
-          <span class="path-icon" aria-hidden="true">&#x1f3ea;</span>
+          <span class="path-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 28 28"><ellipse cx="14" cy="19" rx="7" ry="3.2" fill="none" stroke="#52705a" stroke-width="1.8"/><path d="M14 19 V8" stroke="#52705a" stroke-width="1.8" fill="none"/><circle cx="14" cy="6" r="2.4" fill="#e1a72f"/></svg></span>
           <span><span class="path-label">For my small business</span><span class="path-sub">I run the business and want to improve operations</span></span>
         </button>
       </div>
