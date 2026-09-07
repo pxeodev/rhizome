@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Readiness Map | The Rhizome Space</title>
+<meta name="description" content="A free, two-minute self-assessment: find out where you stand with AI at work and get one clear next step. No email required.">
+<meta name="theme-color" content="#faf6ee">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI Readiness Map | The Rhizome Space">
+<meta property="og:description" content="Two-minute self-assessment: see where you stand with AI at work and get one clear next step.">
+<meta property="og:url" content="https://www.therhizomespace.com/map">
+<meta property="og:image" content="https://www.therhizomespace.com/assets/rhizome-og-thai-v2.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=2">
+<link rel="shortcut icon" type="image/png" href="assets/favicon-32.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png?v=2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&amp;family=Instrument+Sans:ital,wght@0,400..700;1,400&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+:root{
+  --leaf:#233524;
+  --leaf-dark:#14261a;
+  --paper:#f4f0e6;
+  --paper-dim:#f0ead8;
+  --turmeric:#e1a72f;
+  --ginger:#985426;
+  --ink:#22271f;
+  --mist:#56675b;
+  --soil:#e7ddc7;
+  --stem:#52705a;
+  --maxw:760px;
+  --ease-out:cubic-bezier(.23,1,.32,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+.skip-link{position:absolute;left:16px;top:-60px;z-index:100;background:var(--leaf-dark);color:var(--paper);padding:10px 16px;border-radius:0 0 8px 8px}
+.skip-link:focus{top:0}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+body{font-family:'Instrument Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;font-size:17px}
+h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;line-height:1.08;font-weight:600;text-wrap:balance}
+p,li,dd{text-wrap:pretty}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+a{color:inherit}
+img{display:block;max-width:100%}
+::selection{background:var(--turmeric);color:var(--leaf-dark)}
+
+/* nav */
+nav{position:sticky;top:0;z-index:50;background:rgba(244,240,230,.94);backdrop-filter:blur(8px);border-bottom:1px solid rgba(35,53,36,.12)}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:'Bricolage Grotesque';font-weight:700;font-size:19px;color:var(--leaf)}
+.logo-mark{width:52px;height:47px;object-fit:contain;flex:none}
+.nav-links{display:flex;gap:28px;align-items:center;list-style:none}
+.nav-links a{text-decoration:none;font-size:15px;color:var(--ink);opacity:.85;transition:color 160ms var(--ease-out),opacity 160ms var(--ease-out)}
+.nav-links a.btn{color:var(--paper);opacity:1}
+a:focus-visible,button:focus-visible{outline:2px solid var(--turmeric);outline-offset:3px;border-radius:2px}
+.btn{display:inline-block;padding:12px 26px;border-radius:7px;background:var(--leaf);color:var(--paper);text-decoration:none;font-weight:600;font-size:15px;border:none;cursor:pointer;white-space:nowrap;transition:background-color 180ms var(--ease-out),transform 140ms var(--ease-out)}
+.btn:active{transform:scale(.97)}
+.btn.gold{background:var(--turmeric);color:var(--leaf-dark)}
+.btn.ghost{background:transparent;color:var(--leaf);box-shadow:inset 0 0 0 1.5px var(--leaf)}
+.nav-cta{padding:9px 20px;font-size:14px}
+.nav-menu{display:none;position:relative}
+.nav-menu summary{list-style:none;cursor:pointer;font-weight:650;color:var(--leaf);padding:10px 2px}
+.nav-menu summary::-webkit-details-marker{display:none}
+.nav-menu summary::after{content:" +";color:var(--ginger)}
+.nav-menu[open] summary::after{content:" −"}
+.nav-menu ul{position:absolute;right:0;top:48px;min-width:230px;list-style:none;background:var(--paper);border:1px solid rgba(35,53,36,.16);padding:12px;box-shadow:0 8px 18px rgba(35,53,36,.10)}
+.nav-menu li+li{border-top:1px solid rgba(35,53,36,.10)}
+.nav-menu a{display:block;padding:11px 10px;text-decoration:none;font-size:15px}
+@media(max-width:760px){.nav-links{display:none}.nav-menu{display:block}}
+@media(max-width:460px){nav .logo-text{display:none}}
+
+/* page head */
+.page-head{padding:72px 0 12px;text-align:center}
+.page-head .eyebrow{color:var(--ginger);margin-bottom:14px;display:block}
+.sec-title{font-size:clamp(30px,3.6vw,46px);color:var(--leaf);letter-spacing:-.015em}
+.sec-lede{margin-top:16px;max-width:54ch;color:#3d4438;margin-left:auto;margin-right:auto}
+
+/* quiz container */
+.quiz-wrap{padding:32px 0 88px}
+.quiz-card{background:#fffdf8;border:1px solid rgba(35,53,36,.14);border-radius:16px;padding:36px 32px;margin-bottom:32px}
+@media(max-width:540px){.quiz-card{padding:28px 20px}}
+
+/* path chooser */
+.path-chooser{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.path-btn{appearance:none;border:2px solid rgba(35,53,36,.16);background:var(--paper);border-radius:10px;padding:20px 16px;cursor:pointer;text-align:center;transition:border-color 180ms var(--ease-out),background 180ms var(--ease-out),transform 140ms var(--ease-out)}
+.path-btn:active{transform:scale(.97)}
+.path-btn[aria-pressed="true"]{border-color:var(--turmeric);background:rgba(225,167,47,.08)}
+.path-btn .path-icon{font-size:28px;margin-bottom:8px;display:block}
+.path-btn .path-label{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:16px;color:var(--leaf);display:block}
+.path-btn .path-sub{display:block;margin-top:4px;font-size:13px;color:var(--mist)}
+@media(max-width:460px){.path-chooser{grid-template-columns:1fr}.path-btn{display:flex;align-items:center;gap:14px;text-align:left;padding:16px}.path-btn .path-icon{font-size:24px;margin-bottom:0}}
+
+/* questions */
+.q-section{display:none}
+.q-section.active{display:block}
+/* progress bar */
+.q-progress-wrap{margin-bottom:28px}
+.q-progress-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.q-progress-label{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.04em;color:var(--mist)}
+.q-progress-pct{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ginger);letter-spacing:.04em}
+.q-progress-bar{width:100%;height:6px;border-radius:3px;background:rgba(35,53,36,.10);overflow:hidden}
+.q-progress-fill{height:100%;border-radius:3px;background:var(--turmeric);transition:width 400ms var(--ease-out)}
+.q-axis{display:block;color:var(--ginger);margin-bottom:6px}
+.q-text{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(20px,2.8vw,26px);color:var(--leaf);font-weight:600;margin-bottom:24px;text-wrap:balance}
+.q-options{display:flex;flex-direction:column;gap:10px}
+.q-option{appearance:none;border:2px solid rgba(35,53,36,.14);background:var(--paper);border-radius:10px;padding:16px 20px;cursor:pointer;text-align:left;font:inherit;font-size:16px;color:var(--ink);transition:border-color 180ms var(--ease-out),background 180ms var(--ease-out),transform 140ms var(--ease-out)}
+.q-option:active{transform:scale(.98)}
+.q-option[aria-pressed="true"]{border-color:var(--turmeric);background:rgba(225,167,47,.08);font-weight:600}
+.q-option .q-score-hint{display:block;margin-top:4px;font-size:13px;color:var(--mist);font-weight:400}
+.q-nav{display:flex;justify-content:space-between;align-items:center;margin-top:28px;gap:16px}
+.q-back{appearance:none;border:none;background:none;font:inherit;font-size:15px;color:var(--mist);cursor:pointer;padding:8px 0;transition:color 180ms var(--ease-out)}
+.q-back svg{vertical-align:-2px;margin-right:4px}
+.q-next{margin-left:auto}
+.q-next.hidden{display:none}
+
+/* result */
+.result-wrap{display:none}
+.result-wrap.active{display:block}
+.result-card{background:#fffdf8;border:1px solid rgba(35,53,36,.14);border-radius:16px;padding:40px 32px;text-align:center}
+@media(max-width:540px){.result-card{padding:32px 20px}}
+.result-card h2{font-size:clamp(24px,3vw,32px);color:var(--leaf);margin-bottom:8px}
+.result-summary{font-size:17px;color:#3d4438;max-width:48ch;margin:0 auto 32px}
+
+/* four-root rhizome visual */
+.rhizome-result{margin:0 auto 36px;max-width:360px}
+.rhizome-result svg{width:100%;height:auto;display:block}
+.rhizome-result .root-bg{fill:none;stroke:var(--soil);stroke-width:8;stroke-linecap:round}
+.rhizome-result .root-fill{fill:none;stroke-linecap:round;transition:stroke-dashoffset .8s var(--ease-out),stroke .4s var(--ease-out)}
+.rhizome-result .root-fill.strong{stroke:var(--turmeric);stroke-width:7}
+.rhizome-result .root-fill.mid{stroke:var(--stem);stroke-width:5}
+.rhizome-result .root-fill.weak{stroke:var(--stem);stroke-width:3;stroke-dasharray:6 8}
+.rhizome-result .root-node{transition:r .4s var(--ease-out),fill .4s var(--ease-out)}
+.rhizome-result .axis-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;fill:var(--mist)}
+.rhizome-result .axis-label.strong{fill:var(--leaf);font-weight:600}
+.rhizome-result .crown-node{fill:var(--turmeric);stroke:var(--soil);stroke-width:3}
+.rhizome-result .ground-line{fill:none;stroke:var(--soil);stroke-width:1.5}
+.axis-scores{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:28px}
+.axis-score{text-align:center;min-width:72px}
+.axis-score .axis-name{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mist);margin-bottom:4px}
+.axis-score .axis-level{display:block;font-family:'Bricolage Grotesque',sans-serif;font-weight:650;font-size:15px;color:var(--leaf)}
+.axis-score .axis-level.strong{color:var(--turmeric)}
+.axis-score .axis-level.weak{color:var(--ginger)}
+
+/* per-root interpretation */
+.root-readings{max-width:480px;margin:0 auto 32px;text-align:left}
+.root-reading{padding:14px 0;border-bottom:1px solid rgba(35,53,36,.10)}
+.root-reading:first-child{border-top:1px solid rgba(35,53,36,.10)}
+.root-reading-head{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.root-reading-dot{width:10px;height:10px;border-radius:50%;flex:none}
+.root-reading-dot.strong{background:var(--turmeric)}
+.root-reading-dot.growing{background:var(--stem)}
+.root-reading-dot.weak{background:var(--soil);border:2px solid var(--stem)}
+.root-reading-name{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mist)}
+.root-reading-level{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;margin-left:auto}
+.root-reading-level.strong{color:var(--turmeric)}
+.root-reading-level.growing{color:var(--stem)}
+.root-reading-level.weak{color:var(--ginger)}
+.root-reading p{font-size:15px;color:#3d4438;line-height:1.5}
+.root-callout{margin:20px auto 32px;max-width:480px;padding:18px 22px;border-radius:12px;text-align:left}
+.root-callout.strongest{background:rgba(225,167,47,.1);border:1px solid rgba(225,167,47,.25)}
+.root-callout.weakest{background:rgba(152,84,38,.06);border:1px solid rgba(152,84,38,.18)}
+.root-callout strong{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:16px;margin-bottom:4px}
+.root-callout.strongest strong{color:var(--turmeric)}
+.root-callout.weakest strong{color:var(--ginger)}
+.root-callout p{font-size:14.5px;color:#3d4438;line-height:1.5}
+
+/* primary CTA card */
+.result-cta{background:var(--leaf-dark);border-radius:14px;padding:28px 28px 24px;color:var(--paper);margin:0 auto 24px;max-width:480px;text-align:left}
+.result-cta h3{font-size:20px;color:var(--paper);margin-bottom:8px}
+.result-cta p{font-size:15px;color:#b9c6b5;margin-bottom:18px}
+.result-cta .btn{background:var(--turmeric);color:var(--leaf-dark)}
+.result-secondary{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:32px}
+.result-secondary a{font-size:14px;color:var(--leaf);text-decoration:underline;text-decoration-color:rgba(35,53,36,.3);text-underline-offset:3px}
+
+/* optional email capture */
+.map-email-card{background:var(--paper-dim);border:1px solid rgba(35,53,36,.14);border-radius:14px;padding:28px 28px 24px;max-width:480px;margin:0 auto;text-align:left}
+.map-email-card h3{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;color:var(--leaf);margin-bottom:6px}
+.map-email-card p{font-size:14px;color:var(--mist);margin-bottom:16px}
+.map-email-row{display:flex;gap:10px;flex-wrap:wrap}
+.map-email-row input{flex:1;min-width:200px;padding:12px 16px;font:inherit;font-size:15px;color:var(--ink);background:#fffdf8;border:1px solid rgba(35,53,36,.18);border-radius:8px}
+.map-email-row input:focus-visible{outline:2px solid var(--turmeric);outline-offset:2px}
+.map-email-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.map-email-status{margin-top:10px;font-size:14px;color:var(--stem);min-height:1.4em}
+.map-email-status a{color:var(--ginger);font-weight:600}
+
+.result-restart{margin-top:32px;text-align:center}
+.result-restart button{appearance:none;border:none;background:none;font:inherit;font-size:14px;color:var(--mist);cursor:pointer;text-decoration:underline;text-decoration-color:rgba(35,53,36,.3);text-underline-offset:3px}
+
+/* footer */
+footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:14.5px}
+.foot{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.foot .logo{color:var(--paper)}
+.foot .logo-mark{width:36px;height:32px}
+.foot ul{list-style:none;display:flex;gap:22px;flex-wrap:wrap}
+.foot a{text-decoration:none;opacity:.85;transition:color 160ms var(--ease-out),opacity 160ms var(--ease-out)}
+.foot-bottom{margin-top:36px;padding-top:20px;border-top:1px solid rgba(250,246,238,.12);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:#7d9080}
+.foot-domain{font-size:11px}
+
+@media(hover:hover)and(pointer:fine){
+  .nav-links a:hover,.nav-links a:focus-visible{opacity:1;color:var(--leaf)}
+  .nav-links a.btn:hover,.nav-links a.btn:focus-visible{color:var(--paper)}
+  .btn:hover{background:var(--leaf-dark)}
+  .btn.gold:hover{background:#f0b944}
+  .btn.ghost:hover{background:rgba(35,53,36,.07)}
+  .q-option:hover{border-color:var(--stem);background:rgba(82,112,90,.04)}
+  .path-btn:hover{border-color:var(--stem);background:rgba(82,112,90,.04)}
+  .q-back:hover{color:var(--leaf)}
+  .result-restart button:hover{color:var(--leaf)}
+  .foot a:hover{opacity:1;color:var(--turmeric)}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/" aria-label="The Rhizome Space home">
+      <img class="logo-mark" src="assets/rhizome-thai-logo-256.png" alt="" width="52" height="47">
+      <span class="logo-text">The Rhizome Space</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/guidebook">Guidebook</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="https://wa.me/66617930404">WhatsApp</a></li>
+      <li><a class="btn nav-cta gold" href="/#space">Join the waitlist</a></li>
+    </ul>
+    <details class="nav-menu">
+      <summary>Menu</summary>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/#services">Services</a></li>
+        <li><a href="/guidebook">Guidebook</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="https://wa.me/66617930404">WhatsApp</a></li>
+        <li><a href="/#space">Join the waitlist</a></li>
+      </ul>
+    </details>
+  </div>
+</nav>
+
+<main id="main">
+<header class="page-head">
+  <div class="wrap">
+    <span class="mono eyebrow">Free &middot; 2 min &middot; no email</span>
+    <h1 class="sec-title">Your AI Readiness Map</h1>
+    <p class="sec-lede">8 short questions. See your strong points, risks, and one next step.</p>
+  </div>
+</header>
+
+<div class="quiz-wrap">
+  <div class="wrap">
+
+    <!-- Step 0: Path chooser -->
+    <div class="quiz-card" id="pathStep">
+      <h2 style="font-size:clamp(20px,2.6vw,24px);color:var(--leaf);margin-bottom:6px">Who is this for?</h2>
+      <p style="color:var(--mist);font-size:15px;margin-bottom:0">Pick one. We suggest the next step.</p>
+      <div class="path-chooser" role="radiogroup" aria-label="Who is this map for?">
+        <button class="path-btn" type="button" role="radio" aria-pressed="false" data-path="self">
+          <span class="path-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="20" r="3" fill="#e1a72f"/><path d="M14 17 V8" stroke="#52705a" stroke-width="2" fill="none"/><circle cx="14" cy="6" r="2.2" fill="none" stroke="#985426" stroke-width="1.8"/></svg></span>
+          <span><span class="path-label">For myself</span><span class="path-sub">I want to use AI in my own work</span></span>
+        </button>
+        <button class="path-btn" type="button" role="radio" aria-pressed="false" data-path="team">
+          <span class="path-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="10" cy="20" r="2.4" fill="#e1a72f"/><circle cx="18" cy="20" r="2.4" fill="none" stroke="#52705a" stroke-width="1.8"/><path d="M10 17.5 C10 12 18 12 18 17.5" stroke="#52705a" stroke-width="1.6" fill="none"/><circle cx="14" cy="8" r="2.2" fill="#985426"/></svg></span>
+          <span><span class="path-label">For my team</span><span class="path-sub">I manage people who could benefit</span></span>
+        </button>
+        <button class="path-btn" type="button" role="radio" aria-pressed="false" data-path="business">
+          <span class="path-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 28 28"><ellipse cx="14" cy="19" rx="7" ry="3.2" fill="none" stroke="#52705a" stroke-width="1.8"/><path d="M14 19 V8" stroke="#52705a" stroke-width="1.8" fill="none"/><circle cx="14" cy="6" r="2.4" fill="#e1a72f"/></svg></span>
+          <span><span class="path-label">For my small business</span><span class="path-sub">I run the business and want to improve operations</span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Questions (one per screen, auto-advance) -->
+    <div class="quiz-card q-section" id="questionStep">
+      <div class="q-progress-wrap" aria-hidden="true">
+        <div class="q-progress-header">
+          <span class="q-progress-label" id="qProgressLabel">Question 1 of 8</span>
+          <span class="q-progress-pct" id="qProgressPct">0%</span>
+        </div>
+        <div class="q-progress-bar"><div class="q-progress-fill" id="qProgressFill" style="width:0%"></div></div>
+      </div>
+      <span class="mono q-axis" id="qAxis"></span>
+      <p class="q-text" id="qText"></p>
+      <div class="q-options" id="qOptions" role="radiogroup"></div>
+      <div class="q-nav">
+        <button class="q-back" type="button" id="qBack"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Back</button>
+        <button class="btn q-next hidden" type="button" id="qNext">See my map</button>
+      </div>
+    </div>
+
+    <!-- Result -->
+    <div class="result-wrap" id="resultWrap">
+      <div class="result-card">
+        <span class="mono eyebrow" style="text-align:center">Your readiness map</span>
+        <h2 id="resultHeadline"></h2>
+        <p class="result-summary" id="resultSummary"></p>
+
+        <div class="rhizome-result" id="rhizomeVisual">
+          <svg viewBox="0 0 360 200" aria-label="Four-root rhizome readiness visual">
+            <path class="ground-line" d="M0,80 C40,76 80,84 120,80 C160,76 200,84 240,80 C280,76 320,84 360,80"/>
+            <!-- roots grow downward from ground line -->
+            <!-- Comfort root -->
+            <path class="root-bg" d="M60,80 C60,100 55,130 50,160" />
+            <path class="root-fill" id="rootComfort" d="M60,80 C60,100 55,130 50,160" stroke-dasharray="100" stroke-dashoffset="100" pathLength="100"/>
+            <circle class="root-node" id="nodeComfort" cx="50" cy="160" r="7" fill="var(--soil)" stroke="var(--stem)" stroke-width="2"/>
+            <text class="axis-label" id="labelComfort" x="50" y="182" text-anchor="middle">Comfort</text>
+            <!-- Safety root -->
+            <path class="root-bg" d="M140,80 C142,102 148,132 152,164" />
+            <path class="root-fill" id="rootSafety" d="M140,80 C142,102 148,132 152,164" stroke-dasharray="100" stroke-dashoffset="100" pathLength="100"/>
+            <circle class="root-node" id="nodeSafety" cx="152" cy="164" r="7" fill="var(--soil)" stroke="var(--stem)" stroke-width="2"/>
+            <text class="axis-label" id="labelSafety" x="152" y="186" text-anchor="middle">Safety</text>
+            <!-- Task root -->
+            <path class="root-bg" d="M220,80 C218,104 212,134 208,166" />
+            <path class="root-fill" id="rootTask" d="M220,80 C218,104 212,134 208,166" stroke-dasharray="100" stroke-dashoffset="100" pathLength="100"/>
+            <circle class="root-node" id="nodeTask" cx="208" cy="166" r="7" fill="var(--soil)" stroke="var(--stem)" stroke-width="2"/>
+            <text class="axis-label" id="labelTask" x="208" y="188" text-anchor="middle">Task</text>
+            <!-- Supervision root -->
+            <path class="root-bg" d="M300,80 C302,98 308,128 312,158" />
+            <path class="root-fill" id="rootSupervision" d="M300,80 C302,98 308,128 312,158" stroke-dasharray="100" stroke-dashoffset="100" pathLength="100"/>
+            <circle class="root-node" id="nodeSupervision" cx="312" cy="158" r="7" fill="var(--soil)" stroke="var(--stem)" stroke-width="2"/>
+            <text class="axis-label" id="labelSupervision" x="312" y="180" text-anchor="middle">Supervision</text>
+            <!-- crown -->
+            <circle class="crown-node" cx="180" cy="72" r="8"/>
+            <!-- stems from crown to ground -->
+            <path style="fill:none;stroke:var(--stem);stroke-width:2;opacity:.5" d="M180,72 C180,74 160,78 60,80"/>
+            <path style="fill:none;stroke:var(--stem);stroke-width:2;opacity:.5" d="M180,72 C180,74 170,78 140,80"/>
+            <path style="fill:none;stroke:var(--stem);stroke-width:2;opacity:.5" d="M180,72 C180,74 190,78 220,80"/>
+            <path style="fill:none;stroke:var(--stem);stroke-width:2;opacity:.5" d="M180,72 C180,74 200,78 300,80"/>
+          </svg>
+        </div>
+
+        <div class="axis-scores" id="axisScores"></div>
+
+        <div id="rootCallouts"></div>
+        <div class="root-readings" id="rootReadings"></div>
+
+        <div class="result-cta" id="resultCta"></div>
+
+        <div class="result-secondary" id="resultSecondary"></div>
+
+        <div class="map-email-card" id="mapEmailCard">
+          <h3>Save your map and get the free guidebook</h3>
+          <p>Optional: we will email this result plus the Rhizome guidebook. No spam, unsubscribe anytime.</p>
+          <form id="mapEmailForm" novalidate>
+            <div class="map-email-row">
+              <input type="email" id="mapEmail" name="email" autocomplete="email" placeholder="you@company.com" aria-label="Email address">
+              <button class="btn gold" type="submit">Send my map</button>
+            </div>
+            <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" class="map-email-hp">
+            <p class="map-email-status" id="mapEmailStatus" role="status"></p>
+          </form>
+        </div>
+
+        <div class="result-restart">
+          <button type="button" id="restartBtn">Start over</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a class="logo" href="/">
+        <img class="logo-mark" src="assets/rhizome-thai-logo-256.png" alt="" width="36" height="32">
+        <span class="logo-text">The Rhizome Space</span>
+      </a>
+      <ul>
+        <li><a href="/#services">Services</a></li>
+        <li><a href="/guidebook">Guidebook</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=hello@therhizomespace.com" target="_blank" rel="noopener">Email us</a></li>
+        <li><a href="https://wa.me/66617930404">WhatsApp</a></li>
+      </ul>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 The Rhizome Space &middot; Chiang Mai, Thailand</span>
+      <span class="mono foot-domain">therhizomespace.com</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var path = '';
+  var answers = [-1,-1,-1,-1,-1,-1,-1,-1];
+  var currentQ = 0;
+
+  var questions = [
+    {axis:'Comfort', text:'In the last month, have you used an AI tool on a task from your actual job?', options:[
+      {label:'Never tried it on real work', score:0},
+      {label:'Tried it once or twice', score:1},
+      {label:'Several times: it is part of how I get things done', score:2}
+    ]},
+    {axis:'Comfort', text:'When you use an AI tool, how does it usually feel?', options:[
+      {label:'Confusing: I am not sure what to ask or whether the output is right', score:0},
+      {label:'Hit or miss: sometimes useful, sometimes a waste of time', score:1},
+      {label:'Useful enough that I reach for it without thinking', score:2}
+    ]},
+    {axis:'Safety', text:'If a client name or personal detail is in a document, what do you do before pasting it into an AI tool?', options:[
+      {label:'Paste it as-is: I have not thought about this', score:0},
+      {label:'I am not sure what counts as sensitive', score:1},
+      {label:'I remove names or swap in fake details first', score:2}
+    ]},
+    {axis:'Safety', text:'Which statement feels closest to your situation?', options:[
+      {label:'I have no rule for what is safe to share with AI', score:0},
+      {label:'I have a rough sense, but could not explain it to someone else', score:1},
+      {label:'I have a clear rule I follow and could teach to a colleague', score:2}
+    ]},
+    {axis:'Task', text:'Is there a task you do most weeks that feels repetitive or time-consuming?', options:[
+      {label:'Not really: my work changes too much', score:0},
+      {label:'Maybe one, but I have not pinned it down', score:1},
+      {label:'Yes, I could name it right now', score:2}
+    ]},
+    {axis:'Task', text:'Could you walk someone through that task using a sanitized example this week?', options:[
+      {label:'No: it would take real data I cannot share', score:0},
+      {label:'With some help preparing the example, yes', score:1},
+      {label:'Yes: I already know what I would show', score:2}
+    ]},
+    {axis:'Supervision', text:'When AI helps produce something for your work, who checks the result before it goes out?', options:[
+      {label:'Nobody checks: it goes straight out', score:0},
+      {label:'Sometimes I review it, sometimes not', score:1},
+      {label:'A named person reviews every time', score:2}
+    ]},
+    {axis:'Supervision', text:'If the AI invented a fact or detail, would you catch it?', options:[
+      {label:'Probably not: I would not know what to look for', score:0},
+      {label:'Sometimes: it depends on the topic', score:1},
+      {label:'Yes: I have a checklist or verification step', score:2}
+    ]}
+  ];
+
+  var pathBtns = document.querySelectorAll('.path-btn');
+  var pathStep = document.getElementById('pathStep');
+  var questionStep = document.getElementById('questionStep');
+  var resultWrap = document.getElementById('resultWrap');
+  var qProgressLabel = document.getElementById('qProgressLabel');
+  var qProgressPct = document.getElementById('qProgressPct');
+  var qProgressFill = document.getElementById('qProgressFill');
+  var qAxis = document.getElementById('qAxis');
+  var qText = document.getElementById('qText');
+  var qOptions = document.getElementById('qOptions');
+  var qBack = document.getElementById('qBack');
+  var qNext = document.getElementById('qNext');
+
+  function selectPath(p){
+    path = p;
+    pathBtns.forEach(function(btn){btn.setAttribute('aria-pressed', btn.dataset.path === p ? 'true' : 'false')});
+    setTimeout(function(){
+      pathStep.style.display='none';
+      questionStep.classList.add('active');
+      showQuestion(0);
+      questionStep.scrollIntoView({behavior:'smooth',block:'start'});
+    }, 200);
+  }
+
+  pathBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){ selectPath(btn.dataset.path); });
+  });
+
+  function updateProgress(index){
+    var num = index + 1;
+    var pct = Math.round((index / 8) * 100);
+    qProgressLabel.textContent = 'Question ' + num + ' of 8';
+    qProgressPct.textContent = pct + '%';
+    qProgressFill.style.width = pct + '%';
+  }
+
+  function showQuestion(index){
+    currentQ = index;
+    var q = questions[index];
+    updateProgress(index);
+    qAxis.textContent = q.axis;
+    qText.textContent = q.text;
+    qOptions.innerHTML = '';
+
+    var isLast = index === 7;
+    qNext.classList.toggle('hidden', !isLast);
+    qNext.disabled = isLast && answers[index] < 0;
+
+    q.options.forEach(function(opt, oi){
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'q-option';
+      btn.setAttribute('role','radio');
+      btn.setAttribute('aria-pressed', answers[index]===oi ? 'true':'false');
+      btn.textContent = opt.label;
+      btn.addEventListener('click', function(){
+        answers[index] = oi;
+        qOptions.querySelectorAll('.q-option').forEach(function(b,bi){
+          b.setAttribute('aria-pressed', bi===oi ? 'true':'false');
+        });
+        if(isLast){
+          qNext.disabled = false;
+        } else {
+          setTimeout(function(){ advance(); }, 280);
+        }
+      });
+      qOptions.appendChild(btn);
+    });
+  }
+
+  function advance(){
+    if(answers[currentQ] < 0) return;
+    if(currentQ < 7){
+      showQuestion(currentQ + 1);
+      questionStep.scrollIntoView({behavior:'smooth',block:'start'});
+    } else {
+      showResult();
+    }
+  }
+
+  qNext.addEventListener('click', advance);
+  qBack.addEventListener('click', function(){
+    if(currentQ === 0){
+      questionStep.classList.remove('active');
+      pathStep.style.display='';
+      pathStep.scrollIntoView({behavior:'smooth',block:'start'});
+    } else {
+      showQuestion(currentQ - 1);
+    }
+  });
+
+  function scores(){
+    return {
+      comfort: questions[0].options[answers[0]].score + questions[1].options[answers[1]].score,
+      safety: questions[2].options[answers[2]].score + questions[3].options[answers[3]].score,
+      task: questions[4].options[answers[4]].score + questions[5].options[answers[5]].score,
+      supervision: questions[6].options[answers[6]].score + questions[7].options[answers[7]].score
+    };
+  }
+
+  function levelWord(v){
+    if(v <= 1) return 'weak';
+    if(v <= 2) return 'growing';
+    return 'strong';
+  }
+
+  function levelClass(v){
+    if(v <= 1) return 'weak';
+    if(v <= 2) return 'growing';
+    return 'strong';
+  }
+
+  var rootInterpretations = {
+    comfort: {
+      weak: 'You have not had a chance to use AI on real work yet. That is normal: most people start here.',
+      growing: 'You have tried AI a few times. The next step is finding one task where it consistently saves you time.',
+      strong: 'AI already feels like a regular part of your toolkit. You are ready to formalize what works.'
+    },
+    safety: {
+      weak: 'You do not yet have a rule for what is safe to share with AI. This is the most important root to grow first.',
+      growing: 'You have some instinct about data safety, but it is not written down. A clear rule would help.',
+      strong: 'You have a clear data-handling rule you could explain to someone else. This is a solid foundation.'
+    },
+    task: {
+      weak: 'You have not identified a specific repeating task to work on. Pinning one down is the first step.',
+      growing: 'You sense a task that could benefit, but have not prepared a concrete example yet.',
+      strong: 'You know exactly which task repeats and could demonstrate it this week. That is where to start.'
+    },
+    supervision: {
+      weak: 'AI output is going out without consistent review. This is a risk worth addressing early.',
+      growing: 'Review happens sometimes, but there is no fixed step or checklist. A small structure would help.',
+      strong: 'A named person checks every result before it goes out, and you have a way to catch invented details.'
+    }
+  };
+
+  function showResult(){
+    questionStep.classList.remove('active');
+    resultWrap.classList.add('active');
+    qProgressFill.style.width = '100%';
+    qProgressPct.textContent = '100%';
+    resultWrap.scrollIntoView({behavior:'smooth',block:'start'});
+
+    var s = scores();
+
+    var axes = ['Comfort','Safety','Task','Supervision'];
+    var keys = ['comfort','safety','task','supervision'];
+
+    // Update rhizome visual
+    keys.forEach(function(key, i){
+      var v = s[key];
+      var rootEl = document.getElementById('root'+axes[i]);
+      var nodeEl = document.getElementById('node'+axes[i]);
+      var labelEl = document.getElementById('label'+axes[i]);
+      var strength = v <= 1 ? 'weak' : (v <= 2 ? 'mid' : 'strong');
+      rootEl.setAttribute('class','root-fill '+strength);
+      var fillPct = v === 0 ? 85 : (v <= 1 ? 50 : (v <= 2 ? 20 : 0));
+      rootEl.style.strokeDashoffset = fillPct;
+      nodeEl.setAttribute('r', v <= 1 ? 5 : (v <= 2 ? 7 : 9));
+      nodeEl.setAttribute('fill', v <= 2 ? 'var(--stem)' : 'var(--turmeric)');
+      nodeEl.setAttribute('stroke', v <= 2 ? 'var(--stem)' : 'var(--turmeric)');
+      labelEl.setAttribute('class','axis-label'+(v>=3?' strong':''));
+    });
+
+    // Axis score badges
+    var scoresHtml = '';
+    keys.forEach(function(key,i){
+      var v = s[key];
+      var lv = levelWord(v);
+      var lc = levelClass(v);
+      scoresHtml += '<div class="axis-score"><span class="axis-name">'+axes[i]+'</span><span class="axis-level '+lc+'">'+lv+'</span></div>';
+    });
+    document.getElementById('axisScores').innerHTML = scoresHtml;
+
+    // Find strongest and weakest
+    var maxVal = -1, minVal = 5, strongestKey = '', weakestKey = '';
+    keys.forEach(function(key){
+      if(s[key] > maxVal){ maxVal = s[key]; strongestKey = key; }
+      if(s[key] < minVal){ minVal = s[key]; weakestKey = key; }
+    });
+    var strongestName = strongestKey.charAt(0).toUpperCase()+strongestKey.slice(1);
+    var weakestName = weakestKey.charAt(0).toUpperCase()+weakestKey.slice(1);
+
+    // Callout cards for strongest and weakest
+    var calloutsHtml = '';
+    if(maxVal >= 3){
+      calloutsHtml += '<div class="root-callout strongest"><strong>Strongest root: '+strongestName+'</strong><p>'+rootInterpretations[strongestKey][levelWord(maxVal)]+'</p></div>';
+    }
+    if(minVal <= 1){
+      calloutsHtml += '<div class="root-callout weakest"><strong>Needs attention: '+weakestName+'</strong><p>'+rootInterpretations[weakestKey][levelWord(minVal)]+'</p></div>';
+    }
+    document.getElementById('rootCallouts').innerHTML = calloutsHtml;
+
+    // Per-root readings
+    var readingsHtml = '';
+    keys.forEach(function(key,i){
+      var v = s[key];
+      var lv = levelWord(v);
+      var lc = levelClass(v);
+      readingsHtml += '<div class="root-reading">'
+        +'<div class="root-reading-head">'
+        +'<span class="root-reading-dot '+lc+'"></span>'
+        +'<span class="root-reading-name">'+axes[i]+'</span>'
+        +'<span class="root-reading-level '+lc+'">'+lv+'</span>'
+        +'</div>'
+        +'<p>'+rootInterpretations[key][lv]+'</p>'
+        +'</div>';
+    });
+    document.getElementById('rootReadings').innerHTML = readingsHtml;
+
+    // Headline + summary
+    var total = s.comfort+s.safety+s.task+s.supervision;
+    var headline = '';
+    var summary = '';
+    if(total <= 4){
+      headline = 'You are at the starting line.';
+      summary = 'That is a fine place to be. Most people are. The important thing is that you are thinking about it now.';
+    } else if(total <= 8){
+      headline = 'You have roots forming.';
+      summary = 'Some areas are growing well, others need attention. One focused step will make a real difference.';
+    } else if(total <= 12){
+      headline = 'Strong roots across the board.';
+      summary = 'You are already working with AI in a thoughtful way. The next step is about picking the workflow that benefits most.';
+    } else {
+      headline = 'Your roots run deep.';
+      summary = 'Solid habits, clear rules, strong task awareness. You are ready to systematize what you already do well.';
+    }
+    document.getElementById('resultHeadline').textContent = headline;
+    document.getElementById('resultSummary').textContent = summary;
+
+    // Primary CTA routing
+    var cta = routeCta(s);
+    document.getElementById('resultCta').innerHTML = '<h3>'+cta.title+'</h3><p>'+cta.desc+'</p><a class="btn" href="'+cta.href+'"'+(cta.external?' target="_blank" rel="noopener"':'')+'>'+cta.label+'</a>';
+
+    // Secondary links
+    var sec = [];
+    if(cta.key !== 'guidebook') sec.push('<a href="/guidebook">Read the free guidebook</a>');
+    if(cta.key !== 'waitlist') sec.push('<a href="/#space">Join the space waitlist</a>');
+    if(cta.key !== 'whatsapp') sec.push('<a href="https://wa.me/66617930404">Message us on WhatsApp</a>');
+    document.getElementById('resultSecondary').innerHTML = sec.join('');
+  }
+
+  function routeCta(s){
+    // Low Safety: guidebook first
+    if(s.safety <= 1){
+      return {key:'guidebook', title:'Start with data safety', desc:'Before anything else, get clear on what is safe to share with AI and what is not. The free guidebook covers the three zones, the thirty-second test and practical checklists.', label:'Read the guidebook', href:'/guidebook', external:false};
+    }
+    // Low Comfort, OK Safety: gentle entry
+    if(s.comfort <= 1 && s.safety >= 2){
+      return {key:'waitlist', title:'Start with a conversation', desc:'You know how to be careful, you just have not found your footing yet. A quick chat can help you pick the right first task. Or join the space waitlist for early workshops in Chiang Mai.', label:'Join the space waitlist', href:'/#space', external:false};
+    }
+    // Team path + mixed scores: team sprint
+    if(path === 'team' && (s.comfort+s.safety+s.task+s.supervision) >= 5){
+      return {key:'team-sprint', title:'Run a team pilot', desc:'Your team has enough foundation to try a controlled sprint: pick one workflow, agree the boundaries and test it with a small group.', label:'Plan a team pilot', href:'https://mail.google.com/mail/?view=cm&fs=1&to=hello@therhizomespace.com&su=Team%20AI%20Starter%20Sprint%3A%20introductory%20call', external:true};
+    }
+    // Business path + recurring tasks: audit
+    if(path === 'business' && s.task >= 2){
+      return {key:'audit', title:'Map your business workflows', desc:'You have recurring work worth examining. A workflow audit ranks tasks by value, risk and effort so you start where the payoff is clearest.', label:'Start the audit', href:'https://mail.google.com/mail/?view=cm&fs=1&to=hello@therhizomespace.com&su=Small%20Business%20Workflow%20Audit%20introductory%20call', external:true};
+    }
+    // Strong Task + Safety, weak Supervision: clinic
+    if(s.task >= 3 && s.safety >= 2 && s.supervision <= 2){
+      return {key:'clinic', title:'Build a supervised workflow', desc:'You have a clear task and good safety habits. The missing piece is a review step that catches mistakes before they go out. A workflow clinic sets that up in 90 minutes.', label:'Book a clinic session', href:'https://mail.google.com/mail/?view=cm&fs=1&to=hello@therhizomespace.com&su=AI%20Workflow%20Clinic%3A%20introductory%20call', external:true};
+    }
+    // High across the board: clinic or call
+    if((s.comfort+s.safety+s.task+s.supervision) >= 12){
+      return {key:'clinic', title:'Pick your first workflow', desc:'You have strong roots everywhere. A short call helps you choose the workflow with the highest payoff, or jump straight into a clinic session.', label:'Request a free call', href:'https://mail.google.com/mail/?view=cm&fs=1&to=hello@therhizomespace.com&su=Professional%20AI%20Workflow', external:true};
+    }
+    // Default fallback: guidebook + waitlist
+    return {key:'guidebook', title:'Build your foundation', desc:'The free guidebook covers data safety, the five-step method and review checklists. Read it at your own pace, then reach out when you are ready to try a real task.', label:'Read the guidebook', href:'/guidebook', external:false};
+  }
+
+  // Restart
+  document.getElementById('restartBtn').addEventListener('click', function(){
+    answers = [-1,-1,-1,-1,-1,-1,-1,-1];
+    currentQ = 0;
+    path = '';
+    pathBtns.forEach(function(btn){btn.setAttribute('aria-pressed','false')});
+    resultWrap.classList.remove('active');
+    document.getElementById('rootCallouts').innerHTML = '';
+    document.getElementById('rootReadings').innerHTML = '';
+    pathStep.style.display='';
+    pathStep.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+
+  // Optional email capture
+  var mapForm = document.getElementById('mapEmailForm');
+  if(mapForm){
+    var mapEmailInput = document.getElementById('mapEmail');
+    var mapEmailStatus = document.getElementById('mapEmailStatus');
+    var mapSubmitBtn = mapForm.querySelector('button[type="submit"]');
+    mapForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var email = mapEmailInput.value.trim();
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){
+        mapEmailStatus.textContent = 'Please enter a valid email address.';
+        mapEmailInput.focus();
+        return;
+      }
+      mapEmailStatus.textContent = 'Sending\u2026';
+      mapSubmitBtn.disabled = true;
+      var s = scores();
+      fetch('/api/subscribe',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          email: email,
+          company: mapForm.company.value,
+          source: 'map',
+          scores: s,
+          path: path
+        })
+      }).then(function(r){
+        if(!r.ok) throw new Error('bad status');
+        return r.json();
+      }).then(function(res){
+        mapForm.querySelector('.map-email-row').hidden = true;
+        mapEmailStatus.innerHTML = (res && res.emailed)
+          ? 'Sent to your inbox. Or read it now: <a href="/guidebook">the Rhizome guidebook</a>.'
+          : 'Done. Read it now: <a href="/guidebook">the Rhizome guidebook</a>.';
+      }).catch(function(){
+        mapSubmitBtn.disabled = false;
+        mapEmailStatus.innerHTML = 'Something went wrong. Read the guidebook directly: <a href="/guidebook">the Rhizome guidebook</a>.';
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>
