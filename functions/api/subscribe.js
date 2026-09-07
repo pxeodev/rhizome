@@ -105,21 +105,43 @@ export async function onRequestPost(context) {
 
   if (!env.SUBSCRIBERS) return json({ ok: false, error: 'not_configured' }, 500);
 
+  const source = String(data.source || 'guidebook');
+  const validSources = ['guidebook', 'map', 'space-waitlist'];
+  const resolvedSource = validSources.includes(source) ? source : 'guidebook';
+
   const key = 'email:' + email;
   const existing = await env.SUBSCRIBERS.get(key);
 
-  await env.SUBSCRIBERS.put(
-    key,
-    JSON.stringify({
-      email,
-      source: 'guidebook',
-      at: new Date().toISOString(),
-    })
-  );
+  const record = {
+    email,
+    source: resolvedSource,
+    at: new Date().toISOString(),
+  };
 
-  // Only email first-time subscribers, so a repeat submit doesn't re-send.
+  if (resolvedSource === 'map') {
+    if (data.scores) record.scores = data.scores;
+    if (data.path) record.path = data.path;
+  }
+  if (resolvedSource === 'space-waitlist') {
+    if (data.name) record.name = String(data.name).slice(0, 120);
+    if (data.whatsapp) record.whatsapp = String(data.whatsapp).slice(0, 30);
+  }
+
+  // Preserve prior sources by appending to a sources array on re-subscribe
+  if (existing) {
+    try {
+      const prev = JSON.parse(existing);
+      const sources = prev.sources || [prev.source];
+      if (!sources.includes(resolvedSource)) sources.push(resolvedSource);
+      record.sources = sources;
+    } catch { /* overwrite if corrupted */ }
+  }
+
+  await env.SUBSCRIBERS.put(key, JSON.stringify(record));
+
+  // Email guidebook to first-time subscribers from guidebook or map sources
   let emailed = false;
-  if (!existing) {
+  if (!existing && (resolvedSource === 'guidebook' || resolvedSource === 'map')) {
     const origin = new URL(request.url).origin;
     emailed = await sendGuidebook(env, email, origin);
   }

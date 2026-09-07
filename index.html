@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Practical AI Consulting, Training &amp; Workflow Help | The Rhizome Space</title>
-<meta name="description" content="Fixed-scope AI consulting, employee training and workflow help for professionals, teams and small businesses. Based in Chiang Mai, working online worldwide.">
+<title>Learn AI for the Work You Already Do | The Rhizome Space</title>
+<meta name="description" content="Practical AI readiness, training and workflow help for professionals, teams and small businesses. Based in Chiang Mai, working online worldwide.">
 <meta name="theme-color" content="#faf6ee">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Make AI useful in the job you already have | The Rhizome Space">
+<meta property="og:title" content="Learn AI for the work you already do | The Rhizome Space">
 <meta property="og:description" content="Practical AI consulting, employee training and workflow help for professionals, teams and small businesses.">
 <meta property="og:url" content="https://rhizome-5qf.pages.dev/">
 <meta property="og:image" content="https://rhizome-5qf.pages.dev/assets/rhizome-og-thai-v2.png">
@@ -189,6 +189,16 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--turmeric);outline-o
 .strip-points strong{color:var(--paper);font-weight:600}
 @media(max-width:820px){.strip-points{flex-direction:column;gap:9px}.strip-points li{max-width:none}}
 
+/* ---------- three doors ---------- */
+.doors{padding:56px 0;background:var(--paper)}
+.doors-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.door{padding:28px 24px;border:1px solid rgba(35,53,36,.14);border-radius:14px;background:#fffdf8}
+.door-label{color:var(--ginger);display:block;margin-bottom:8px}
+.door h3{font-size:19px;color:var(--leaf);margin-bottom:8px}
+.door p{font-size:15px;color:#3d4438;line-height:1.5}
+.door a{color:var(--ginger);font-weight:600;text-decoration-color:rgba(152,84,38,.3);text-underline-offset:3px}
+@media(max-width:760px){.doors-grid{grid-template-columns:1fr;gap:16px}}
+
 /* ---------- sections ---------- */
 section{padding:88px 0}
 .bridge{padding:72px 0}
@@ -230,6 +240,10 @@ section{padding:88px 0}
 .offer-body{max-width:64ch;color:#3d4438;font-size:15.5px;line-height:1.6}
 .offer-body strong{color:var(--leaf);font-weight:650}
 .offer--compact .offer-actions{margin-top:24px}
+.offer-fit{margin-top:10px;font-size:13.5px;color:var(--mist);font-style:normal}
+.offer-fit strong{color:var(--ginger);font-weight:600}
+.offer:first-child .offer-fit{color:#b9c6b5}
+.offer:first-child .offer-fit strong{color:var(--turmeric)}
 .pricing-disclaimer{margin-top:18px;color:var(--mist);font-size:13px;max-width:68ch}
 @media(max-width:820px){.offer{grid-template-columns:1fr;gap:28px}.offer-detail{grid-template-columns:1fr 1fr}.offer-output,.offer-actions{grid-column:1/-1}}
 @media(max-width:540px){.offer-detail{grid-template-columns:1fr}.offer-output,.offer-actions{grid-column:1}.offer-actions{align-items:flex-start;flex-direction:column}.offer:first-child{padding:30px 24px}}
@@ -280,6 +294,21 @@ section{padding:88px 0}
 .practice-more{margin-top:22px}
 @media(max-width:820px){.cnx .wrap{grid-template-columns:1fr}}
 
+/* space waitlist */
+.space-section{background:var(--leaf-dark);color:var(--paper);padding:88px 0}
+.space-section .eyebrow{color:var(--turmeric)}
+.space-section .sec-title{color:var(--paper)}
+.space-section .sec-lede{color:#c7d2c4}
+.space-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
+.waitlist-form label{display:block;color:var(--turmeric);font-size:11px;margin-bottom:12px}
+.waitlist-row{display:flex;flex-direction:column;gap:10px}
+.waitlist-row input{padding:13px 18px;font:inherit;font-size:15px;color:var(--ink);background:var(--paper);border:1px solid rgba(35,53,36,.2);border-radius:8px}
+.waitlist-row input:focus-visible{outline:2px solid var(--turmeric);outline-offset:2px}
+.waitlist-note{display:block;margin-top:10px;color:#b9c6b5;font-size:12.5px}
+.waitlist-status{margin-top:10px;font-size:14.5px;color:var(--turmeric);min-height:1.4em}
+.waitlist-status a{color:var(--turmeric);font-weight:650}
+@media(max-width:860px){.space-grid{grid-template-columns:1fr;gap:36px}}
+
 /* cta */
 .cta{background:var(--turmeric);}
 .cta .wrap{text-align:center}
@@ -329,20 +358,22 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
       <span class="logo-text">The Rhizome Space</span>
     </a>
     <ul class="nav-links">
+      <li><a href="/map">Map</a></li>
       <li><a href="#services">Services</a></li>
-      <li><a href="#process">How it works</a></li>
-      <li><a href="/sample-handover">Sample handover</a></li>
       <li><a href="#guidebook">Guidebook</a></li>
-      <li><a class="btn nav-cta" href="#start">Request a free call</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="https://wa.me/66617930404">WhatsApp</a></li>
+      <li><a class="btn nav-cta gold" href="#space">Join the waitlist</a></li>
     </ul>
     <details class="nav-menu">
       <summary>Menu</summary>
       <ul>
+        <li><a href="/map">AI Readiness Map</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#process">How it works</a></li>
-        <li><a href="/sample-handover">Sample handover</a></li>
         <li><a href="#guidebook">Guidebook</a></li>
-        <li><a href="#start">Request a free call</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="https://wa.me/66617930404">WhatsApp</a></li>
+        <li><a href="#space">Join the waitlist</a></li>
       </ul>
     </details>
   </div>
@@ -354,11 +385,11 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
   <div class="wrap hero-layout">
     <div class="hero-copy">
       <span class="mono eyebrow">Practical AI &middot; Chiang Mai</span>
-      <h1>Make AI useful at <em>work.</em></h1>
-      <p class="hero-sub">Bring something you already do most weeks. Leave with a way to do it using AI that you can run yourself, explain to a colleague and keep. Not a slideshow about what AI might do someday.</p>
+      <h1>Learn AI for the work you <em>already do.</em></h1>
+      <p class="hero-sub">Bring something you already do most weeks: a report, a recurring admin task, a piece of research. Leave with a way to do it using AI that you can run yourself, explain to a colleague and keep.</p>
       <div class="hero-ctas">
-        <a class="btn gold" href="#start">Request a free call</a>
-        <a class="hero-text-link" href="#services">See services and prices <span aria-hidden="true">↓</span></a>
+        <a class="btn gold" href="/map">Take the free map</a>
+        <a class="hero-text-link" href="#space">Join the space waitlist <span aria-hidden="true">↓</span></a>
       </div>
     </div>
     <figure class="hero-rhizome" aria-labelledby="rhizomeLabel">
@@ -412,6 +443,28 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
   </div>
 </div>
 
+<section class="doors" id="doors">
+  <div class="wrap">
+    <div class="doors-grid">
+      <article class="door">
+        <span class="mono door-label">Learn</span>
+        <h3>Find out where you stand</h3>
+        <p>The free <a href="/map">AI Readiness Map</a>, the <a href="/guidebook">guidebook</a>, and workshops (coming soon).</p>
+      </article>
+      <article class="door">
+        <span class="mono door-label">Get help</span>
+        <h3>Work on a real task together</h3>
+        <p><a href="#clinic">Workflow clinics</a>, <a href="#business-audit">audits</a> and <a href="#team-sprint">team sprints</a>: fixed scope, fixed price.</p>
+      </article>
+      <article class="door">
+        <span class="mono door-label">Come by</span>
+        <h3>Coffee and coworking</h3>
+        <p>A space in Mae Hia, Chiang Mai: opening soon. <a href="#space">Join the waitlist</a> for opening news and early workshops.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section class="bridge" id="why-now">
   <div class="wrap">
     <p class="bridge-text">You no longer have to bend your work around a generic tool. One real task can now become a working version in days, shaped around how you actually do the job. <strong>That first working version is what we help you build.</strong></p>
@@ -423,7 +476,7 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
     <h2 class="sec-title">Know the time, price and outcome before we start.</h2>
     <div class="offer-list">
       <article class="offer" id="clinic">
-        <div class="offer-lead"><span class="mono">For one professional</span><h3>AI Workflow Clinic</h3><p>Turn one report, research task or recurring admin job into a supervised method you can reuse and explain.</p></div>
+        <div class="offer-lead"><span class="mono">For one professional</span><h3>AI Workflow Clinic</h3><p>Turn one report, research task or recurring admin job into a supervised method you can reuse and explain.</p><p class="offer-fit"><strong>Fits if:</strong> your map shows strong task awareness and safety, but supervision needs a structure.</p></div>
         <div class="offer-detail">
           <div class="offer-fact"><span>Duration</span><strong>90-minute working session</strong></div>
           <div class="offer-fact"><span>Format</span><strong>Online or Chiang Mai</strong></div>
@@ -433,7 +486,7 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
         </div>
       </article>
       <article class="offer" id="team-sprint">
-        <div class="offer-lead"><span class="mono">For managers, HR and IT</span><h3>Team AI Starter Sprint</h3><p>Choose one candidate workflow, agree the boundaries and run a controlled pilot with a small team.</p></div>
+        <div class="offer-lead"><span class="mono">For managers, HR and IT</span><h3>Team AI Starter Sprint</h3><p>Choose one candidate workflow, agree the boundaries and run a controlled pilot with a small team.</p><p class="offer-fit"><strong>Fits if:</strong> your team map shows mixed readiness and you want a controlled first test.</p></div>
         <div class="offer-detail">
           <div class="offer-fact"><span>Duration</span><strong>Two weeks</strong></div>
           <div class="offer-fact"><span>Format</span><strong>Two working sessions, up to 8 people</strong></div>
@@ -443,7 +496,7 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
         </div>
       </article>
       <article class="offer offer--compact" id="business-audit">
-        <div class="offer-lead"><span class="mono">For owners and operators</span><h3>Small Business Workflow Audit</h3><p>Find the recurring work worth improving before you buy another platform or commission a bigger build.</p></div>
+        <div class="offer-lead"><span class="mono">For owners and operators</span><h3>Small Business Workflow Audit</h3><p>Find the recurring work worth improving before you buy another platform or commission a bigger build.</p><p class="offer-fit"><strong>Fits if:</strong> your map shows many recurring tasks and you want to know which ones are worth improving first.</p></div>
         <ul class="offer-meta">
           <li><strong>One week</strong></li>
           <li>Mapping session and findings call</li>
@@ -506,6 +559,29 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
   </div>
 </section>
 
+<section class="space-section" id="space">
+  <div class="wrap space-grid">
+    <div class="space-copy">
+      <span class="mono eyebrow">The Space &middot; Mae Hia, Chiang Mai</span>
+      <h2 class="sec-title">Coffee, coworking and early workshops.</h2>
+      <p class="sec-lede">We are building a small space in Mae Hia for AI-curious professionals. Coffee, coworking, and occasional workshops where you bring your own task and leave with something working.</p>
+      <p class="sec-lede" style="margin-top:12px;font-size:15px;color:var(--mist)">The space is not open yet. Join the waitlist to hear when it opens and get early access to workshops.</p>
+    </div>
+    <form class="waitlist-form" id="waitlistForm" novalidate>
+      <label class="mono" for="waitlistEmail">Get on the waitlist</label>
+      <div class="waitlist-row">
+        <input type="text" id="waitlistName" name="name" autocomplete="given-name" placeholder="Name (optional)" aria-label="Name (optional)">
+        <input type="email" id="waitlistEmail" name="email" autocomplete="email" required placeholder="you@company.com" aria-label="Email address">
+        <input type="text" id="waitlistWhatsApp" name="whatsapp" autocomplete="tel" placeholder="WhatsApp (optional)" aria-label="WhatsApp number (optional)">
+      </div>
+      <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" class="guidebook-hp">
+      <button class="btn gold" type="submit" style="margin-top:14px">Join the waitlist</button>
+      <small class="waitlist-note">We will only use this for space opening news and workshop invitations.</small>
+      <p class="waitlist-status" id="waitlistStatus" role="status"></p>
+    </form>
+  </div>
+</section>
+
 <section class="cta" id="start">
   <div class="wrap">
     <span class="mono">Free 20-minute introductory call · bring no confidential data</span>
@@ -519,7 +595,7 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
 
 <footer>
   <div class="wrap">
-    <div class="foot"><a class="logo" href="#top"><img class="logo-mark" src="assets/rhizome-thai-logo-256.png" alt="" width="36" height="32"><span class="logo-text">The Rhizome Space</span></a><ul><li><a href="#services">Services</a></li><li><a href="/sample-handover">Sample handover</a></li><li><a href="#guidebook">Guidebook</a></li><li><a href="/about">About</a></li><li><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=hello@therhizomespace.com" target="_blank" rel="noopener">Email us</a></li><li><a href="https://wa.me/66617930404">WhatsApp</a></li></ul></div>
+    <div class="foot"><a class="logo" href="#top"><img class="logo-mark" src="assets/rhizome-thai-logo-256.png" alt="" width="36" height="32"><span class="logo-text">The Rhizome Space</span></a><ul><li><a href="/map">Map</a></li><li><a href="#services">Services</a></li><li><a href="#guidebook">Guidebook</a></li><li><a href="/about">About</a></li><li><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=hello@therhizomespace.com" target="_blank" rel="noopener">Email us</a></li><li><a href="https://wa.me/66617930404">WhatsApp</a></li></ul></div>
     <div class="foot-bottom"><span>© 2026 The Rhizome Space · Chiang Mai, Thailand</span><span class="mono foot-domain">therhizomespace.com</span></div>
   </div>
 </footer>
@@ -619,7 +695,7 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
   });
 
   // Align the rhizome so the crown sits under the card stem.
-  // The stem is fixed-px; the crown is a fraction of card width — offset changes with viewport.
+  // The stem is fixed-px; the crown is a fraction of card width: offset changes with viewport.
   // Labels stay outside this wrap so readable type is never translated off-screen.
   const rootsWrap = document.querySelector('.roots-wrap');
   const stemNode = document.getElementById('stemPath');
@@ -637,6 +713,42 @@ footer{background:var(--leaf-dark);color:#b9c6b5;padding:56px 0 40px;font-size:1
   alignRhizome();
   window.addEventListener('resize', scheduleAlign);
   if(document.fonts && document.fonts.ready){ document.fonts.ready.then(alignRhizome); }
+
+  // Waitlist form
+  const waitlistForm = document.getElementById('waitlistForm');
+  if(waitlistForm){
+    const wlEmail = document.getElementById('waitlistEmail');
+    const wlStatus = document.getElementById('waitlistStatus');
+    const wlBtn = waitlistForm.querySelector('button[type="submit"]');
+    waitlistForm.addEventListener('submit', function(event){
+      event.preventDefault();
+      const email = wlEmail.value.trim();
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){
+        wlStatus.textContent = 'Please enter a valid email address.';
+        wlEmail.focus();
+        return;
+      }
+      wlStatus.textContent = 'Joining\u2026';
+      wlBtn.disabled = true;
+      var name = document.getElementById('waitlistName').value.trim();
+      var whatsapp = document.getElementById('waitlistWhatsApp').value.trim();
+      fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, company: waitlistForm.company.value, source: 'space-waitlist', name: name || undefined, whatsapp: whatsapp || undefined })
+      }).then(function(response){
+        if(!response.ok) throw new Error('bad status');
+        return response.json();
+      }).then(function(){
+        waitlistForm.querySelector('.waitlist-row').hidden = true;
+        wlBtn.hidden = true;
+        wlStatus.textContent = 'You are on the list. We will be in touch when the space opens.';
+      }).catch(function(){
+        wlBtn.disabled = false;
+        wlStatus.innerHTML = 'Something went wrong. Message us on WhatsApp instead: <a href="https://wa.me/66617930404">+66 61 793 0404</a>';
+      });
+    });
+  }
 
   const guidebookForm = document.getElementById('guidebookForm');
   if(guidebookForm){
